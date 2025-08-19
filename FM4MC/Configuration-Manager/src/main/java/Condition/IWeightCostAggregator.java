@@ -15,6 +15,9 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Aggregates numerical or weight-based metrics using configurable functions.
+ */
 public class IWeightCostAggregator {
     Map<String, BiFunction<Number, Number, Number>> _DefaultParameterFunctions;
     Map<String, BiFunction<Number, Number, Number>> _ParameterAggregationFunctions;
@@ -41,14 +44,34 @@ public class IWeightCostAggregator {
 
     }
 
+    /**
+     * Registers a new named aggregation function operating on numbers.
+     *
+     * @param name identifier for the function
+     * @param function implementation combining two numbers
+     */
     public void addFunction(String name, BiFunction<Number, Number, Number> function) {
         _ParameterAggregationFunctions.put(name, function);
     }
 
+    /**
+     * Registers a new aggregation function that combines two weights directly.
+     *
+     * @param name identifier for the function
+     * @param function implementation combining two weights
+     */
     public void addDirectFunction(String name, BiFunction<IWeight, IWeight, IWeight> function) {
         _DirectAggregationFunctions.put(name, function);
     }
 
+    /**
+     * Aggregates specific parameters of each weight using a named function.
+     *
+     * @param objects collection of weights to modify
+     * @param parameterAggregationFunction name of the aggregation function
+     * @param parametersToAggregate list of parameter names to combine
+     * @param targetParameter name of the parameter to store the result in
+     */
     public void aggregateParameters(List<IWeight> objects, String parameterAggregationFunction, List<String> parametersToAggregate, String targetParameter) {
         if(parametersToAggregate.size() <= 0)
             return;
@@ -74,6 +97,15 @@ public class IWeightCostAggregator {
         }
     }
 
+    /**
+     * Aggregates two weight objects parameter-wise using a named function.
+     *
+     * @param object1 first weight object
+     * @param object2 second weight object
+     * @param parameterAggregationFunction name of the aggregation function
+     * @param parametersToAggregate parameters to combine
+     * @return the modified first object containing aggregated values
+     */
     public IWeight aggregateObjects(IWeight object1, IWeight object2, String parameterAggregationFunction, List<String> parametersToAggregate) {
         BiFunction<Number, Number, Number> function;
 
@@ -98,6 +130,14 @@ public class IWeightCostAggregator {
         return result;
     }
 
+    /**
+     * Aggregates a list of weight objects parameter-wise using a named function.
+     *
+     * @param objects list of weight objects
+     * @param parameterAggregationFunction name of the aggregation function
+     * @param parametersToAggregate parameters to combine
+     * @return aggregated weight or null if list empty
+     */
     public IWeight aggregateObjects(List<IWeight> objects, String parameterAggregationFunction, List<String> parametersToAggregate) {
         if(objects.size() <= 0)
             return null;
@@ -127,6 +167,14 @@ public class IWeightCostAggregator {
         return result;
     }
 
+    /**
+     * Aggregates two weight objects using a direct aggregation function.
+     *
+     * @param object1 first weight object
+     * @param object2 second weight object
+     * @param directAggregationFunction name of the function to apply
+     * @return aggregated result
+     */
     public IWeight directAggregation(IWeight object1, IWeight object2, String directAggregationFunction){
         BiFunction<IWeight, IWeight, IWeight> function;
 
@@ -141,6 +189,13 @@ public class IWeightCostAggregator {
         return function.apply(object1, object2);
     }
 
+    /**
+     * Aggregates a list of weights using a direct aggregation function.
+     *
+     * @param objects list of weights to aggregate
+     * @param directAggregationFunction name of the function to apply
+     * @return aggregated weight or null if list empty
+     */
     public IWeight directAggregation(List<IWeight> objects, String directAggregationFunction){
         if(objects.size() <= 0)
             return null;

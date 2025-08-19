@@ -7,15 +7,29 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Builds conjunctive normal form (CNF) clauses for feature models and their
+ * sliced variants. Clauses are represented as arrays of integers following the
+ * DIMACS convention where positive/negative literals indicate selected or
+ * deselected features.
+ */
 public class CNFClauseGenerator {
 
     private final Logger _Logger;
     //private FeatureModelSliced _FMSliced;
 
+    /**
+     * Creates a new generator.
+     *
+     * @param logger logger for debug or error output
+     */
     public CNFClauseGenerator(Logger logger) {
         _Logger = logger;
     }
 
+    /**
+     * Adds the root clause to the list of CNF clauses.
+     */
     private void createCNFForRoot(List<int[]> featureModelClausesCNF) {
         featureModelClausesCNF.add(new int[]{1});
     }
@@ -43,6 +57,11 @@ public class CNFClauseGenerator {
         }
     }
 
+    /**
+     * Creates an empty clause list with a placeholder header.
+     *
+     * @return initialized list containing only the header clause
+     */
     private List<int[]> initializeCNFClauses() {
         var featureModelClausesCNF = new ArrayList<int[]>();
         featureModelClausesCNF.add(new int[]{0, 0});    //empty header
@@ -73,11 +92,14 @@ public class CNFClauseGenerator {
         return childFeatureClauses;
     }
 
+    /**
+     * Generates CNF clauses for an alternative group of child features.
+     */
     private List<int[]> createAlternativeClauses(List<Feature> childFeatures, int parentIndex) {
         var alternativeClauses = new ArrayList<int[]>();
         var featureIndices = childFeatures.stream().map(Feature::getIndex).toList();
 
-        //Example (A v B v C v -ROOT)
+        // Example (A v B v C v -ROOT)
         var noChildNegativeClause = new ArrayList<>(featureIndices);
         noChildNegativeClause.add(-parentIndex);
         alternativeClauses.add(noChildNegativeClause.stream().mapToInt(index -> index).toArray());
@@ -85,13 +107,13 @@ public class CNFClauseGenerator {
         for (var i = 0; i < featureIndices.size(); i++) {
             var feature = featureIndices.get(i);
 
-            //Example (A v -B v C v ROOT)
+            // Example (A v -B v C v ROOT)
             var oneChildNegativeClause = new ArrayList<>(featureIndices);
             oneChildNegativeClause.add(parentIndex);
             oneChildNegativeClause.set(oneChildNegativeClause.indexOf(feature), -feature);
             alternativeClauses.add(oneChildNegativeClause.stream().mapToInt(index -> index).toArray());
 
-            //Example (-A v -B), (-A v -C), (-B v -C)
+            // Example (-A v -B), (-A v -C), (-B v -C)
             for (var j = i + 1; j < featureIndices.size(); j++) {
                 alternativeClauses.add(new int[]{-feature, -featureIndices.get(j)});
             }
@@ -100,11 +122,14 @@ public class CNFClauseGenerator {
         return alternativeClauses;
     }
 
+    /**
+     * Generates CNF clauses for an OR group of child features.
+     */
     private List<int[]> createOrClauses(List<Feature> childFeatures, int parentIndex) {
         var orClauses = new ArrayList<int[]>();
         var featureIndices = childFeatures.stream().map(Feature::getIndex).toList();
 
-        //Example (A v B v C v -ROOT)
+        // Example (A v B v C v -ROOT)
         var noChildNegativeClause = new ArrayList<>(featureIndices);
         noChildNegativeClause.add(-parentIndex);
         orClauses.add(noChildNegativeClause.stream().mapToInt(index -> index).toArray());
@@ -116,6 +141,9 @@ public class CNFClauseGenerator {
         return orClauses;
     }
 
+    /**
+     * Generates CNF clauses for a mandatory relation between parent and child.
+     */
     private List<int[]> createMandatoryClauses(Feature childFeature, int parentIndex) {
         var mandatoryClauses = new ArrayList<int[]>();
         var featureIndex = childFeature.getIndex();
@@ -125,6 +153,9 @@ public class CNFClauseGenerator {
         return mandatoryClauses;
     }
 
+    /**
+     * Generates CNF clauses for an optional relation between parent and child.
+     */
     private List<int[]> createOptionalClauses(Feature childFeature, int parentIndex) {
         var optionalClauses = new ArrayList<int[]>();
         var featureIndex = childFeature.getIndex();

@@ -6,9 +6,18 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 
+/**
+ * Command line entry point that parses arguments and triggers the feature model
+ * preprocessing pipeline.
+ */
 public class Startup {
     private static final Logger _Logger = LogManager.getLogger("executionLog");
 
+    /**
+     * Application entry point.
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         var logParameters = new LogInformation(args);
         var qorLogManager = new MyLogManager(logParameters);
@@ -29,6 +38,9 @@ public class Startup {
         }
     }
 
+    /**
+     * Parses the command line arguments into a key/value map.
+     */
     private static HashMap<String, String> getTestbedParameters(String[] args) {
         var parameters = new HashMap<String, String>();
 

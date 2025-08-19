@@ -18,11 +18,24 @@ public class FeatureModelReader {
     public static final String ROOT_FEATURE_NAME = "root";
     public final Gson _GsonReader;
 
+    /**
+     * Creates a new reader instance.
+     *
+     * @param logger logger used for diagnostic messages
+     */
     public FeatureModelReader(Logger logger) {
         _Logger = logger;
         _GsonReader = new Gson();
     }
 
+    /**
+     * Reads a feature model definition from the given JSON file.
+     *
+     * @param file JSON file representing a feature model
+     * @return parsed feature model representation or {@code null} if an error occurs
+     * @throws InvalidFeatureModelRelationException if the model contains invalid
+     *                                              relations
+     */
     public FeatureModelRead readFeatureModelJson(File file) throws InvalidFeatureModelRelationException {
         _FeatureConnectivityMap = new HashMap<>();
         FileReader fileReader;
@@ -123,6 +136,13 @@ public class FeatureModelReader {
         return rawFeatureModel;
     }
 
+    /**
+     * Validates that all relations between features adhere to the expected
+     * constraints of the feature model.
+     *
+     * @param features list of features to validate
+     * @throws InvalidFeatureModelRelationException if the relations are invalid
+     */
     private void checkValidRelations(List<Feature> features) throws InvalidFeatureModelRelationException {
         for (var feature : features) {
             if (feature.getParentFeature() == null && !feature.getName().equals(ROOT_FEATURE_NAME)) {
@@ -154,6 +174,12 @@ public class FeatureModelReader {
         }
     }
 
+    /**
+     * Adds hierarchy information based on the connectivity map gathered while
+     * reading the feature model.
+     *
+     * @param features list of all features of the model
+     */
     private void buildHierarchyFromConnectivity(List<Feature> features) {
         for (var featureName : _FeatureConnectivityMap.keySet()) {
             var feature = getFeatureByName(features, featureName);
@@ -169,6 +195,13 @@ public class FeatureModelReader {
         }
     }
 
+    /**
+     * Parses the hardware requirements from the JSON representation of a
+     * feature.
+     *
+     * @param hardwareRequirements JSON element describing hardware requirements
+     * @return map containing the required values for each hardware class
+     */
     private Map<LshwClass, Integer> readHardwareRequirements(JsonElement hardwareRequirements) {
         var hardwareRequirementsMap = new HashMap<LshwClass, Integer>();
         for (var lshwClass : LshwClass.values()) {
@@ -192,6 +225,15 @@ public class FeatureModelReader {
         return hardwareRequirementsMap;
     }
 
+    /**
+     * Reads cross-tree constraints from the given JSON array and maps them to
+     * feature instances.
+     *
+     * @param crossTreeConstraintsJsonArray JSON array containing the constraints
+     * @param features                      list of all features of the model
+     * @return list of parsed cross-tree constraints
+     * @throws InvalidFeatureModelRelationException if an unknown relation type is encountered
+     */
     private List<CrossTreeConstraint> readCrossTreeConstraints(JsonArray crossTreeConstraintsJsonArray, List<Feature> features) throws InvalidFeatureModelRelationException {
         var crossTreeConstraints = new ArrayList<CrossTreeConstraint>();
         for (var crossTreeConstraintElement : crossTreeConstraintsJsonArray) {
@@ -211,10 +253,24 @@ public class FeatureModelReader {
         return crossTreeConstraints;
     }
 
+    /**
+     * Retrieves a feature by its name from the provided feature list.
+     *
+     * @param features    list of features to search in
+     * @param featureName name of the feature to find
+     * @return the matching feature or {@code null} if it does not exist
+     */
     private Feature getFeatureByName(List<Feature> features, String featureName) {
         return features.stream().filter(x -> x.getName().equals(featureName)).findFirst().orElse(null);
     }
 
+    /**
+     * Converts the connectivity information read from the JSON file into actual
+     * feature references.
+     *
+     * @param features list of all features in the model
+     * @return map assigning each feature to its reachable abstract features
+     */
     private Map<String, List<Feature>> mapConnectivityInformationToFeatures(List<Feature> features) {
         var featureConnectivityMap = new HashMap<String, List<Feature>>();
         for (var key : _FeatureConnectivityMap.keySet()) {
@@ -227,6 +283,14 @@ public class FeatureModelReader {
         return featureConnectivityMap;
     }
 
+    /**
+     * Determines the initial abstract feature from which the configuration
+     * process should start.
+     *
+     * @param featureConnectivityMap connectivity information between features
+     * @param features               list of all features
+     * @return the abstract start feature or {@code null} if none can be determined
+     */
     private Feature getAbstractStartFeature(Map<String, List<Feature>> featureConnectivityMap, List<Feature> features) {
         var featuresWithOutgoing = featureConnectivityMap.keySet();
         var featuresWithIncoming = new HashSet<String>();
