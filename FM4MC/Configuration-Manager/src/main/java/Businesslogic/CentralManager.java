@@ -20,6 +20,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.Locale;
 
+/**
+ * Central server component that requests hardware information from edge devices
+ * and processes incoming messages.
+ */
 public class CentralManager implements IMessageReceivedListener, IConsoleInputListener {
     private static final Logger _Logger = LogManager.getLogger("executionLog");
     private final int _Port;
@@ -28,6 +32,13 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
     private Thread _ServerThread;
     private IConnectionInformation test = new ConnectionInformation("130.83.163.46", 2000);
 
+    /**
+     * Starts the manager and initiates a hardware information request.
+     *
+     * @param connectionFacade facade used to create network connections
+     * @param portToListenOn port to listen for incoming messages
+     * @throws IOException if networking components fail to start
+     */
     public CentralManager(IConnectionFacade connectionFacade, int portToListenOn) throws IOException {
         _ConnectionFacade = connectionFacade;
         _Port = portToListenOn;
@@ -37,6 +48,13 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
     }
 
     @Override
+    /**
+     * Handles incoming hardware information messages from edge devices.
+     *
+     * @param message serialized payload from the sender
+     * @param from connection information of the sender
+     * @throws IOException if response transmission fails
+     */
     public void messageReceived(byte[] message, IConnectionInformation from) throws IOException {
         _Logger.debug("New connection from server");
         if (message != null) {
@@ -69,6 +87,11 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
     }
 
     @Override
+    /**
+     * Processes console commands for shutting down or reconnecting.
+     *
+     * @param message console command entered by the user
+     */
     public void HandleConsoleInput(String message) {
         message = message.toLowerCase(Locale.ROOT).trim();
 
@@ -90,6 +113,12 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
         }
     }
 
+    /**
+     * Sends a request to an edge node to obtain hardware information.
+     *
+     * @param edgeConnectionInformation address of the target edge device
+     * @throws IOException if the request cannot be sent
+     */
     private void requestEdgeInformation(IConnectionInformation edgeConnectionInformation) throws IOException {
         var edgeRequest = HardwareInformationMessages.HardwareInformationRequest.newBuilder();
         edgeRequest.setTargetPort(_Port);

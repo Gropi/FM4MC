@@ -13,11 +13,22 @@ import java.util.*;
 import static io.github.atomfinger.touuid.UUIDs.toUUID;
 import static java.util.stream.Collectors.groupingBy;
 
+/**
+ * Generates a graph representation of a partially calculated feature model.
+ * Vertices represent features and edges encode feasible transitions.
+ */
+
 public class GraphGenerator {
 
     private FeatureModelPartiallyCalculated _FeatureModel;
     private int _NextEdgeID = 1;
 
+    /**
+     * Builds a graph from the provided partially calculated feature model.
+     *
+     * @param featureModel source data containing features and connectivity
+     * @return generated graph representing possible feature selections
+     */
     public IGraph generateGraph(FeatureModelPartiallyCalculated featureModel) {
         var partialConfigurations = featureModel.configurationsPerPartialFeatureModel.stream().flatMap(List::stream).toList();
 

@@ -10,14 +10,33 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class that removes features or configurations that require more
+ * hardware resources than an edge node can provide.
+ */
 public class FeatureFilter {
     private final Logger _Logger;
 
+    /**
+     * Creates a new filter using the provided logger.
+     *
+     * @param logger logger used for debug output
+     */
     public FeatureFilter(Logger logger) {
         _Logger = logger;
     }
 
-    public List<Feature> filterFeaturesAgainstEdge(List<Feature> features, AvailableEdgeHardware edgeInformation, int maxRequirements) {
+    /**
+     * Determines which features cannot run on the target edge hardware.
+     *
+     * @param features        feature list to evaluate
+     * @param edgeInformation hardware capabilities of the edge device
+     * @param maxRequirements number of hardware requirement levels to inspect
+     * @return list of features that exceed the available resources
+     */
+    public List<Feature> filterFeaturesAgainstEdge(List<Feature> features,
+                                                   AvailableEdgeHardware edgeInformation,
+                                                   int maxRequirements) {
         var lshwClassesInOrder = LshwClass.values();
         List<Feature> nonValidFeatures = new ArrayList<>();
         for (var feature : features) {
@@ -36,16 +55,17 @@ public class FeatureFilter {
     }
 
     /**
-     * Filters the features in the given partial configuration based on the available hardware.
-     * Unsupported features are removed directly from the configuration.
+     * Filters the features in the given partial configuration based on the
+     * available hardware. Unsupported features are removed directly from the
+     * configuration.
      *
-     * @param configuration the partial configuration to filter (modified in place)
-     * @param edgeHardware  the available hardware information
+     * @param configuration  the partial configuration to filter (modified in place)
+     * @param edgeHardware   the available hardware information
      * @param maxRequirements the maximum number of hardware requirement levels to consider
      */
     public void filterConfigurationByHardware(PartialConfiguration configuration,
-                                               AvailableEdgeHardware edgeHardware,
-                                               int maxRequirements) {
+                                              AvailableEdgeHardware edgeHardware,
+                                              int maxRequirements) {
         // Create a copy of the feature list to avoid concurrent modification issues.
         var featuresCopy = new ArrayList<>(configuration.getFeatures());
         var lshwClasses = LshwClass.values();

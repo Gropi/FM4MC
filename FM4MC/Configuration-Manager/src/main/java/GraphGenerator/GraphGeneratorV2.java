@@ -17,11 +17,24 @@ import java.util.stream.Collectors;
 
 import static io.github.atomfinger.touuid.UUIDs.toUUID;
 
+
+/**
+ * Alternative graph generator implementation supporting single and multiple
+ * configurations. Vertices correspond to features while edges capture their
+ * execution order and connectivity.
+ */
 public class GraphGeneratorV2 {
 
     private AtomicInteger nextEdgeId = new AtomicInteger(1); // Thread-safe counter for edge IDs
     private Map<String, List<IVertex>> vertexConfigurationMap; // Map for vertex configurations
 
+    /**
+     * Generates a graph for the given set of partial configurations.
+     *
+     * @param configuration list of partial configurations to transform
+     * @param featureConnectivityInformation connectivity information of features
+     * @return constructed graph
+     */
     public Graph generateGraph(List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
         vertexConfigurationMap = new HashMap<>();
         var vertices = createVertices(configuration);
@@ -38,6 +51,14 @@ public class GraphGeneratorV2 {
         return graph;
     }
 
+    /**
+     * Builds a graph from a single partial configuration.
+     *
+     * @param configuration the configuration to convert
+     * @param featureConnectivityInformation connectivity details of the model
+     * @param fm complete feature model used for indexing
+     * @return constructed graph
+     */
     public Graph generateGraphFromSingleConfiguration(PartialConfiguration configuration, FeatureConnectivityInformation featureConnectivityInformation, FeatureModelRead fm) {
         vertexConfigurationMap = new HashMap<>();
         var vertices = createVertices(Collections.singletonList(configuration));
@@ -114,6 +135,12 @@ public class GraphGeneratorV2 {
         });
     }
 
+    /**
+     * Recomputes stage, application, and approximation indices for all vertices
+     * in the given graph.
+     *
+     * @param graph graph whose vertex indices should be recalculated
+     */
     public void recalculateIndices(IGraph graph) {
         var vertices = graph.getAllVertices();
         int stage = 0;

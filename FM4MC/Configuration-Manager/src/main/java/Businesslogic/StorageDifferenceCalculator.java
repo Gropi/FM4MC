@@ -5,8 +5,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Utility to compare file sizes of configuration outputs generated
+ * with and without slicing, writing the results to a CSV file.
+ */
 public class StorageDifferenceCalculator {
 
+    /**
+     * Entry point that calculates and stores file size differences.
+     *
+     * @param args ignored command line arguments
+     */
     public static void main(String[] args) {
 
         var outputFile = "fileSizeComparison.csv";
