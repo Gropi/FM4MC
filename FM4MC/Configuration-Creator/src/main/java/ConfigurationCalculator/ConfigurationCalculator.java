@@ -54,12 +54,13 @@ public class ConfigurationCalculator {
     }
 
     /**
-     * passes down all CTCs down to leafs in the feature tree if possible.
-     * source of a ctc is always possible but target is not
-     * target of require can't be split into multiple features so passing down is not possible
+     * Propagates cross-tree constraints to child features wherever possible.
+     * The source feature of a constraint can always be replaced by its
+     * children, whereas the target of a {@link CrossTreeConstraintRelation#REQUIRES}
+     * relation cannot be split across multiple features and therefore remains
+     * unchanged.
      *
-     *
-     * @param fm the feature model
+     * @param fm the feature model for which constraints should be propagated
      */
     private void passCrossTreeConstraintsToChildren(FeatureModelPartiallyCalculated fm) {
         //pass down ctc source to children
@@ -93,6 +94,14 @@ public class ConfigurationCalculator {
         }
     }
 
+    /**
+     * Calculates all valid configurations for the concrete partial feature
+     * models of the given feature model.
+     *
+     * @param fm      the feature model holding the partial concrete models
+     * @param parents list of abstract parent features used to determine the
+     *                relevant concrete features
+     */
     private void calculateConcreteConfigurations(FeatureModelPartiallyCalculated fm, List<Feature> parents) {
         for (var partialModel : fm.partialConcreteFeatureModels) {
             List<Feature> currentParents = partialModel.stream().filter(parents::contains).toList();
@@ -110,6 +119,13 @@ public class ConfigurationCalculator {
         }
     }
 
+    /**
+     * Calculates all valid configurations for a single partial feature model.
+     *
+     * @param fm            the overall feature model
+     * @param currentParents abstract parent features defining the partial model
+     * @return list of valid concrete feature configurations
+     */
     private List<List<Feature>> calculateForPFM(FeatureModelPartiallyCalculated fm, List<Feature> currentParents) {
         var children = new ArrayList<Feature>();
         currentParents.forEach(current -> {
@@ -128,6 +144,13 @@ public class ConfigurationCalculator {
         return configurationsList;
     }
 
+    /**
+     * Calculates all valid configurations of the abstract layer of the feature
+     * model. The resulting configurations are stored in the provided model.
+     *
+     * @param fm      the feature model
+     * @param parents list of abstract parent features present in the model
+     */
     //TODO check if all features are needed or only parents!!! (require CTC when merging graph?!?)
     private void calculateAbstractLayer(FeatureModelPartiallyCalculated fm, List<Feature> parents) {
         var abstractLayerCNF = cnfClauseGenerator.createAbstractLayerClauses(fm);
@@ -145,6 +168,11 @@ public class ConfigurationCalculator {
     }
 
 
+    /**
+     * Initializes the SAT solver with the given CNF clauses.
+     *
+     * @param cnfClauses CNF clauses encoded as DIMACS integer arrays
+     */
     private void initSolver(List<int[]> cnfClauses) {
         solver.reset();
         var headerCnfDIMACS = cnfClauses.get(0);
@@ -161,6 +189,12 @@ public class ConfigurationCalculator {
         }
     }
 
+    /**
+     * Computes all satisfiable models for the current solver configuration.
+     *
+     * @param solver the SAT solver configured with CNF clauses
+     * @return list of satisfying models represented as index arrays
+     */
     private List<int[]> calculateModels(ISolver solver) {
         var models = new ArrayList<int[]>();
 
@@ -176,6 +210,14 @@ public class ConfigurationCalculator {
         return models;
     }
 
+    /**
+     * Orders the features within the given partial configuration based on the
+     * connectivity information between parent features.
+     *
+     * @param partialConfiguration configuration to sort
+     * @param connectivityMap      map describing connectivity between parent
+     *                             features
+     */
     private void sortConfiguration(PartialConfiguration partialConfiguration, Map<String, List<Feature>> connectivityMap) {
         //TODO DOUBLE CHECK LOGIC
         if (partialConfiguration.getFeatures().size() > 1) {
@@ -197,6 +239,15 @@ public class ConfigurationCalculator {
         }
     }
 
+    /**
+     * Sorts parent feature names according to their reachability described in
+     * the connectivity map.
+     *
+     * @param uniqueParentFeatures list of unique parent feature names
+     * @param connectivityMap      map describing connectivity between parent
+     *                             features
+     * @return parent feature names ordered by reachability
+     */
     private List<String> sortParentFeatures(List<String> uniqueParentFeatures, Map<String, List<Feature>> connectivityMap) {
         //TODO DOUBLE CHECK LOGIC
         var parentFeaturesInOrder = new ArrayList<String>();
@@ -214,6 +265,15 @@ public class ConfigurationCalculator {
         return parentFeaturesInOrder;
     }
 
+    /**
+     * Finds the first parent feature that has no predecessors in the
+     * connectivity graph.
+     *
+     * @param uniqueParentFeatures list of unique parent feature names
+     * @param connectivityMap      map describing connectivity between parent
+     *                             features
+     * @return name of the first parent feature without predecessors
+     */
     private String findFirst(List<String> uniqueParentFeatures, Map<String, List<Feature>> connectivityMap) {
         var allSuccessors = uniqueParentFeatures.stream().map(connectivityMap::get).flatMap(List::stream).distinct().map(Feature::getName).toList();
         return uniqueParentFeatures.stream().filter(x -> !allSuccessors.contains(x)).findFirst().orElseThrow();

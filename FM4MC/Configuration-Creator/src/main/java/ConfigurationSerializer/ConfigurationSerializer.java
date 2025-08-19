@@ -14,6 +14,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Serializes and deserializes configuration results of the configuration
+ * calculation. The serializer stores configurations and cross tree
+ * constraints in a simple CSV based representation and can restore the
+ * {@link FeatureModelPartiallyCalculated} structure from such files.
+ */
 public class ConfigurationSerializer {
 
     private final String PARENTS = "parents";
@@ -24,6 +30,11 @@ public class ConfigurationSerializer {
     private final Logger _ApplicationLogger;
     private final String _DELIMITER = ";";
 
+    /**
+     * Creates a new serializer instance.
+     *
+     * @param logger application logger used for error reporting
+     */
     public ConfigurationSerializer(Logger logger) {
         _ApplicationLogger = logger;
     }
@@ -46,6 +57,14 @@ public class ConfigurationSerializer {
         saveToFile(filePath, stringBuilder);
     }
 
+    /**
+     * Appends the abstract configurations to the given {@link StringBuilder}.
+     * Each configuration is written on a separate line prefixed with
+     * {@code ABSTRACT_CONFIGURATION} and an id.
+     *
+     * @param abstractConfigurations configurations of the abstract layer
+     * @param stringBuilder          builder receiving the serialized output
+     */
     private void saveAbstractConfigurations(List<List<Feature>> abstractConfigurations, StringBuilder stringBuilder) {
         int id = 1;
         for (var abstractConfiguration : abstractConfigurations) {
@@ -60,6 +79,12 @@ public class ConfigurationSerializer {
         }
     }
 
+    /**
+     * Serializes all partial configurations for each partial feature model.
+     *
+     * @param configurationsPerPartialFeatureModel configurations per PFM
+     * @param stringBuilder                        builder receiving the serialized output
+     */
     private void saveConcretePartialConfigurations(List<List<PartialConfiguration>> configurationsPerPartialFeatureModel, StringBuilder stringBuilder) {
         int id = 1;
         for (var partialConfigurations : configurationsPerPartialFeatureModel) {
@@ -82,6 +107,13 @@ public class ConfigurationSerializer {
         }
     }
 
+    /**
+     * Writes cross tree constraints to the {@link StringBuilder} in a simple
+     * textual format.
+     *
+     * @param crossTreeConstraints list of constraints to serialize
+     * @param stringBuilder        builder receiving the serialized output
+     */
     private void saveCTCs(List<CrossTreeConstraint> crossTreeConstraints, StringBuilder stringBuilder) {
         for (var constraint : crossTreeConstraints) {
             String relationString = null;
@@ -176,10 +208,23 @@ public class ConfigurationSerializer {
         return featureModel;
     }
 
+    /**
+     * Finds a feature by name in the provided list.
+     *
+     * @param features    list of available features
+     * @param featureName name to look up
+     * @return matching feature or {@code null} if none exists
+     */
     private Feature getFeatureByName(List<Feature> features, String featureName) {
         return features.stream().filter(x -> x.getName().equals(featureName)).findFirst().orElse(null);
     }
 
+    /**
+     * Writes the accumulated serialization to the specified file.
+     *
+     * @param fileToWriteTo destination file path
+     * @param stringBuilder serialized contents
+     */
     private void saveToFile(String fileToWriteTo, StringBuilder stringBuilder) {
         try {
             new DriveHandle().createFolderFromFile(fileToWriteTo);
