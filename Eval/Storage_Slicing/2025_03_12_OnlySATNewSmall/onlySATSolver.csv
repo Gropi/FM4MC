@@ -1,0 +1,4 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99,9%)","Unit","Param: _FilePathFM"
+"Paper.Online.OnlySATSolver.onlySATSolverHandcraftedFiles","ss",4,5,"149,400445","12,651683","ms/op",../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json
+"Paper.Online.OnlySATSolver.onlySATSolverHandcraftedFiles","ss",4,5,"58,874895","69,086929","ms/op",../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_57.344_configs.json
+"Paper.Online.OnlySATSolver.onlySATSolverHandcraftedFiles","ss",4,5,"155508,682670","22609,719356","ms/op",../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json

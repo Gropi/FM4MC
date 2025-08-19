@@ -1,0 +1,2 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99,9%)","Unit","Param: _FilePathFM"
+"Paper.Handcraftet.Handcrafted_OnlySATSolver.onlySATSolverHandcraftedFiles","ss",4,5,"21600189,843185","1090,140864","ms/op",../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_16_Services_Excludes_1.520.640_configs.json

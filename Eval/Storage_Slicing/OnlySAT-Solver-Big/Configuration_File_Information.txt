@@ -1,0 +1,22 @@
+Benchmark - Files:
+1) FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json
+2) FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json
+
+Software:
+JMH 1.36
+GiT-Commit: 431acd56f645fd44b3c6c7e38faa6a401f335b4b
+
+Tests have been executed on:
+Gerätename	Edge-Node_Uwe
+Prozessor	13th Gen Intel(R) Core(TM) i9-13900K   3.00 GHz
+Installierter RAM	32,0 GB (31,6 GB verwendbar)
+Geräte-ID	16F9C726-338A-47BB-9A80-3AA0B4237B27
+Produkt-ID	00355-61077-88679-AAOEM
+Systemtyp	64-Bit-Betriebssystem, x64-basierter Prozessor
+Stift- und Toucheingabe	Für diese Anzeige ist keine Stift- oder Toucheingabe verfügbar.
+
+Edition	Windows 11 Pro
+Version	23H2
+Installiert am	‎14.‎11.‎2023
+Betriebssystembuild	22631.4751
+Leistung	Windows Feature Experience Pack 1000.22700.1055.0
