@@ -14,11 +14,18 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Measurement unit that exposes network related metrics and notifies
+ * registered consumers about updates.
+ */
 public class NetworkMeasurement implements IMonitoringFacade, Runnable {
     private static final Logger _Logger = LogManager.getLogger(NetworkMeasurement.class);
     private final List<IMeasurementUpdate> _registeredMeasurementUpdateConsumer;
     private final String os = System.getProperty("os.name").toLowerCase();
 
+    /**
+     * Creates a new network measurement unit.
+     */
     public NetworkMeasurement() {
         _registeredMeasurementUpdateConsumer = new CopyOnWriteArrayList<>();
         _Logger.trace("Initialize network logger ");
@@ -29,22 +36,42 @@ public class NetworkMeasurement implements IMonitoringFacade, Runnable {
 
     }
 
+    /**
+     * Registers a listener to receive measurement updates.
+     *
+     * @param notifier consumer interested in updates
+     */
     @Override
     public void registerMeasurementUpdateNotification(IMeasurementUpdate notifier) {
         if (!_registeredMeasurementUpdateConsumer.contains(notifier))
             _registeredMeasurementUpdateConsumer.add(notifier);
     }
 
+    /**
+     * Unregisters a previously registered listener.
+     *
+     * @param notifier consumer to remove
+     */
     @Override
     public void unregisterMeasurementUpdateNotification(IMeasurementUpdate notifier) {
         _registeredMeasurementUpdateConsumer.remove(notifier);
     }
 
+    /**
+     * Begins collecting CPU related metrics.
+     *
+     * @throws IOException if required system commands cannot be executed
+     */
     @Override
     public void startCollectingCPU() throws IOException {
 
     }
 
+    /**
+     * Begins collecting RAM related metrics.
+     *
+     * @throws IOException if required system commands cannot be executed
+     */
     @Override
     public void startCollectingRAM() throws IOException {
 

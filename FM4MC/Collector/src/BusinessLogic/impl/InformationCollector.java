@@ -16,6 +16,10 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.util.Locale;
 
+/**
+ * Server component that listens for hardware information requests and forwards
+ * the data to an aggregator service.
+ */
 public class InformationCollector implements IConsoleInputListener, IMessageReceivedListener {
     private static final Logger _Logger = LogManager.getLogger("executionLog");
     private final int _Port;
@@ -23,6 +27,13 @@ public class InformationCollector implements IConsoleInputListener, IMessageRece
     private ICommunication _Communication;
     private Thread _ServerThread;
 
+    /**
+     * Creates a new information collector listening on the given port.
+     *
+     * @param connectionFacade facade used to create network connections
+     * @param portToListenOn port on which to listen for incoming requests
+     * @throws IOException if the server cannot be started
+     */
     public InformationCollector(IConnectionFacade connectionFacade, int portToListenOn) throws IOException {
         _ConnectionFacade = connectionFacade;
         _Port = portToListenOn;
@@ -37,6 +48,12 @@ public class InformationCollector implements IConsoleInputListener, IMessageRece
         _ServerThread.start();
     }
 
+    /**
+     * Reacts on console input from the user. Currently only the command
+     * {@code exit} is supported which terminates the application.
+     *
+     * @param message user input from the console
+     */
     @Override
     public void HandleConsoleInput(String message) {
         message = message.toLowerCase(Locale.ROOT).trim();
@@ -53,6 +70,14 @@ public class InformationCollector implements IConsoleInputListener, IMessageRece
         }
     }
 
+    /**
+     * Handles incoming network messages and responds to hardware information
+     * requests.
+     *
+     * @param message serialized message payload
+     * @param from information about the sender
+     * @throws IOException if a response cannot be sent
+     */
     @Override
     public void messageReceived(byte[] message, IConnectionInformation from) throws IOException {
         _Logger.debug("Connection established from: " + from.getIPAddress());
