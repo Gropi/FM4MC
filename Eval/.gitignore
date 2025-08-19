@@ -1,0 +1,4 @@
+#built application files
+*.jar
+# Test files
+TestData/

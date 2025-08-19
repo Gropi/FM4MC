@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package="Network.DataModel";
+
+enum HardwareRequestTypes {
+	XML = 0;
+	JSON = 1; 
+}
+
+message HardwareInformation {
+	string hardwareDescription = 1;
+}
+
+message HardwareInformationRequest {
+	int32 targetPort = 1;
+	HardwareRequestTypes type = 2;
+}

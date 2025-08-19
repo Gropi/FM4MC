@@ -1,0 +1,82 @@
+{
+  "crossTreeConstraints": [
+    {
+      "sourceName": "a1",
+      "targetName": "b1",
+      "relation": "requires"
+    },
+    {
+      "sourceName": "a2",
+      "targetName": "b2",
+      "relation": "requires"
+    }
+  ],
+  "features": [
+    {
+      "name": "startTask",
+      "parentName": "root",
+      "reachableAbstractFeatures": [
+        "A"
+      ],
+      "relation": "MANDATORY"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "tsv1",
+      "parentName": "startTask",
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "A",
+      "parentName": "root",
+      "reachableAbstractFeatures": [
+        "B"
+      ],
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "B",
+      "parentName": "root",
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "relation": "MANDATORY"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "a1",
+      "parentName": "A",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "a2",
+      "parentName": "A",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "b1",
+      "parentName": "B",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "b2",
+      "parentName": "B",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "name": "endTask",
+      "parentName": "root",
+      "reachableAbstractFeatures": [],
+      "relation": "MANDATORY"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "tev1",
+      "parentName": "endTask",
+      "relation": "MANDATORY"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group = 'de.TU.Darmstadt.TK'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation 'org.ow2.sat4j:org.ow2.sat4j.core:2.3.6'
+
+    implementation project(':Shared')
+}
+
+test {
+    useJUnitPlatform()
+}

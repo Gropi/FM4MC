@@ -1,0 +1,163 @@
+{
+  "crossTreeConstraints": [],
+  "features": [
+    {
+      "name": "startTask",
+      "parentName": "root",
+      "reachableAbstractFeatures": [
+        "MandatoryFeature"
+      ],
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "tsv1",
+      "parentName": "startTask",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "MandatoryFeature",
+      "parentName": "root",
+      "reachableAbstractFeatures": [
+        "OptionalFeature",
+        "ORFeature1",
+        "ORFeature2"
+      ],
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "tmv1",
+      "parentName": "MandatoryFeature",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "OptionalFeature",
+      "parentName": "root",
+      "reachableAbstractFeatures": [
+        "XORFeature1",
+        "XORFeature2",
+        "XORFeature3",
+        "XORFeature4"
+      ],
+      "relation": "OPTIONAL"
+    },
+    {
+      "name": "tov1",
+      "parentName": "OptionalFeature",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "ORFeatureGroup",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "ORFeature1",
+      "parentName": "ORFeatureGroup",
+      "reachableAbstractFeatures": [
+        "XORFeature1",
+        "XORFeature2",
+        "XORFeature3",
+        "XORFeature4"
+      ],
+      "relation": "OR"
+    },
+    {
+      "name": "tORv1",
+      "parentName": "ORFeature1",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "ORFeature2",
+      "parentName": "ORFeatureGroup",
+      "reachableAbstractFeatures": [
+        "XORFeature1",
+        "XORFeature2",
+        "XORFeature3",
+        "XORFeature4"
+      ],
+      "relation": "OR"
+    },
+    {
+      "name": "tORv2",
+      "parentName": "ORFeature2",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "XORFeatureGroup",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "XORFeature1",
+      "parentName": "XORFeatureGroup",
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "name": "tXORv1",
+      "parentName": "XORFeature1",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "XORFeature2",
+      "parentName": "XORFeatureGroup",
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "name": "tXORv2",
+      "parentName": "XORFeature2",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "XORFeature3",
+      "parentName": "XORFeatureGroup",
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "name": "tXORv3",
+      "parentName": "XORFeature3",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "XORFeature4",
+      "parentName": "XORFeatureGroup",
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "name": "tXORv4",
+      "parentName": "XORFeature4",
+      "relation": "MANDATORY",
+      "hardwareRequirements": []
+    },
+    {
+      "name": "endTask",
+      "parentName": "root",
+      "reachableAbstractFeatures": [],
+      "relation": "MANDATORY"
+    },
+    {
+      "name": "tev1",
+      "parentName": "endTask",
+      "relation": "MANDATORY"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Tasks increasing from 2 - 100
+Alternatives per Task increasing from 1 - 15
+_Thresholds 10 to 1000
+Timeout: 30s
+
+Software:
+JMH 1.36
+GiT-Commit: 7c0f122164abd221cb39fc3a168044835d5f7ac4
+
+Tests have been executed on:
+Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz   3.60 GHz 
+RAM: 32,0 GB
+OS: Windows 10 Home

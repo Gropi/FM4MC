@@ -1,0 +1,6 @@
+Tasks increasing from 2 - 100
+Alternatives per Task increasing from 1 - 15
+Timeout: 2h
+
+Resulting configuration files of this benchmark run can be found under:
+D:\02_Ergebnisse\Edge-Flex\Benchmarks\2024_05_19_Measurement_Linear_FM_No_Slicing

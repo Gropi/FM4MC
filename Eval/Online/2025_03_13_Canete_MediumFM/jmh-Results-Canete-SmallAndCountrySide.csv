@@ -1,0 +1,2056 @@
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 14)
+
+# Run progress: 0,00% complete, ETA 00:00:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 9277,939 ms/op
+# Warmup Iteration   2: 9144,087 ms/op
+# Warmup Iteration   3: 16898,237 ms/op
+Iteration   1: 16706,042 ms/op
+Iteration   2: 16656,621 ms/op
+Iteration   3: 16663,036 ms/op
+Iteration   4: 16684,222 ms/op
+Iteration   5: 16681,921 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16678,368 ±(99.9%) 75,082 ms/op
+
+  Histogram, ms/op:
+    [16650,000, 16655,000) = 0 
+    [16655,000, 16660,000) = 1 
+    [16660,000, 16665,000) = 1 
+    [16665,000, 16670,000) = 0 
+    [16670,000, 16675,000) = 0 
+    [16675,000, 16680,000) = 0 
+    [16680,000, 16685,000) = 2 
+    [16685,000, 16690,000) = 0 
+    [16690,000, 16695,000) = 0 
+    [16695,000, 16700,000) = 0 
+    [16700,000, 16705,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16656,621 ms/op
+     p(50,0000) =  16681,921 ms/op
+     p(90,0000) =  16706,042 ms/op
+     p(95,0000) =  16706,042 ms/op
+     p(99,0000) =  16706,042 ms/op
+     p(99,9000) =  16706,042 ms/op
+     p(99,9900) =  16706,042 ms/op
+     p(99,9990) =  16706,042 ms/op
+     p(99,9999) =  16706,042 ms/op
+    p(100,0000) =  16706,042 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 13)
+
+# Run progress: 3,57% complete, ETA 00:53:41
+# Fork: 1 of 1
+# Warmup Iteration   1: 10000,009 ms/op
+# Warmup Iteration   2: 16812,248 ms/op
+# Warmup Iteration   3: 16721,241 ms/op
+Iteration   1: 16755,745 ms/op
+Iteration   2: 16724,750 ms/op
+Iteration   3: 16807,406 ms/op
+Iteration   4: 16780,224 ms/op
+Iteration   5: 16750,944 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16763,814 ±(99.9%) 120,640 ms/op
+
+  Histogram, ms/op:
+    [16720,000, 16725,000) = 1 
+    [16725,000, 16730,000) = 0 
+    [16730,000, 16735,000) = 0 
+    [16735,000, 16740,000) = 0 
+    [16740,000, 16745,000) = 0 
+    [16745,000, 16750,000) = 0 
+    [16750,000, 16755,000) = 1 
+    [16755,000, 16760,000) = 1 
+    [16760,000, 16765,000) = 0 
+    [16765,000, 16770,000) = 0 
+    [16770,000, 16775,000) = 0 
+    [16775,000, 16780,000) = 0 
+    [16780,000, 16785,000) = 1 
+    [16785,000, 16790,000) = 0 
+    [16790,000, 16795,000) = 0 
+    [16795,000, 16800,000) = 0 
+    [16800,000, 16805,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16724,750 ms/op
+     p(50,0000) =  16755,745 ms/op
+     p(90,0000) =  16807,406 ms/op
+     p(95,0000) =  16807,406 ms/op
+     p(99,0000) =  16807,406 ms/op
+     p(99,9000) =  16807,406 ms/op
+     p(99,9900) =  16807,406 ms/op
+     p(99,9990) =  16807,406 ms/op
+     p(99,9999) =  16807,406 ms/op
+    p(100,0000) =  16807,406 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 12)
+
+# Run progress: 7,14% complete, ETA 00:53:33
+# Fork: 1 of 1
+# Warmup Iteration   1: 9989,102 ms/op
+# Warmup Iteration   2: 17062,364 ms/op
+# Warmup Iteration   3: 16829,229 ms/op
+Iteration   1: 16746,573 ms/op
+Iteration   2: 16702,844 ms/op
+Iteration   3: 16759,398 ms/op
+Iteration   4: 16716,041 ms/op
+Iteration   5: 16686,609 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16722,293 ±(99.9%) 116,431 ms/op
+
+  Histogram, ms/op:
+    [16680,000, 16685,000) = 0 
+    [16685,000, 16690,000) = 1 
+    [16690,000, 16695,000) = 0 
+    [16695,000, 16700,000) = 0 
+    [16700,000, 16705,000) = 1 
+    [16705,000, 16710,000) = 0 
+    [16710,000, 16715,000) = 0 
+    [16715,000, 16720,000) = 1 
+    [16720,000, 16725,000) = 0 
+    [16725,000, 16730,000) = 0 
+    [16730,000, 16735,000) = 0 
+    [16735,000, 16740,000) = 0 
+    [16740,000, 16745,000) = 0 
+    [16745,000, 16750,000) = 1 
+    [16750,000, 16755,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16686,609 ms/op
+     p(50,0000) =  16716,041 ms/op
+     p(90,0000) =  16759,398 ms/op
+     p(95,0000) =  16759,398 ms/op
+     p(99,0000) =  16759,398 ms/op
+     p(99,9000) =  16759,398 ms/op
+     p(99,9900) =  16759,398 ms/op
+     p(99,9990) =  16759,398 ms/op
+     p(99,9999) =  16759,398 ms/op
+    p(100,0000) =  16759,398 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 11)
+
+# Run progress: 10,71% complete, ETA 00:52:06
+# Fork: 1 of 1
+# Warmup Iteration   1: 9900,351 ms/op
+# Warmup Iteration   2: 17274,633 ms/op
+# Warmup Iteration   3: 17143,369 ms/op
+Iteration   1: 17111,209 ms/op
+Iteration   2: 17160,038 ms/op
+Iteration   3: 17130,830 ms/op
+Iteration   4: 17102,572 ms/op
+Iteration   5: 17119,224 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  17124,775 ±(99.9%) 85,844 ms/op
+
+  Histogram, ms/op:
+    [17100,000, 17105,000) = 1 
+    [17105,000, 17110,000) = 0 
+    [17110,000, 17115,000) = 1 
+    [17115,000, 17120,000) = 1 
+    [17120,000, 17125,000) = 0 
+    [17125,000, 17130,000) = 0 
+    [17130,000, 17135,000) = 1 
+    [17135,000, 17140,000) = 0 
+    [17140,000, 17145,000) = 0 
+    [17145,000, 17150,000) = 0 
+    [17150,000, 17155,000) = 0 
+    [17155,000, 17160,000) = 0 
+    [17160,000, 17165,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  17102,572 ms/op
+     p(50,0000) =  17119,224 ms/op
+     p(90,0000) =  17160,038 ms/op
+     p(95,0000) =  17160,038 ms/op
+     p(99,0000) =  17160,038 ms/op
+     p(99,9000) =  17160,038 ms/op
+     p(99,9900) =  17160,038 ms/op
+     p(99,9990) =  17160,038 ms/op
+     p(99,9999) =  17160,038 ms/op
+    p(100,0000) =  17160,038 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 10)
+
+# Run progress: 14,29% complete, ETA 00:50:33
+# Fork: 1 of 1
+# Warmup Iteration   1: 9713,122 ms/op
+# Warmup Iteration   2: 16778,667 ms/op
+# Warmup Iteration   3: 16607,251 ms/op
+Iteration   1: 16665,298 ms/op
+Iteration   2: 16667,217 ms/op
+Iteration   3: 16675,858 ms/op
+Iteration   4: 16611,540 ms/op
+Iteration   5: 16658,112 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16655,605 ±(99.9%) 97,926 ms/op
+
+  Histogram, ms/op:
+    [16610,000, 16615,000) = 1 
+    [16615,000, 16620,000) = 0 
+    [16620,000, 16625,000) = 0 
+    [16625,000, 16630,000) = 0 
+    [16630,000, 16635,000) = 0 
+    [16635,000, 16640,000) = 0 
+    [16640,000, 16645,000) = 0 
+    [16645,000, 16650,000) = 0 
+    [16650,000, 16655,000) = 0 
+    [16655,000, 16660,000) = 1 
+    [16660,000, 16665,000) = 0 
+    [16665,000, 16670,000) = 2 
+    [16670,000, 16675,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16611,540 ms/op
+     p(50,0000) =  16665,298 ms/op
+     p(90,0000) =  16675,858 ms/op
+     p(95,0000) =  16675,858 ms/op
+     p(99,0000) =  16675,858 ms/op
+     p(99,9000) =  16675,858 ms/op
+     p(99,9900) =  16675,858 ms/op
+     p(99,9990) =  16675,858 ms/op
+     p(99,9999) =  16675,858 ms/op
+    p(100,0000) =  16675,858 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 9)
+
+# Run progress: 17,86% complete, ETA 00:48:29
+# Fork: 1 of 1
+# Warmup Iteration   1: 9688,393 ms/op
+# Warmup Iteration   2: 16684,450 ms/op
+# Warmup Iteration   3: 16576,730 ms/op
+Iteration   1: 16614,662 ms/op
+Iteration   2: 16528,453 ms/op
+Iteration   3: 16564,687 ms/op
+Iteration   4: 16598,175 ms/op
+Iteration   5: 16633,534 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16587,902 ±(99.9%) 160,820 ms/op
+
+  Histogram, ms/op:
+    [16500,000, 16512,500) = 0 
+    [16512,500, 16525,000) = 0 
+    [16525,000, 16537,500) = 1 
+    [16537,500, 16550,000) = 0 
+    [16550,000, 16562,500) = 0 
+    [16562,500, 16575,000) = 1 
+    [16575,000, 16587,500) = 0 
+    [16587,500, 16600,000) = 1 
+    [16600,000, 16612,500) = 0 
+    [16612,500, 16625,000) = 1 
+    [16625,000, 16637,500) = 1 
+    [16637,500, 16650,000) = 0 
+    [16650,000, 16662,500) = 0 
+    [16662,500, 16675,000) = 0 
+    [16675,000, 16687,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16528,453 ms/op
+     p(50,0000) =  16598,175 ms/op
+     p(90,0000) =  16633,534 ms/op
+     p(95,0000) =  16633,534 ms/op
+     p(99,0000) =  16633,534 ms/op
+     p(99,9000) =  16633,534 ms/op
+     p(99,9900) =  16633,534 ms/op
+     p(99,9990) =  16633,534 ms/op
+     p(99,9999) =  16633,534 ms/op
+    p(100,0000) =  16633,534 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 8)
+
+# Run progress: 21,43% complete, ETA 00:46:22
+# Fork: 1 of 1
+# Warmup Iteration   1: 9678,897 ms/op
+# Warmup Iteration   2: 16868,234 ms/op
+# Warmup Iteration   3: 16651,752 ms/op
+Iteration   1: 16610,764 ms/op
+Iteration   2: 16588,321 ms/op
+Iteration   3: 16648,724 ms/op
+Iteration   4: 16768,475 ms/op
+Iteration   5: 16664,030 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16656,063 ±(99.9%) 268,130 ms/op
+
+  Histogram, ms/op:
+    [16500,000, 16525,000) = 0 
+    [16525,000, 16550,000) = 0 
+    [16550,000, 16575,000) = 0 
+    [16575,000, 16600,000) = 1 
+    [16600,000, 16625,000) = 1 
+    [16625,000, 16650,000) = 1 
+    [16650,000, 16675,000) = 1 
+    [16675,000, 16700,000) = 0 
+    [16700,000, 16725,000) = 0 
+    [16725,000, 16750,000) = 0 
+    [16750,000, 16775,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16588,321 ms/op
+     p(50,0000) =  16648,724 ms/op
+     p(90,0000) =  16768,475 ms/op
+     p(95,0000) =  16768,475 ms/op
+     p(99,0000) =  16768,475 ms/op
+     p(99,9000) =  16768,475 ms/op
+     p(99,9900) =  16768,475 ms/op
+     p(99,9990) =  16768,475 ms/op
+     p(99,9999) =  16768,475 ms/op
+    p(100,0000) =  16768,475 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 7)
+
+# Run progress: 25,00% complete, ETA 00:44:17
+# Fork: 1 of 1
+# Warmup Iteration   1: 9729,090 ms/op
+# Warmup Iteration   2: 16655,012 ms/op
+# Warmup Iteration   3: 16575,847 ms/op
+Iteration   1: 16552,196 ms/op
+Iteration   2: 16519,990 ms/op
+Iteration   3: 16680,470 ms/op
+Iteration   4: 16560,580 ms/op
+Iteration   5: 16518,204 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16566,288 ±(99.9%) 256,322 ms/op
+
+  Histogram, ms/op:
+    [16500,000, 16512,500) = 0 
+    [16512,500, 16525,000) = 2 
+    [16525,000, 16537,500) = 0 
+    [16537,500, 16550,000) = 0 
+    [16550,000, 16562,500) = 2 
+    [16562,500, 16575,000) = 0 
+    [16575,000, 16587,500) = 0 
+    [16587,500, 16600,000) = 0 
+    [16600,000, 16612,500) = 0 
+    [16612,500, 16625,000) = 0 
+    [16625,000, 16637,500) = 0 
+    [16637,500, 16650,000) = 0 
+    [16650,000, 16662,500) = 0 
+    [16662,500, 16675,000) = 0 
+    [16675,000, 16687,500) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16518,204 ms/op
+     p(50,0000) =  16552,196 ms/op
+     p(90,0000) =  16680,470 ms/op
+     p(95,0000) =  16680,470 ms/op
+     p(99,0000) =  16680,470 ms/op
+     p(99,9000) =  16680,470 ms/op
+     p(99,9900) =  16680,470 ms/op
+     p(99,9990) =  16680,470 ms/op
+     p(99,9999) =  16680,470 ms/op
+    p(100,0000) =  16680,470 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 6)
+
+# Run progress: 28,57% complete, ETA 00:42:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 9531,067 ms/op
+# Warmup Iteration   2: 16546,979 ms/op
+# Warmup Iteration   3: 16622,874 ms/op
+Iteration   1: 16522,872 ms/op
+Iteration   2: 16524,689 ms/op
+Iteration   3: 16556,920 ms/op
+Iteration   4: 16555,166 ms/op
+Iteration   5: 16625,552 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16557,040 ±(99.9%) 160,062 ms/op
+
+  Histogram, ms/op:
+    [16500,000, 16512,500) = 0 
+    [16512,500, 16525,000) = 2 
+    [16525,000, 16537,500) = 0 
+    [16537,500, 16550,000) = 0 
+    [16550,000, 16562,500) = 2 
+    [16562,500, 16575,000) = 0 
+    [16575,000, 16587,500) = 0 
+    [16587,500, 16600,000) = 0 
+    [16600,000, 16612,500) = 0 
+    [16612,500, 16625,000) = 0 
+    [16625,000, 16637,500) = 1 
+    [16637,500, 16650,000) = 0 
+    [16650,000, 16662,500) = 0 
+    [16662,500, 16675,000) = 0 
+    [16675,000, 16687,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16522,872 ms/op
+     p(50,0000) =  16555,166 ms/op
+     p(90,0000) =  16625,552 ms/op
+     p(95,0000) =  16625,552 ms/op
+     p(99,0000) =  16625,552 ms/op
+     p(99,9000) =  16625,552 ms/op
+     p(99,9900) =  16625,552 ms/op
+     p(99,9990) =  16625,552 ms/op
+     p(99,9999) =  16625,552 ms/op
+    p(100,0000) =  16625,552 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 5)
+
+# Run progress: 32,14% complete, ETA 00:40:02
+# Fork: 1 of 1
+# Warmup Iteration   1: 9630,966 ms/op
+# Warmup Iteration   2: 17016,851 ms/op
+# Warmup Iteration   3: 16954,686 ms/op
+Iteration   1: 16931,798 ms/op
+Iteration   2: 16935,154 ms/op
+Iteration   3: 17006,292 ms/op
+Iteration   4: 17056,782 ms/op
+Iteration   5: 17034,159 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16992,837 ±(99.9%) 219,779 ms/op
+
+  Histogram, ms/op:
+    [16900,000, 16912,500) = 0 
+    [16912,500, 16925,000) = 0 
+    [16925,000, 16937,500) = 2 
+    [16937,500, 16950,000) = 0 
+    [16950,000, 16962,500) = 0 
+    [16962,500, 16975,000) = 0 
+    [16975,000, 16987,500) = 0 
+    [16987,500, 17000,000) = 0 
+    [17000,000, 17012,500) = 1 
+    [17012,500, 17025,000) = 0 
+    [17025,000, 17037,500) = 1 
+    [17037,500, 17050,000) = 0 
+    [17050,000, 17062,500) = 1 
+    [17062,500, 17075,000) = 0 
+    [17075,000, 17087,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16931,798 ms/op
+     p(50,0000) =  17006,292 ms/op
+     p(90,0000) =  17056,782 ms/op
+     p(95,0000) =  17056,782 ms/op
+     p(99,0000) =  17056,782 ms/op
+     p(99,9000) =  17056,782 ms/op
+     p(99,9900) =  17056,782 ms/op
+     p(99,9990) =  17056,782 ms/op
+     p(99,9999) =  17056,782 ms/op
+    p(100,0000) =  17056,782 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 4)
+
+# Run progress: 35,71% complete, ETA 00:38:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 9664,122 ms/op
+# Warmup Iteration   2: 16771,622 ms/op
+# Warmup Iteration   3: 16608,242 ms/op
+Iteration   1: 16495,757 ms/op
+Iteration   2: 16500,929 ms/op
+Iteration   3: 16566,150 ms/op
+Iteration   4: 16477,341 ms/op
+Iteration   5: 16460,463 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  16500,128 ±(99.9%) 154,879 ms/op
+
+  Histogram, ms/op:
+    [16400,000, 16412,500) = 0 
+    [16412,500, 16425,000) = 0 
+    [16425,000, 16437,500) = 0 
+    [16437,500, 16450,000) = 0 
+    [16450,000, 16462,500) = 1 
+    [16462,500, 16475,000) = 0 
+    [16475,000, 16487,500) = 1 
+    [16487,500, 16500,000) = 1 
+    [16500,000, 16512,500) = 1 
+    [16512,500, 16525,000) = 0 
+    [16525,000, 16537,500) = 0 
+    [16537,500, 16550,000) = 0 
+    [16550,000, 16562,500) = 0 
+    [16562,500, 16575,000) = 1 
+    [16575,000, 16587,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  16460,463 ms/op
+     p(50,0000) =  16495,757 ms/op
+     p(90,0000) =  16566,150 ms/op
+     p(95,0000) =  16566,150 ms/op
+     p(99,0000) =  16566,150 ms/op
+     p(99,9000) =  16566,150 ms/op
+     p(99,9900) =  16566,150 ms/op
+     p(99,9990) =  16566,150 ms/op
+     p(99,9999) =  16566,150 ms/op
+    p(100,0000) =  16566,150 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 3)
+
+# Run progress: 39,29% complete, ETA 00:35:52
+# Fork: 1 of 1
+# Warmup Iteration   1: (benchmark timed out, interrupted 1 times) <failure>
+
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.FutureTask.awaitDone(FutureTask.java:471)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:203)
+	at Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments(OnlinePhaseForCanete.java:131)
+	at Paper.Online.jmh_generated.OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.caneteBenchmarkSingleDeployments_ss_jmhStub(OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.java:418)
+	at Paper.Online.jmh_generated.OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.caneteBenchmarkSingleDeployments_SingleShotTime(OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.java:374)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 24 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b319b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b3169c58.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 19 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b319b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b3169c58.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 14 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b319b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b3169c58.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 9 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b319b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b3169c58.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 4 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b319b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b3169c58.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 0 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b319b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x00000295b3169c58.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<shutdown timeout of 30 seconds expired, forcing forked VM to exit>
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 2)
+
+# Run progress: 42,86% complete, ETA 00:44:58
+# Fork: 1 of 1
+# Warmup Iteration   1: (benchmark timed out, interrupted 1 times) <failure>
+
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.FutureTask.awaitDone(FutureTask.java:471)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:203)
+	at Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments(OnlinePhaseForCanete.java:131)
+	at Paper.Online.jmh_generated.OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.caneteBenchmarkSingleDeployments_ss_jmhStub(OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.java:418)
+	at Paper.Online.jmh_generated.OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.caneteBenchmarkSingleDeployments_SingleShotTime(OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.java:374)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 24 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b46519bdb0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b465169d18.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 19 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALdelContext(Native Method)
+  at app//com.microsoft.z3.Native.delContext(Native.java:1687)
+  at app//com.microsoft.z3.Context.close(Context.java:4344)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:175)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b46519bdb0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b465169d18.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 14 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeDecRef(Native Method)
+  at app//com.microsoft.z3.Native.optimizeDecRef(Native.java:7104)
+  at app//com.microsoft.z3.Optimize$OptimizeRef.decRef(Optimize.java:437)
+  at app//com.microsoft.z3.Z3ReferenceQueue.forceClear(Z3ReferenceQueue.java:75)
+  at app//com.microsoft.z3.Context.close(Context.java:4335)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:175)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b46519bdb0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b465169d18.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 9 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeGetModel(Native Method)
+  at app//com.microsoft.z3.Native.optimizeGetModel(Native.java:7176)
+  at app//com.microsoft.z3.Optimize.getModel(Optimize.java:254)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:167)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b46519bdb0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b465169d18.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 4 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b46519bdb0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b465169d18.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 0 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALmkContextRc(Native Method)
+  at app//com.microsoft.z3.Native.mkContextRc(Native.java:1680)
+  at app//com.microsoft.z3.Context.<init>(Context.java:42)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:28)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b46519bdb0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001b465169d18.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<shutdown timeout of 30 seconds expired, forcing forked VM to exit>
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_SmallCity.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 1)
+
+# Run progress: 46,43% complete, ETA 00:51:02
+# Fork: 1 of 1
+# Warmup Iteration   1: (benchmark timed out, interrupted 1 times) <failure>
+
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.FutureTask.awaitDone(FutureTask.java:471)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:203)
+	at Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments(OnlinePhaseForCanete.java:131)
+	at Paper.Online.jmh_generated.OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.caneteBenchmarkSingleDeployments_ss_jmhStub(OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.java:418)
+	at Paper.Online.jmh_generated.OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.caneteBenchmarkSingleDeployments_SingleShotTime(OnlinePhaseForCanete_caneteBenchmarkSingleDeployments_jmhTest.java:374)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 24 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALisNumeralAst(Native Method)
+  at app//com.microsoft.z3.Native.isNumeralAst(Native.java:4006)
+  at app//com.microsoft.z3.Expr.create(Expr.java:2160)
+  at app//com.microsoft.z3.Context.mkAdd(Context.java:856)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:76)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee119b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee1170000.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 19 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALmkContextRc(Native Method)
+  at app//com.microsoft.z3.Native.mkContextRc(Native.java:1680)
+  at app//com.microsoft.z3.Context.<init>(Context.java:42)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:28)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee119b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee1170000.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 14 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALoptimizeCheck(Native Method)
+  at app//com.microsoft.z3.Native.optimizeCheck(Native.java:7160)
+  at app//com.microsoft.z3.Optimize.Check(Optimize.java:211)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:162)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee119b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee1170000.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 9 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALmkContextRc(Native Method)
+  at app//com.microsoft.z3.Native.mkContextRc(Native.java:1680)
+  at app//com.microsoft.z3.Context.<init>(Context.java:42)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:28)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee119b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee1170000.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 4 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALmkContextRc(Native Method)
+  at app//com.microsoft.z3.Native.mkContextRc(Native.java:1680)
+  at app//com.microsoft.z3.Context.<init>(Context.java:42)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:28)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee119b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee1170000.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 0 seconds more...>
+
+Non-finished threads:
+
+Thread[#36,pool-3-thread-1,5,main]
+  at app//com.microsoft.z3.Native.INTERNALmkContextRc(Native Method)
+  at app//com.microsoft.z3.Native.mkContextRc(Native.java:1680)
+  at app//com.microsoft.z3.Context.<init>(Context.java:42)
+  at app//modules.EDAF.calculateTaskDeployment(EDAF.java:28)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$runBenchmarkLogic$1(OnlinePhaseForCanete.java:156)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee119b3c0.accept(Unknown Source)
+  at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+  at app//Paper.Online.OnlinePhaseForCanete.runBenchmarkLogic(OnlinePhaseForCanete.java:155)
+  at app//Paper.Online.OnlinePhaseForCanete.lambda$caneteBenchmarkSingleDeployments$0(OnlinePhaseForCanete.java:127)
+  at app//Paper.Online.OnlinePhaseForCanete$$Lambda/0x000001aee1170000.run(Unknown Source)
+  at java.base@21.0.2/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+  at java.base@21.0.2/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+  at java.base@21.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+  at java.base@21.0.2/java.lang.Thread.runWith(Thread.java:1596)
+  at java.base@21.0.2/java.lang.Thread.run(Thread.java:1583)
+
+Thread[#61,DestroyJavaVM,5,main]
+
+
+<shutdown timeout of 30 seconds expired, forcing forked VM to exit>
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 14)
+
+# Run progress: 50,00% complete, ETA 00:54:44
+# Fork: 1 of 1
+# Warmup Iteration   1: 16814,030 ms/op
+# Warmup Iteration   2: 24056,624 ms/op
+# Warmup Iteration   3: 23591,802 ms/op
+Iteration   1: 23681,689 ms/op
+Iteration   2: 23628,252 ms/op
+Iteration   3: 23686,498 ms/op
+Iteration   4: 23686,204 ms/op
+Iteration   5: 23748,709 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23686,270 ±(99.9%) 164,340 ms/op
+
+  Histogram, ms/op:
+    [23600,000, 23612,500) = 0 
+    [23612,500, 23625,000) = 0 
+    [23625,000, 23637,500) = 1 
+    [23637,500, 23650,000) = 0 
+    [23650,000, 23662,500) = 0 
+    [23662,500, 23675,000) = 0 
+    [23675,000, 23687,500) = 3 
+    [23687,500, 23700,000) = 0 
+    [23700,000, 23712,500) = 0 
+    [23712,500, 23725,000) = 0 
+    [23725,000, 23737,500) = 0 
+    [23737,500, 23750,000) = 1 
+    [23750,000, 23762,500) = 0 
+    [23762,500, 23775,000) = 0 
+    [23775,000, 23787,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23628,252 ms/op
+     p(50,0000) =  23686,204 ms/op
+     p(90,0000) =  23748,709 ms/op
+     p(95,0000) =  23748,709 ms/op
+     p(99,0000) =  23748,709 ms/op
+     p(99,9000) =  23748,709 ms/op
+     p(99,9900) =  23748,709 ms/op
+     p(99,9990) =  23748,709 ms/op
+     p(99,9999) =  23748,709 ms/op
+    p(100,0000) =  23748,709 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 13)
+
+# Run progress: 53,57% complete, ETA 00:50:05
+# Fork: 1 of 1
+# Warmup Iteration   1: 16695,465 ms/op
+# Warmup Iteration   2: 24334,968 ms/op
+# Warmup Iteration   3: 24334,025 ms/op
+Iteration   1: 24310,979 ms/op
+Iteration   2: 24277,143 ms/op
+Iteration   3: 24449,636 ms/op
+Iteration   4: 24379,352 ms/op
+Iteration   5: 24452,998 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  24374,021 ±(99.9%) 306,502 ms/op
+
+  Histogram, ms/op:
+    [24200,000, 24225,000) = 0 
+    [24225,000, 24250,000) = 0 
+    [24250,000, 24275,000) = 0 
+    [24275,000, 24300,000) = 1 
+    [24300,000, 24325,000) = 1 
+    [24325,000, 24350,000) = 0 
+    [24350,000, 24375,000) = 0 
+    [24375,000, 24400,000) = 1 
+    [24400,000, 24425,000) = 0 
+    [24425,000, 24450,000) = 1 
+    [24450,000, 24475,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  24277,143 ms/op
+     p(50,0000) =  24379,352 ms/op
+     p(90,0000) =  24452,998 ms/op
+     p(95,0000) =  24452,998 ms/op
+     p(99,0000) =  24452,998 ms/op
+     p(99,9000) =  24452,998 ms/op
+     p(99,9900) =  24452,998 ms/op
+     p(99,9990) =  24452,998 ms/op
+     p(99,9999) =  24452,998 ms/op
+    p(100,0000) =  24452,998 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 12)
+
+# Run progress: 57,14% complete, ETA 00:45:41
+# Fork: 1 of 1
+# Warmup Iteration   1: 16978,445 ms/op
+# Warmup Iteration   2: 24485,318 ms/op
+# Warmup Iteration   3: 23722,381 ms/op
+Iteration   1: 23633,917 ms/op
+Iteration   2: 23585,669 ms/op
+Iteration   3: 23596,976 ms/op
+Iteration   4: 23532,170 ms/op
+Iteration   5: 23503,227 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23570,392 ±(99.9%) 201,447 ms/op
+
+  Histogram, ms/op:
+    [23500,000, 23512,500) = 1 
+    [23512,500, 23525,000) = 0 
+    [23525,000, 23537,500) = 1 
+    [23537,500, 23550,000) = 0 
+    [23550,000, 23562,500) = 0 
+    [23562,500, 23575,000) = 0 
+    [23575,000, 23587,500) = 1 
+    [23587,500, 23600,000) = 1 
+    [23600,000, 23612,500) = 0 
+    [23612,500, 23625,000) = 0 
+    [23625,000, 23637,500) = 1 
+    [23637,500, 23650,000) = 0 
+    [23650,000, 23662,500) = 0 
+    [23662,500, 23675,000) = 0 
+    [23675,000, 23687,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23503,227 ms/op
+     p(50,0000) =  23585,669 ms/op
+     p(90,0000) =  23633,917 ms/op
+     p(95,0000) =  23633,917 ms/op
+     p(99,0000) =  23633,917 ms/op
+     p(99,9000) =  23633,917 ms/op
+     p(99,9900) =  23633,917 ms/op
+     p(99,9990) =  23633,917 ms/op
+     p(99,9999) =  23633,917 ms/op
+    p(100,0000) =  23633,917 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 11)
+
+# Run progress: 60,71% complete, ETA 00:41:24
+# Fork: 1 of 1
+# Warmup Iteration   1: 16218,186 ms/op
+# Warmup Iteration   2: 23543,964 ms/op
+# Warmup Iteration   3: 23445,792 ms/op
+Iteration   1: 23722,373 ms/op
+Iteration   2: 23465,645 ms/op
+Iteration   3: 23469,666 ms/op
+Iteration   4: 23563,846 ms/op
+Iteration   5: 23662,472 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23576,800 ±(99.9%) 441,282 ms/op
+
+  Histogram, ms/op:
+    [23400,000, 23425,000) = 0 
+    [23425,000, 23450,000) = 0 
+    [23450,000, 23475,000) = 2 
+    [23475,000, 23500,000) = 0 
+    [23500,000, 23525,000) = 0 
+    [23525,000, 23550,000) = 0 
+    [23550,000, 23575,000) = 1 
+    [23575,000, 23600,000) = 0 
+    [23600,000, 23625,000) = 0 
+    [23625,000, 23650,000) = 0 
+    [23650,000, 23675,000) = 1 
+    [23675,000, 23700,000) = 0 
+    [23700,000, 23725,000) = 1 
+    [23725,000, 23750,000) = 0 
+    [23750,000, 23775,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23465,645 ms/op
+     p(50,0000) =  23563,846 ms/op
+     p(90,0000) =  23722,373 ms/op
+     p(95,0000) =  23722,373 ms/op
+     p(99,0000) =  23722,373 ms/op
+     p(99,9000) =  23722,373 ms/op
+     p(99,9900) =  23722,373 ms/op
+     p(99,9990) =  23722,373 ms/op
+     p(99,9999) =  23722,373 ms/op
+    p(100,0000) =  23722,373 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 10)
+
+# Run progress: 64,29% complete, ETA 00:37:13
+# Fork: 1 of 1
+# Warmup Iteration   1: 16740,902 ms/op
+# Warmup Iteration   2: 24428,864 ms/op
+# Warmup Iteration   3: 24208,198 ms/op
+Iteration   1: 24311,604 ms/op
+Iteration   2: 24265,811 ms/op
+Iteration   3: 24203,902 ms/op
+Iteration   4: 24215,463 ms/op
+Iteration   5: 24274,997 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  24254,356 ±(99.9%) 171,050 ms/op
+
+  Histogram, ms/op:
+    [24200,000, 24212,500) = 1 
+    [24212,500, 24225,000) = 1 
+    [24225,000, 24237,500) = 0 
+    [24237,500, 24250,000) = 0 
+    [24250,000, 24262,500) = 0 
+    [24262,500, 24275,000) = 2 
+    [24275,000, 24287,500) = 0 
+    [24287,500, 24300,000) = 0 
+    [24300,000, 24312,500) = 1 
+    [24312,500, 24325,000) = 0 
+    [24325,000, 24337,500) = 0 
+    [24337,500, 24350,000) = 0 
+    [24350,000, 24362,500) = 0 
+    [24362,500, 24375,000) = 0 
+    [24375,000, 24387,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  24203,902 ms/op
+     p(50,0000) =  24265,811 ms/op
+     p(90,0000) =  24311,604 ms/op
+     p(95,0000) =  24311,604 ms/op
+     p(99,0000) =  24311,604 ms/op
+     p(99,9000) =  24311,604 ms/op
+     p(99,9900) =  24311,604 ms/op
+     p(99,9990) =  24311,604 ms/op
+     p(99,9999) =  24311,604 ms/op
+    p(100,0000) =  24311,604 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 9)
+
+# Run progress: 67,86% complete, ETA 00:33:13
+# Fork: 1 of 1
+# Warmup Iteration   1: 16525,433 ms/op
+# Warmup Iteration   2: 24246,771 ms/op
+# Warmup Iteration   3: 24150,729 ms/op
+Iteration   1: 24200,090 ms/op
+Iteration   2: 23622,410 ms/op
+Iteration   3: 23535,798 ms/op
+Iteration   4: 23628,104 ms/op
+Iteration   5: 23585,946 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23714,469 ±(99.9%) 1054,899 ms/op
+
+  Histogram, ms/op:
+    [23500,000, 23550,000) = 1 
+    [23550,000, 23600,000) = 1 
+    [23600,000, 23650,000) = 2 
+    [23650,000, 23700,000) = 0 
+    [23700,000, 23750,000) = 0 
+    [23750,000, 23800,000) = 0 
+    [23800,000, 23850,000) = 0 
+    [23850,000, 23900,000) = 0 
+    [23900,000, 23950,000) = 0 
+    [23950,000, 24000,000) = 0 
+    [24000,000, 24050,000) = 0 
+    [24050,000, 24100,000) = 0 
+    [24100,000, 24150,000) = 0 
+    [24150,000, 24200,000) = 0 
+    [24200,000, 24250,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23535,798 ms/op
+     p(50,0000) =  23622,410 ms/op
+     p(90,0000) =  24200,090 ms/op
+     p(95,0000) =  24200,090 ms/op
+     p(99,0000) =  24200,090 ms/op
+     p(99,9000) =  24200,090 ms/op
+     p(99,9900) =  24200,090 ms/op
+     p(99,9990) =  24200,090 ms/op
+     p(99,9999) =  24200,090 ms/op
+    p(100,0000) =  24200,090 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 8)
+
+# Run progress: 71,43% complete, ETA 00:29:16
+# Fork: 1 of 1
+# Warmup Iteration   1: 16509,216 ms/op
+# Warmup Iteration   2: 24329,426 ms/op
+# Warmup Iteration   3: 24151,144 ms/op
+Iteration   1: 24262,316 ms/op
+Iteration   2: 24196,295 ms/op
+Iteration   3: 24200,214 ms/op
+Iteration   4: 23845,315 ms/op
+Iteration   5: 23574,832 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  24015,794 ±(99.9%) 1140,460 ms/op
+
+  Histogram, ms/op:
+    [23500,000, 23550,000) = 0 
+    [23550,000, 23600,000) = 1 
+    [23600,000, 23650,000) = 0 
+    [23650,000, 23700,000) = 0 
+    [23700,000, 23750,000) = 0 
+    [23750,000, 23800,000) = 0 
+    [23800,000, 23850,000) = 1 
+    [23850,000, 23900,000) = 0 
+    [23900,000, 23950,000) = 0 
+    [23950,000, 24000,000) = 0 
+    [24000,000, 24050,000) = 0 
+    [24050,000, 24100,000) = 0 
+    [24100,000, 24150,000) = 0 
+    [24150,000, 24200,000) = 1 
+    [24200,000, 24250,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23574,832 ms/op
+     p(50,0000) =  24196,295 ms/op
+     p(90,0000) =  24262,316 ms/op
+     p(95,0000) =  24262,316 ms/op
+     p(99,0000) =  24262,316 ms/op
+     p(99,9000) =  24262,316 ms/op
+     p(99,9900) =  24262,316 ms/op
+     p(99,9990) =  24262,316 ms/op
+     p(99,9999) =  24262,316 ms/op
+    p(100,0000) =  24262,316 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 7)
+
+# Run progress: 75,00% complete, ETA 00:25:25
+# Fork: 1 of 1
+# Warmup Iteration   1: 16032,855 ms/op
+# Warmup Iteration   2: 23694,789 ms/op
+# Warmup Iteration   3: 23512,383 ms/op
+Iteration   1: 23400,148 ms/op
+Iteration   2: 23329,240 ms/op
+Iteration   3: 23341,782 ms/op
+Iteration   4: 23748,285 ms/op
+Iteration   5: 23905,794 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23545,050 ±(99.9%) 1019,383 ms/op
+
+  Histogram, ms/op:
+    [23300,000, 23350,000) = 2 
+    [23350,000, 23400,000) = 0 
+    [23400,000, 23450,000) = 1 
+    [23450,000, 23500,000) = 0 
+    [23500,000, 23550,000) = 0 
+    [23550,000, 23600,000) = 0 
+    [23600,000, 23650,000) = 0 
+    [23650,000, 23700,000) = 0 
+    [23700,000, 23750,000) = 1 
+    [23750,000, 23800,000) = 0 
+    [23800,000, 23850,000) = 0 
+    [23850,000, 23900,000) = 0 
+    [23900,000, 23950,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23329,240 ms/op
+     p(50,0000) =  23400,148 ms/op
+     p(90,0000) =  23905,794 ms/op
+     p(95,0000) =  23905,794 ms/op
+     p(99,0000) =  23905,794 ms/op
+     p(99,9000) =  23905,794 ms/op
+     p(99,9900) =  23905,794 ms/op
+     p(99,9990) =  23905,794 ms/op
+     p(99,9999) =  23905,794 ms/op
+    p(100,0000) =  23905,794 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 6)
+
+# Run progress: 78,57% complete, ETA 00:21:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 16112,952 ms/op
+# Warmup Iteration   2: 23506,413 ms/op
+# Warmup Iteration   3: 23283,104 ms/op
+Iteration   1: 23372,243 ms/op
+Iteration   2: 23505,284 ms/op
+Iteration   3: 23534,173 ms/op
+Iteration   4: 23460,036 ms/op
+Iteration   5: 23507,752 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23475,897 ±(99.9%) 245,583 ms/op
+
+  Histogram, ms/op:
+    [23300,000, 23325,000) = 0 
+    [23325,000, 23350,000) = 0 
+    [23350,000, 23375,000) = 1 
+    [23375,000, 23400,000) = 0 
+    [23400,000, 23425,000) = 0 
+    [23425,000, 23450,000) = 0 
+    [23450,000, 23475,000) = 1 
+    [23475,000, 23500,000) = 0 
+    [23500,000, 23525,000) = 2 
+    [23525,000, 23550,000) = 1 
+    [23550,000, 23575,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23372,243 ms/op
+     p(50,0000) =  23505,284 ms/op
+     p(90,0000) =  23534,173 ms/op
+     p(95,0000) =  23534,173 ms/op
+     p(99,0000) =  23534,173 ms/op
+     p(99,9000) =  23534,173 ms/op
+     p(99,9900) =  23534,173 ms/op
+     p(99,9990) =  23534,173 ms/op
+     p(99,9999) =  23534,173 ms/op
+    p(100,0000) =  23534,173 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 5)
+
+# Run progress: 82,14% complete, ETA 00:17:53
+# Fork: 1 of 1
+# Warmup Iteration   1: 16089,912 ms/op
+# Warmup Iteration   2: 23738,398 ms/op
+# Warmup Iteration   3: 23584,702 ms/op
+Iteration   1: 23589,262 ms/op
+Iteration   2: 23526,691 ms/op
+Iteration   3: 23546,605 ms/op
+Iteration   4: 24051,386 ms/op
+Iteration   5: 24103,809 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23763,551 ±(99.9%) 1109,642 ms/op
+
+  Histogram, ms/op:
+    [23500,000, 23550,000) = 2 
+    [23550,000, 23600,000) = 1 
+    [23600,000, 23650,000) = 0 
+    [23650,000, 23700,000) = 0 
+    [23700,000, 23750,000) = 0 
+    [23750,000, 23800,000) = 0 
+    [23800,000, 23850,000) = 0 
+    [23850,000, 23900,000) = 0 
+    [23900,000, 23950,000) = 0 
+    [23950,000, 24000,000) = 0 
+    [24000,000, 24050,000) = 0 
+    [24050,000, 24100,000) = 1 
+    [24100,000, 24150,000) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23526,691 ms/op
+     p(50,0000) =  23589,262 ms/op
+     p(90,0000) =  24103,809 ms/op
+     p(95,0000) =  24103,809 ms/op
+     p(99,0000) =  24103,809 ms/op
+     p(99,9000) =  24103,809 ms/op
+     p(99,9900) =  24103,809 ms/op
+     p(99,9990) =  24103,809 ms/op
+     p(99,9999) =  24103,809 ms/op
+    p(100,0000) =  24103,809 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 4)
+
+# Run progress: 85,71% complete, ETA 00:14:13
+# Fork: 1 of 1
+# Warmup Iteration   1: 16381,830 ms/op
+# Warmup Iteration   2: 24526,706 ms/op
+# Warmup Iteration   3: 23968,516 ms/op
+Iteration   1: 23956,584 ms/op
+Iteration   2: 23976,219 ms/op
+Iteration   3: 24007,702 ms/op
+Iteration   4: 23946,213 ms/op
+Iteration   5: 23971,193 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23971,582 ±(99.9%) 90,199 ms/op
+
+  Histogram, ms/op:
+    [23940,000, 23945,000) = 0 
+    [23945,000, 23950,000) = 1 
+    [23950,000, 23955,000) = 0 
+    [23955,000, 23960,000) = 1 
+    [23960,000, 23965,000) = 0 
+    [23965,000, 23970,000) = 0 
+    [23970,000, 23975,000) = 1 
+    [23975,000, 23980,000) = 1 
+    [23980,000, 23985,000) = 0 
+    [23985,000, 23990,000) = 0 
+    [23990,000, 23995,000) = 0 
+    [23995,000, 24000,000) = 0 
+    [24000,000, 24005,000) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23946,213 ms/op
+     p(50,0000) =  23971,193 ms/op
+     p(90,0000) =  24007,702 ms/op
+     p(95,0000) =  24007,702 ms/op
+     p(99,0000) =  24007,702 ms/op
+     p(99,9000) =  24007,702 ms/op
+     p(99,9900) =  24007,702 ms/op
+     p(99,9990) =  24007,702 ms/op
+     p(99,9999) =  24007,702 ms/op
+    p(100,0000) =  24007,702 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 3)
+
+# Run progress: 89,29% complete, ETA 00:10:36
+# Fork: 1 of 1
+# Warmup Iteration   1: 16270,531 ms/op
+# Warmup Iteration   2: 24231,782 ms/op
+# Warmup Iteration   3: 24096,635 ms/op
+Iteration   1: 23480,344 ms/op
+Iteration   2: 23365,602 ms/op
+Iteration   3: 23438,625 ms/op
+Iteration   4: 23411,395 ms/op
+Iteration   5: 23462,874 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =  23431,768 ±(99.9%) 173,996 ms/op
+
+  Histogram, ms/op:
+    [23300,000, 23312,500) = 0 
+    [23312,500, 23325,000) = 0 
+    [23325,000, 23337,500) = 0 
+    [23337,500, 23350,000) = 0 
+    [23350,000, 23362,500) = 0 
+    [23362,500, 23375,000) = 1 
+    [23375,000, 23387,500) = 0 
+    [23387,500, 23400,000) = 0 
+    [23400,000, 23412,500) = 1 
+    [23412,500, 23425,000) = 0 
+    [23425,000, 23437,500) = 0 
+    [23437,500, 23450,000) = 1 
+    [23450,000, 23462,500) = 0 
+    [23462,500, 23475,000) = 1 
+    [23475,000, 23487,500) = 1 
+
+  Percentiles, ms/op:
+      p(0,0000) =  23365,602 ms/op
+     p(50,0000) =  23438,625 ms/op
+     p(90,0000) =  23480,344 ms/op
+     p(95,0000) =  23480,344 ms/op
+     p(99,0000) =  23480,344 ms/op
+     p(99,9000) =  23480,344 ms/op
+     p(99,9900) =  23480,344 ms/op
+     p(99,9990) =  23480,344 ms/op
+     p(99,9999) =  23480,344 ms/op
+    p(100,0000) =  23480,344 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 2)
+
+# Run progress: 92,86% complete, ETA 00:07:02
+# Fork: 1 of 1
+# Warmup Iteration   1: 1130,716 ms/op
+# Warmup Iteration   2: 860,003 ms/op
+# Warmup Iteration   3: 845,796 ms/op
+Iteration   1: 853,954 ms/op
+Iteration   2: 832,554 ms/op
+Iteration   3: 823,620 ms/op
+Iteration   4: 823,936 ms/op
+Iteration   5: 824,709 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =    831,755 ±(99.9%) 49,850 ms/op
+
+  Histogram, ms/op:
+    [820,000, 822,500) = 0 
+    [822,500, 825,000) = 3 
+    [825,000, 827,500) = 0 
+    [827,500, 830,000) = 0 
+    [830,000, 832,500) = 0 
+    [832,500, 835,000) = 1 
+    [835,000, 837,500) = 0 
+    [837,500, 840,000) = 0 
+    [840,000, 842,500) = 0 
+    [842,500, 845,000) = 0 
+    [845,000, 847,500) = 0 
+    [847,500, 850,000) = 0 
+    [850,000, 852,500) = 0 
+    [852,500, 855,000) = 1 
+    [855,000, 857,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =    823,620 ms/op
+     p(50,0000) =    824,709 ms/op
+     p(90,0000) =    853,954 ms/op
+     p(95,0000) =    853,954 ms/op
+     p(99,0000) =    853,954 ms/op
+     p(99,9000) =    853,954 ms/op
+     p(99,9900) =    853,954 ms/op
+     p(99,9990) =    853,954 ms/op
+     p(99,9999) =    853,954 ms/op
+    p(100,0000) =    853,954 ms/op
+
+
+# JMH version: 1.37
+# VM version: JDK 21.0.2, Java HotSpot(TM) 64-Bit Server VM, 21.0.2+13-LTS-58
+# VM invoker: C:\Program Files\Java\jdk-21\bin\java.exe
+# VM options: -Xms8192M
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, single-shot each
+# Measurement: 5 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments
+# Parameters: (_DirectoryPathEdgeNodes = ../TestData/EdgeNodeJsons/, _DirectoryPathFM = ../TestData/TestGraphs/TestFMJsons/, _FilePathEdgeNodes = EdgeNodes_CountrySide.json, _FilePathFM = FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json, _MaxRequirements = 1)
+
+# Run progress: 96,43% complete, ETA 00:03:23
+# Fork: 1 of 1
+# Warmup Iteration   1: 1108,284 ms/op
+# Warmup Iteration   2: 832,915 ms/op
+# Warmup Iteration   3: 825,026 ms/op
+Iteration   1: 823,520 ms/op
+Iteration   2: 816,756 ms/op
+Iteration   3: 815,948 ms/op
+Iteration   4: 800,779 ms/op
+Iteration   5: 810,706 ms/op
+
+
+Result "Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments":
+  N = 5
+  mean =    813,542 ±(99.9%) 32,596 ms/op
+
+  Histogram, ms/op:
+    [800,000, 802,500) = 1 
+    [802,500, 805,000) = 0 
+    [805,000, 807,500) = 0 
+    [807,500, 810,000) = 0 
+    [810,000, 812,500) = 1 
+    [812,500, 815,000) = 0 
+    [815,000, 817,500) = 2 
+    [817,500, 820,000) = 0 
+    [820,000, 822,500) = 0 
+    [822,500, 825,000) = 1 
+    [825,000, 827,500) = 0 
+
+  Percentiles, ms/op:
+      p(0,0000) =    800,779 ms/op
+     p(50,0000) =    815,948 ms/op
+     p(90,0000) =    823,520 ms/op
+     p(95,0000) =    823,520 ms/op
+     p(99,0000) =    823,520 ms/op
+     p(99,9000) =    823,520 ms/op
+     p(99,9900) =    823,520 ms/op
+     p(99,9990) =    823,520 ms/op
+     p(99,9999) =    823,520 ms/op
+    p(100,0000) =    823,520 ms/op
+
+
+# Run complete. Total time: 01:31:44
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                                            (_DirectoryPathEdgeNodes)                   (_DirectoryPathFM)        (_FilePathEdgeNodes)                                                  (_FilePathFM)  (_MaxRequirements)  Mode  Cnt      Score      Error  Units
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  14    ss    5  16678,368 ±   75,082  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  13    ss    5  16763,814 ±  120,640  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  12    ss    5  16722,293 ±  116,431  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  11    ss    5  17124,775 ±   85,844  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  10    ss    5  16655,605 ±   97,926  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   9    ss    5  16587,902 ±  160,820  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   8    ss    5  16656,063 ±  268,130  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   7    ss    5  16566,288 ±  256,322  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   6    ss    5  16557,040 ±  160,062  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   5    ss    5  16992,837 ±  219,779  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/    EdgeNodes_SmallCity.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   4    ss    5  16500,128 ±  154,879  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  14    ss    5  23686,270 ±  164,340  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  13    ss    5  24374,021 ±  306,502  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  12    ss    5  23570,392 ±  201,447  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  11    ss    5  23576,800 ±  441,282  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                  10    ss    5  24254,356 ±  171,050  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   9    ss    5  23714,469 ± 1054,899  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   8    ss    5  24015,794 ± 1140,460  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   7    ss    5  23545,050 ± 1019,383  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   6    ss    5  23475,897 ±  245,583  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   5    ss    5  23763,551 ± 1109,642  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   4    ss    5  23971,582 ±   90,199  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   3    ss    5  23431,768 ±  173,996  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   2    ss    5    831,755 ±   49,850  ms/op
+Paper.Online.OnlinePhaseForCanete.caneteBenchmarkSingleDeployments  ../TestData/EdgeNodeJsons/  ../TestData/TestGraphs/TestFMJsons/  EdgeNodes_CountrySide.json  FM_BenchmarkGraph_18_Services_NoExcludes_139.968_configs.json                   1    ss    5    813,542 ±   32,596  ms/op
+
+Benchmark result is saved to jmh-result.csv

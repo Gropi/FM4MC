@@ -1,0 +1,273 @@
+{
+  "crossTreeConstraints": [
+  ],
+  "features": [
+    {
+      "reachableAbstractFeatures": [
+        "Sequence1Task1",
+        "Sequence2Task1"
+      ],
+      "name": "startTask",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence1Task2"
+      ],
+      "name": "Sequence1Task1",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence1Task3"
+      ],
+      "name": "Sequence1Task2",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence1Task4"
+      ],
+      "name": "Sequence1Task3",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence1Task5"
+      ],
+      "name": "Sequence1Task4",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence1Task6"
+      ],
+      "name": "Sequence1Task5",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "name": "Sequence1Task6",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence2Task2"
+      ],
+      "name": "Sequence2Task1",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence2Task3"
+      ],
+      "name": "Sequence2Task2",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence2Task4"
+      ],
+      "name": "Sequence2Task3",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence2Task5"
+      ],
+      "name": "Sequence2Task4",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "Sequence2Task6"
+      ],
+      "name": "Sequence2Task5",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [
+        "endTask"
+      ],
+      "name": "Sequence2Task6",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "reachableAbstractFeatures": [],
+      "name": "endTask",
+      "parentName": "root",
+      "relation": "MANDATORY"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "tsv1",
+      "parentName": "startTask",
+      "relation": "MANDATORY"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t1v1",
+      "parentName": "Sequence1Task1",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t2v1",
+      "parentName": "Sequence1Task2",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t3v1",
+      "parentName": "Sequence1Task3",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t4v1",
+      "parentName": "Sequence1Task4",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t5v1",
+      "parentName": "Sequence1Task5",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t6v1",
+      "parentName": "Sequence1Task6",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t1v1",
+      "parentName": "Sequence2Task1",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t2v1",
+      "parentName": "Sequence2Task2",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t3v1",
+      "parentName": "Sequence2Task3",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t4v1",
+      "parentName": "Sequence2Task4",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t5v1",
+      "parentName": "Sequence2Task5",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t6v1",
+      "parentName": "Sequence2Task6",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t1v2",
+      "parentName": "Sequence1Task1",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t2v2",
+      "parentName": "Sequence1Task2",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t3v2",
+      "parentName": "Sequence1Task3",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t4v2",
+      "parentName": "Sequence1Task4",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t5v2",
+      "parentName": "Sequence1Task5",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq1t6v2",
+      "parentName": "Sequence1Task6",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t1v2",
+      "parentName": "Sequence2Task1",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t2v2",
+      "parentName": "Sequence2Task2",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t3v2",
+      "parentName": "Sequence2Task3",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t4v2",
+      "parentName": "Sequence2Task4",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t5v2",
+      "parentName": "Sequence2Task5",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "seq2t6v2",
+      "parentName": "Sequence2Task6",
+      "relation": "ALTERNATIVE"
+    },
+    {
+      "hardwareRequirements": [],
+      "name": "tev1",
+      "parentName": "endTask",
+      "relation": "MANDATORY"
+    }
+  ]
+}

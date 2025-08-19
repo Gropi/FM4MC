@@ -1,0 +1,9 @@
+rootProject.name = 'Edge-Flex'
+include 'Collector'
+include 'Shared'
+include 'JMH'
+include 'Configuration-Creator'
+include 'Configuration-Manager'
+include 'Slicing-Algorithms'
+include 'Canete'
+

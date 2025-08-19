@@ -1,0 +1,3 @@
+Tasks increasing from 2 - 100
+Alternatives per Task increasing from 1 - 15
+no timeout

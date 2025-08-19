@@ -1,0 +1,802 @@
+{
+    "crossTreeConstraints": [],
+    "features": [
+        {
+            "name": "startTask",
+            "parentName": "root",
+            "reachableAbstractFeatures": [
+                "task1",
+                "task2",
+                "task3A",
+                "task3B",
+                "task4",
+                "task5A1",
+                "task5A2",
+                "task5A3",
+                "task5B"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task1",
+            "parentName": "root",
+            "reachableAbstractFeatures": [
+                "task6"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task2",
+            "parentName": "root",
+            "reachableAbstractFeatures": [
+                "task4"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task3",
+            "parentName": "root",
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task4",
+            "parentName": "root",
+            "reachableAbstractFeatures": [
+                "task6"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task5",
+            "parentName": "root",
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task6",
+            "parentName": "root",
+            "reachableAbstractFeatures": [
+                "task7"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task7",
+            "parentName": "root",
+            "reachableAbstractFeatures": [
+                "endTask"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "endTask",
+            "parentName": "root",
+            "reachableAbstractFeatures": [],
+            "relation": "MANDATORY"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "tsv1",
+            "parentName": "startTask",
+            "relation": "MANDATORY"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "tev1",
+            "parentName": "endTask",
+            "relation": "MANDATORY"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t1v1",
+            "parentName": "task1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 4 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 4 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 4 },
+                { "hardwareType": "NETWORK", "requirement": 4 },
+                { "hardwareType": "STORAGE", "requirement": 4 },
+                { "hardwareType": "CAMERA", "requirement": 4 },
+                { "hardwareType": "MICROPHONE", "requirement": 4 },
+                { "hardwareType": "SENSOR", "requirement": 4 },
+                { "hardwareType": "BLE", "requirement": 4 },
+                { "hardwareType": "WIFI", "requirement": 4 }
+            ],
+            "name": "t1v2",
+            "parentName": "task1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t1v3",
+            "parentName": "task1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t1v4",
+            "parentName": "task1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "name": "task3A",
+            "parentName": "task3",
+            "reachableAbstractFeatures": [
+                "task6"
+            ],
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "name": "task3B",
+            "parentName": "task3",
+            "reachableAbstractFeatures": [
+                "task6"
+            ],
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "name": "task5A",
+            "parentName": "task5",
+            "relation": "OR"
+        },
+        {
+            "name": "task5B",
+            "parentName": "task5",
+            "reachableAbstractFeatures": [
+                "task6"
+            ],
+            "relation": "OR"
+        },
+        {
+            "name": "task5A1",
+            "parentName": "task5A",
+            "reachableAbstractFeatures": [
+                "task6"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "name": "task5A2",
+            "parentName": "task5A",
+            "reachableAbstractFeatures": [
+                "task7"
+            ],
+            "relation": "OPTIONAL"
+        },
+        {
+            "name": "task5A3",
+            "parentName": "task5A",
+            "reachableAbstractFeatures": [
+                "task7"
+            ],
+            "relation": "MANDATORY"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t2v1",
+            "parentName": "task2",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 4 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 4 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 4 },
+                { "hardwareType": "NETWORK", "requirement": 4 },
+                { "hardwareType": "STORAGE", "requirement": 4 },
+                { "hardwareType": "CAMERA", "requirement": 4 },
+                { "hardwareType": "MICROPHONE", "requirement": 4 },
+                { "hardwareType": "SENSOR", "requirement": 4 },
+                { "hardwareType": "BLE", "requirement": 4 },
+                { "hardwareType": "WIFI", "requirement": 4 }
+            ],
+            "name": "t2v2",
+            "parentName": "task2",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t2v3",
+            "parentName": "task2",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t2v4",
+            "parentName": "task2",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t3Av1",
+            "parentName": "task3A",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 4 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 4 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 4 },
+                { "hardwareType": "NETWORK", "requirement": 4 },
+                { "hardwareType": "STORAGE", "requirement": 4 },
+                { "hardwareType": "CAMERA", "requirement": 4 },
+                { "hardwareType": "MICROPHONE", "requirement": 4 },
+                { "hardwareType": "SENSOR", "requirement": 4 },
+                { "hardwareType": "BLE", "requirement": 4 },
+                { "hardwareType": "WIFI", "requirement": 4 }
+            ],
+            "name": "t3Av2",
+            "parentName": "task3A",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t3Av3",
+            "parentName": "task3A",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t3Bv1",
+            "parentName": "task3B",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 4 },
+                { "hardwareType": "PROCESSOR", "requirement": 2 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 8 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t3Bv2",
+            "parentName": "task3B",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t4v1",
+            "parentName": "task4",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 4 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 4 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 4 },
+                { "hardwareType": "NETWORK", "requirement": 4 },
+                { "hardwareType": "STORAGE", "requirement": 4 },
+                { "hardwareType": "CAMERA", "requirement": 4 },
+                { "hardwareType": "MICROPHONE", "requirement": 4 },
+                { "hardwareType": "SENSOR", "requirement": 4 },
+                { "hardwareType": "BLE", "requirement": 4 },
+                { "hardwareType": "WIFI", "requirement": 4 }
+            ],
+            "name": "t4v2",
+            "parentName": "task4",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t4v3",
+            "parentName": "task4",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t4v4",
+            "parentName": "task4",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t5A1v1",
+            "parentName": "task5A1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 4 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 4 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 4 },
+                { "hardwareType": "NETWORK", "requirement": 4 },
+                { "hardwareType": "STORAGE", "requirement": 4 },
+                { "hardwareType": "CAMERA", "requirement": 4 },
+                { "hardwareType": "MICROPHONE", "requirement": 4 },
+                { "hardwareType": "SENSOR", "requirement": 4 },
+                { "hardwareType": "BLE", "requirement": 4 },
+                { "hardwareType": "WIFI", "requirement": 4 }
+            ],
+            "name": "t5A1v2",
+            "parentName": "task5A1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t5A1v3",
+            "parentName": "task5A1",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t5A2v1",
+            "parentName": "task5A2",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 1 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 2 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 10 }
+            ],
+            "name": "t5A2v2",
+            "parentName": "task5A2",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t5A3v1",
+            "parentName": "task5A3",
+            "relation": "MANDATORY"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t5Bv1",
+            "parentName": "task5B",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t5Bv2",
+            "parentName": "task5B",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t6v1",
+            "parentName": "task6",
+            "relation": "MANDATORY"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 0 },
+                { "hardwareType": "PROCESSOR", "requirement": 0 },
+                { "hardwareType": "NEURAL", "requirement": 0 },
+                { "hardwareType": "PRICE", "requirement": 0 },
+                { "hardwareType": "TENSOR", "requirement": 0 },
+                { "hardwareType": "DISPLAY", "requirement": 0 },
+                { "hardwareType": "ENERGY", "requirement": 0 },
+                { "hardwareType": "NETWORK", "requirement": 0 },
+                { "hardwareType": "STORAGE", "requirement": 0 },
+                { "hardwareType": "CAMERA", "requirement": 0 },
+                { "hardwareType": "MICROPHONE", "requirement": 0 },
+                { "hardwareType": "SENSOR", "requirement": 0 },
+                { "hardwareType": "BLE", "requirement": 0 },
+                { "hardwareType": "WIFI", "requirement": 0 }
+            ],
+            "name": "t7v1",
+            "parentName": "task7",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 4 },
+                { "hardwareType": "PRICE", "requirement": 4 },
+                { "hardwareType": "TENSOR", "requirement": 4 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 4 },
+                { "hardwareType": "NETWORK", "requirement": 4 },
+                { "hardwareType": "STORAGE", "requirement": 4 },
+                { "hardwareType": "CAMERA", "requirement": 4 },
+                { "hardwareType": "MICROPHONE", "requirement": 4 },
+                { "hardwareType": "SENSOR", "requirement": 4 },
+                { "hardwareType": "BLE", "requirement": 4 },
+                { "hardwareType": "WIFI", "requirement": 4 }
+            ],
+            "name": "t7v2",
+            "parentName": "task7",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 5 },
+                { "hardwareType": "PROCESSOR", "requirement": 6 },
+                { "hardwareType": "NEURAL", "requirement": 6 },
+                { "hardwareType": "PRICE", "requirement": 6 },
+                { "hardwareType": "TENSOR", "requirement": 6 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 6 },
+                { "hardwareType": "NETWORK", "requirement": 6 },
+                { "hardwareType": "STORAGE", "requirement": 6 },
+                { "hardwareType": "CAMERA", "requirement": 6 },
+                { "hardwareType": "MICROPHONE", "requirement": 6 },
+                { "hardwareType": "SENSOR", "requirement": 6 },
+                { "hardwareType": "BLE", "requirement": 6 },
+                { "hardwareType": "WIFI", "requirement": 6 }
+            ],
+            "name": "t7v3",
+            "parentName": "task7",
+            "relation": "ALTERNATIVE"
+        },
+        {
+            "hardwareRequirements": [
+                { "hardwareType": "MEMORY", "requirement": 8 },
+                { "hardwareType": "PROCESSOR", "requirement": 9 },
+                { "hardwareType": "NEURAL", "requirement": 8 },
+                { "hardwareType": "PRICE", "requirement": 8 },
+                { "hardwareType": "TENSOR", "requirement": 8 },
+                { "hardwareType": "DISPLAY", "requirement": 10 },
+                { "hardwareType": "ENERGY", "requirement": 8 },
+                { "hardwareType": "NETWORK", "requirement": 8 },
+                { "hardwareType": "STORAGE", "requirement": 8 },
+                { "hardwareType": "CAMERA", "requirement": 8 },
+                { "hardwareType": "MICROPHONE", "requirement": 8 },
+                { "hardwareType": "SENSOR", "requirement": 8 },
+                { "hardwareType": "BLE", "requirement": 8 },
+                { "hardwareType": "WIFI", "requirement": 8 }
+            ],
+            "name": "t7v4",
+            "parentName": "task7",
+            "relation": "ALTERNATIVE"
+        }
+    ]
+}
