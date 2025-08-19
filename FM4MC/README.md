@@ -35,3 +35,12 @@ Each edge node runs a collector:
 ```bash
 java -jar Collector/build/libs/Collector.jar -c [-p <server port>] [-i <server ip address>]
 ```
+
+## JMH Benchmarks
+Benchmarks for performance evaluation reside in the `JMH` module. Run them with:
+
+```bash
+./gradlew JMH:jmh
+```
+
+The benchmarks expect their input files in `TestData/` (see [`JMH/README.md`](JMH/README.md) for details) and write semicolon-separated CSV results such as `onlineBenchmark.csv` into the `JMH` directory.
