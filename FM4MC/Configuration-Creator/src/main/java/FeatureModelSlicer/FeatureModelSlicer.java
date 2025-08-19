@@ -10,15 +10,32 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Splits a feature model into smaller slices based on connectivity and
+ * estimated configuration counts. The slicer operates on abstract features and
+ * creates partial feature models when a threshold is exceeded.
+ */
 public class FeatureModelSlicer {
     private FeatureModelSliced m_FeatureModelSliced;
 
     private final Logger _Logger;
 
+    /**
+     * Creates a new slicer.
+     *
+     * @param logger logger for diagnostic output
+     */
     public FeatureModelSlicer(Logger logger) {
         _Logger = logger;
     }
 
+    /**
+     * Slices the given feature model according to the threshold.
+     *
+     * @param readFeatureModel feature model to slice
+     * @param threshold        maximum estimated configuration count per slice
+     * @return sliced feature model representation
+     */
     public FeatureModelSliced sliceFeatureModel(FeatureModelRead readFeatureModel, int threshold) {
         // List of slices; each slice is a list of features representing a sequential chain.
         m_FeatureModelSliced = new FeatureModelSliced(readFeatureModel);
@@ -34,6 +51,9 @@ public class FeatureModelSlicer {
         return m_FeatureModelSliced;
     }
 
+    /**
+     * Builds the abstract layer of the feature model without recursion.
+     */
     private List<Feature> buildAbstractLayerNonRecursive(FeatureModelRead readFeatureModel) {
         return readFeatureModel.features.stream().filter(f -> !f.getChildren().isEmpty()).collect(Collectors.toList());
     }
@@ -106,6 +126,10 @@ public class FeatureModelSlicer {
      * Estimate the number of valid configurations when adding the current abstract feature.
      * This is based on the relation of the child features.
      */
+    /**
+     * Estimate the number of valid configurations when adding the current abstract feature.
+     * This is based on the relation of the child features.
+     */
     private int estimateConfigs(int currentEstimatedConfigs, Feature abstractFeature) {
         var childFeatures = abstractFeature.getChildren();
         // If there are no direct child features, return current estimate.
@@ -123,6 +147,9 @@ public class FeatureModelSlicer {
 
     /**
      * Check if the successor feature has more than one predecessor.
+     */
+    /**
+     * Checks whether a successor has more than one predecessor in the connectivity map.
      */
     private boolean moreThanOnePredecessorForSuccessor(Feature successor) {
         var keySet = m_FeatureModelSliced.featureConnectivityInformation.featureConnectivityMap.keySet();

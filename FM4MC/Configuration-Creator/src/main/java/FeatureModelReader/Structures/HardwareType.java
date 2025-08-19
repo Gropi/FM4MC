@@ -1,5 +1,8 @@
 package FeatureModelReader.Structures;
 
+/**
+ * Types of hardware resources a feature may require.
+ */
 public enum HardwareType {
     MEMORY,
     DISPLAY,

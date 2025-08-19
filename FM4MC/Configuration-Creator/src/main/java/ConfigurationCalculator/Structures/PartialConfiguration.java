@@ -94,14 +94,27 @@ public class PartialConfiguration {
                 '}';
     }
 
+    /**
+     * Returns the abstract parent features associated with this configuration.
+     */
     public List<Feature> getAbstractParent() {
         return _AbstractParents;
     }
 
+    /**
+     * Sets the abstract parent features of this configuration.
+     *
+     * @param abstractParents list of abstract parent features
+     */
     public void setAbstractParent(List<Feature> abstractParents) {
         this._AbstractParents = abstractParents;
     }
 
+    /**
+     * Adds an abstract parent feature to this configuration.
+     *
+     * @param abstractParent parent feature to add
+     */
     public void addAbstractParent(Feature abstractParent) {
         _AbstractParents.add(abstractParent);
     }

@@ -8,10 +8,19 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Utility to serialize CNF clauses to the DIMACS format.
+ */
 public class CNFClauseSerializer {
 
     private final String _DELIMITER = " ";
 
+    /**
+     * Writes the clauses of a sliced feature model in DIMACS CNF format.
+     *
+     * @param featureModelConfigurations sliced feature model with generated clauses
+     * @param filePath                   destination file path
+     */
     public void saveClausesAsDIMACS(FeatureModelSliced featureModelConfigurations, String filePath) {
         var stringBuilder = new StringBuilder();
         addHeader(stringBuilder, featureModelConfigurations.partialFeatureModelClauses.get(0).get(0), featureModelConfigurations.crossTreeConstraints.size());
@@ -43,6 +52,9 @@ public class CNFClauseSerializer {
         saveToFile(filePath, stringBuilder);
     }
 
+    /**
+     * Stores the generated DIMACS content to disk.
+     */
     private void saveToFile(String filePath, StringBuilder stringBuilder) {
         try {
             new DriveHandle().createFolderFromFile(filePath);
@@ -55,6 +67,9 @@ public class CNFClauseSerializer {
         }
     }
 
+    /**
+     * Adds the DIMACS header line describing literal and clause counts.
+     */
     private void addHeader(StringBuilder stringBuilder, int[] header, int constraints) {
         stringBuilder.append("p").append(_DELIMITER)
                 .append("cnf").append(_DELIMITER)
