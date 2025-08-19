@@ -9,9 +9,21 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
+/**
+ * Entry point for the information collector component.
+ *
+ * <p>The startup routine prepares logging and networking infrastructure and
+ * launches the {@link InformationCollector}.</p>
+ */
 public class Startup {
     private static final Logger _Logger = LogManager.getLogger("executionLog");
 
+    /**
+     * Application entry point.
+     *
+     * @param args command line arguments
+     * @throws IOException if initialization of network components fails
+     */
     public static void main(String[] args) throws IOException {
         var logParameters = new LogInformation(args);
         var qorLogManager = new MyLogManager(logParameters);

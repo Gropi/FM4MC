@@ -1,5 +1,12 @@
 package consts;
 
+/**
+ * Utility container for commonly used constants within the project.
+ */
 public class Consts {
-    public static int NanoSecToMilli = 1000000;
+
+    /**
+     * Conversion factor from nanoseconds to milliseconds.
+     */
+    public static final int NanoSecToMilli = 1_000_000;
 }
