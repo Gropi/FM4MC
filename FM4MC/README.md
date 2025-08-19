@@ -1,42 +1,37 @@
-# Installation Guide
-Requirements: OpenJDK-18
+# FM4MC Runtime
 
-# How to run the software
+The `FM4MC` directory contains the Java implementation of the Edge-Flex runtime. It is organised as a multi-module Gradle project.
 
-Collectors: Collects hardware-information of an edge node. Each node requires one collector.
+## Modules
+- **Collector** – gathers hardware information from an edge node.
+- **Configuration-Creator** – computes valid configurations and slices feature models.
+- **Configuration-Manager** – aggregates collector data and builds configuration graphs.
+- **Canete** – orchestrates the configuration process using the above modules.
+- **Shared** – shared utilities and data structures.
+- **JMH** – benchmarks for performance evaluation.
+- **TestData** – sample inputs for testing.
 
-Configuration-Creator: Calculates and slices valid configurations.
+## System Requirements
+- OpenJDK 18 or newer
+- Gradle (wrapper included)
 
-Configuration-Manager: Aggregates hardware-information from each collectors and builds a graph based on valid configurations.
-
-JMH: Benchmarks
-
-The software contains of two parts. The server, that runs only once and is responsible for the orchestration of the tasks. In addition, there are $`n`$ many collectors, which gather the data the QoR-Manager needs to decide. 
-
-The organisation might look like:
-```plantuml
-@startuml component
-
-rectangle Server
-rectangle Collector1
-rectangle Collector2
-rectangle Collector3
-  
-Server -d- Collector1
-Server -d- Collector2
-Server -d- Collector3
-Collector1 -r- Collector2
-Collector1 -u- Collector3
-  
-@enduml
+## Building
+Use the Gradle wrapper to compile all modules:
+```bash
+./gradlew build
 ```
 
-## Server
-To start the server you can run it with the following options.
+## Running the Software
+The runtime consists of a server and multiple collectors.
 
-<-s> [-p &lt;port&gt;]
+### Server
+Start the server with:
+```bash
+java -jar Canete/build/libs/Canete.jar -s [-p <port>]
+```
 
-## Collector
-To start a collector you can run it with the following options.
-
-<-c> [-p &lt;server port&gt;] [-i &lt;server ip address&gt;]
+### Collector
+Each edge node runs a collector:
+```bash
+java -jar Collector/build/libs/Collector.jar -c [-p <server port>] [-i <server ip address>]
+```
