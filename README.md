@@ -1,6 +1,6 @@
-# Edge-Flex Repository
+# FM4MC Repository
 
-Edge-Flex is a research prototype for managing and evaluating flexible microservice deployments on edge nodes. It collects hardware information from distributed devices and computes valid service configurations that can be orchestrated across the network.
+FM4MC is a research prototype for managing and evaluating flexible microservice deployments on edge nodes. It collects hardware information from distributed devices and computes valid service configurations that can be orchestrated across the network.
 
 ## Repository Structure
 - **FM4MC/** – Gradle-based Java code for the core runtime and utilities.
