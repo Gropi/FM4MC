@@ -159,15 +159,15 @@ public class HardwareSensitiveFeatureModelMerger {
         if (currentConfiguration.size() == 1)
             return new ArrayList<>(currentConfiguration);
 
-        // Vorab: Erstelle ein Set mit den Namen der abstrakten Eltern von configurationToMerge.
+        // Preliminary step: create a set with the names of the abstract parents of configurationToMerge.
         Set<String> mergeAbstractParentNames = configurationToMerge.getAbstractParent()
                 .stream()
                 .map(Feature::getName)
                 .collect(Collectors.toSet());
 
-        // Berechne das Set der "abstract predecessor features":
-        // - Ein connectedFeatureName ist ein Kandidat, wenn er NICHT in mergeAbstractParentNames enthalten ist
-        // - UND wenn in der dazugehörigen Liste mindestens ein Feature enthalten ist, das in configurationToMerge.getAbstractParent() vorkommt.
+        // Compute the set of "abstract predecessor features":
+        // - A connectedFeatureName is a candidate if it is NOT contained in mergeAbstractParentNames
+        // - AND if its associated list contains at least one feature that appears in configurationToMerge.getAbstractParent().
         Set<String> abstractPredecessorNames = featureConnectivityInformation.featureConnectivityMap.keySet()
                 .stream()
                 .filter(connectedFeatureName ->
@@ -178,8 +178,8 @@ public class HardwareSensitiveFeatureModelMerger {
                 )
                 .collect(Collectors.toSet());
 
-        // Jetzt filtern wir currentConfiguration:
-        // Eine PartialConfiguration wird zurückgegeben, wenn mindestens eines ihrer abstrakten Eltern (über den Namen) in abstractPredecessorNames enthalten ist.
+        // Now filter currentConfiguration:
+        // A PartialConfiguration is returned if at least one of its abstract parents (by name) is contained in abstractPredecessorNames.
         return currentConfiguration.stream()
                 .filter(config -> config.getAbstractParent()
                         .stream()

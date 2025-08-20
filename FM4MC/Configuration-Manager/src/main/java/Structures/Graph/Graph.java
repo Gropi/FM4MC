@@ -236,30 +236,30 @@ public class Graph implements IGraph {
     }
 
     public void uniteWithGraph(Graph graph) {
-        // Map zur schnellen Suche von Knoten nach ihrem Label
+        // Map for quick lookup of vertices by their label
         Map<String, IVertex> currentVerticesByLabel = new HashMap<>();
         for (IVertex vertex : _Vertices) {
             currentVerticesByLabel.put(vertex.getLabel(), vertex);
         }
 
-        // Set zur schnellen Überprüfung vorhandener Kanten
+        // Set for fast verification of existing edges
         Set<EdgeKey> existingEdges = new HashSet<>();
         for (Edge edge : _Edges) {
             existingEdges.add(new EdgeKey(edge.getSource().getId(), edge.getDestination().getId()));
         }
 
-        // Hinzufügen neuer Knoten und Kanten
+        // Add new vertices and edges
         for (IVertex vertexToAdd : graph.getAllVertices()) {
             IVertex currentVertex = currentVerticesByLabel.get(vertexToAdd.getLabel());
             if (currentVertex == null) {
-                // Knoten existiert noch nicht im aktuellen Graphen
+                // Vertex does not yet exist in the current graph
                 IVertex clonedVertex = vertexToAdd.clone();
                 addVertex(clonedVertex);
                 currentVerticesByLabel.put(clonedVertex.getLabel(), clonedVertex);
                 currentVertex = clonedVertex;
             }
 
-            // Hinzufügen der Kanten des Knotens
+            // Add the edges of the vertex
             for (var newEdge : graph.getOutgoingEdges(vertexToAdd)) {
                 EdgeKey edgeKey = new EdgeKey(newEdge.getSource().getId(), newEdge.getDestination().getId());
                 if (!existingEdges.contains(edgeKey)) {

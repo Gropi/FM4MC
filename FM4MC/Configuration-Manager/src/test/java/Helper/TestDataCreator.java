@@ -203,7 +203,7 @@ public class TestDataCreator {
             }
         }
 
-        // TODO: Markov Decision Process implementieren
+        // TODO: implement Markov decision process
 
         return graph;
     }
