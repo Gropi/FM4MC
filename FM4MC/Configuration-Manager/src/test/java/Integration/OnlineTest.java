@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Disabled("Requires large datasets and external dependencies")
 public class OnlineTest {
@@ -94,12 +94,16 @@ public class OnlineTest {
     public void testSmallFM() {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var graph = merger.startForTesting(_SmallFeatureModelWithConfigurations, _EdgeInformation, 12);
+        assertNotNull(graph, "Graph should not be null for small feature model");
+        assertTrue(merger.validConfigurations > 0, "Should merge at least one valid configuration");
     }
 
     @Test
     public void testHugeFMSmallEdge() {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var graph = merger.startForTesting(_HugeFeatureModelWithConfigurations, _EdgeInformation, 2);
+        assertNotNull(graph, "Graph should not be null for huge feature model with limited edge");
+        assertTrue(merger.validConfigurations > 0, "Should merge at least one valid configuration");
     }
 
     @Test
@@ -107,5 +111,7 @@ public class OnlineTest {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var fullEdge = new AvailableEdgeHardware(10);
         var graph = merger.startForTesting(_HugeFeatureModelWithConfigurations, fullEdge, 12);
+        assertNotNull(graph, "Graph should not be null for huge feature model with full edge");
+        assertTrue(merger.validConfigurations > 0, "Should merge at least one valid configuration");
     }
 }
