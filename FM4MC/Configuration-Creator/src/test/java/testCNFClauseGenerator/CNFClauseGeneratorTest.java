@@ -28,8 +28,8 @@ public class CNFClauseGeneratorTest {
         var clauses = clauseGenerator.createAbstractLayerClauses(slicer.sliceFeatureModel(model, 0));
         int sumClauses = 1 + 1 + 2 + 2 + 1 + 2 + 2 + 2 + 3 + 11;
         assertEquals(sumClauses, clauses.size(), "There should be 38 clauses: header, root, 2 for start, 2 for mandatory, 1 for optional, 2 for feature group OR, 2 for feature group XOR, 2 for end, 3 for the OR Features, 11 for the XOR features");
-        assertEquals(clauses.get(0)[0], clauses.subList(1, clauses.size()).stream().map(clause -> Arrays.stream(clause).map(Math::abs).max().getAsInt()).max(Comparator.naturalOrder()).get(), "the first parameter of the header is the highest occurring literal");
-        assertEquals(clauses.get(0)[1], clauses.size() - 1, "the second parameter of the header is number of clauses");
+        assertEquals(clauses.getFirst()[0], clauses.subList(1, clauses.size()).stream().map(clause -> Arrays.stream(clause).map(Math::abs).max().getAsInt()).max(Comparator.naturalOrder()).get(), "the first parameter of the header is the highest occurring literal");
+        assertEquals(clauses.getFirst()[1], clauses.size() - 1, "the second parameter of the header is number of clauses");
         assertEquals(5, clauses.stream().map(clause -> clause.length).max(Comparator.naturalOrder()).get(), "the largest clause should contain 5 literals");
         var concreteIndices = model.features.stream().filter(f -> f.getChildren().isEmpty()).map(Feature::getIndex).collect(Collectors.toSet());
         assertTrue(clauses.stream().allMatch(clause -> Arrays.stream(clause).noneMatch(literal -> concreteIndices.contains(Math.abs(literal)))), "No Clause should contain concrete features");
