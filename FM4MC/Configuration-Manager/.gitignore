@@ -1,0 +1,5 @@
+# Do not commit generated folders
+out/
+**/out/
+
+temp.csv

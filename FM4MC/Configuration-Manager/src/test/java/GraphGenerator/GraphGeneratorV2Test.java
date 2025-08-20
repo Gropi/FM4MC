@@ -1,4 +1,4 @@
-package test.GraphGenerator;
+package GraphGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

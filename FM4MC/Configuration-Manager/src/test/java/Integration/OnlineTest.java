@@ -1,4 +1,4 @@
-package integration;
+package Integration;
 
 import ConfigurationCalculator.ConfigurationCalculator;
 import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
@@ -83,7 +83,7 @@ public class OnlineTest {
 
         // Expect one slice containing startTask, task1, task2.
         assertEquals(1, slicedModels.size(), "There should be one slice for a simple chain");
-        var slice = slicedModels.get(0);
+        var slice = slicedModels.getFirst();
         assertEquals(3, slice.size(), "Slice should contain 3 features");
         assertEquals("startTask", slice.get(0).getName());
         assertEquals("task1", slice.get(1).getName());
