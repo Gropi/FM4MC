@@ -3,22 +3,24 @@ Wozu ist das Tool?
 Wie ist der Aufbau der FeatureModel.json (Schema)?
 Was sind die Limitationen der aktuellen Parser Funktionalität?
 
+## How to Run the Module
 
-# How to run the module
-Input is a FeatureModule (FM) which generates all valid configurations for given FM in CSV.
-Run Startup.java with following parameters:
+The module is executed via the command line. Arguments are passed in key/value pairs, with an optional `-slicing` flag.
 
-```
-            [-path <path>] -> 
-            [-file <path>] -> absolut path to FeatureModel (FM)
-            [-threshold <int>] -> Maximum size of each sliced FM. Default: 250
-            [-slicing] -> Enable FM slicing
-            [-destConfigurations <path>] -> absolut path for csv output file
-```
+### Arguments
 
+| Argument          | Description                                          | Required |
+|------------------|------------------------------------------------------|----------|
+| `-fmFile`        | Path to the input feature model JSON file           | Yes      |
+| `-configurations`| Path to the output CSV configuration file          | Yes      |
+| `-threshold`     | Optional threshold for slicing (default: 250)      | No       |
+| `-slicing`       | Optional flag to enable slicing                     | No       |
 
+### Example Command
 
-Example:
-``````
--slicing -file "C:\..\TestData\TestGraphs\TestFMJsons\FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" -destConfigurations "C:\..\TestData\TestGraphs\TestConfigurationFiles\test_config.csv"
-``````
+```bash
+java -cp <your-jar-or-classes-path> Startup \
+-slicing \
+-fmFile "C:\..\TestData\TestGraphs\TestFMJsons\FM_BenchmarkGraph_6_Services_NoExcludes_57.344_configs.json" \
+-configurations "C:\..\TestData\TestGraphs\TestConfigurationFiles\57.344_configs.csv"
+
