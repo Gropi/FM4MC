@@ -163,7 +163,7 @@ public class FeatureModelReader {
                         throw new InvalidFeatureModelRelationException("\"" + feature.getName() + "\" has concrete and abstract children");
                     }
                     if (feature.getChildren().size() == 1) {
-                        if (feature.getChildren().get(0).getRelation() != FeatureModelRelation.MANDATORY) {
+                        if (feature.getChildren().getFirst().getRelation() != FeatureModelRelation.MANDATORY) {
                             throw new InvalidFeatureModelRelationException("\"" + feature.getName() + "\" has exactly one concrete child but this child is not MANDATORY");
                         }
                     } else if (!feature.getChildren().stream().allMatch(child -> child.getRelation() == FeatureModelRelation.ALTERNATIVE)) {

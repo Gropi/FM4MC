@@ -4,7 +4,6 @@ import ConfigurationCalculator.ConfigurationCalculator;
 import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.InvalidFeatureModelRelationException;
 import FeatureModelReader.Structures.FeatureModelRead;
-import FeatureModelSlicer.Structures.FeatureModelSliced;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openjdk.jmh.annotations.*;

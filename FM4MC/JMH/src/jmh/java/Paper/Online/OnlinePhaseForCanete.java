@@ -7,7 +7,6 @@ import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.InvalidFeatureModelRelationException;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureModelRead;
-import FeatureModelSlicer.Structures.FeatureModelSliced;
 import edgeNodeReader.EdgeNodeReader;
 import edgeNodeReader.structures.EdgeNode;
 import modules.AVA;
@@ -80,43 +79,6 @@ public class OnlinePhaseForCanete {
         _edgeNodes.toArray(_edgeNodesArray);
     }
 
-    /*
-    @Benchmark
-    @BenchmarkMode({Mode.SingleShotTime}) //Mode.All
-    @Warmup(iterations = 3)
-    @Measurement(iterations = 30)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void caneteBenchmarkAllDeployments(Blackhole blackhole){
-
-        FeatureModelSliced nonPartialFM = new FeatureModelSliced(_ReadFeatureModel);
-        nonPartialFM.slicedFeatureModels.add(nonPartialFM.features);
-
-        AVA ava = new AVA();
-        Map<String, List<Number>> crossModelConstraints = new HashMap<>();
-        var invalidFeatures = ava.adaptApplication(_edgeNodesArray, nonPartialFM, crossModelConstraints);
-
-        clauseGenerator.createFeatureModelCNFClauses(nonPartialFM);
-        for (Feature feature : invalidFeatures) {
-            nonPartialFM.partialFeatureModelClauses.get(0).add(new int[]{-feature.index});
-        }
-
-        var calculatedFM = calculator.calculateConfigurations(nonPartialFM);
-
-        EDAF edaf = new EDAF();
-
-        calculatedFM.configurationsPerPartialFeatureModel.get(0).forEach(configuration -> {
-            blackhole.consume(edaf.calculateTaskDeployment(_edgeNodesArray, configuration, calculatedFM, false));
-        });
-
-        blackhole.consume(edaf);
-        blackhole.consume(calculatedFM);
-        blackhole.consume(invalidFeatures);
-        blackhole.consume(crossModelConstraints);
-        blackhole.consume(ava);
-        blackhole.consume(nonPartialFM);
-
-    }*/
-
     @Benchmark
     @BenchmarkMode({Mode.SingleShotTime}) //Mode.All
     @Warmup(iterations = 3)
@@ -126,8 +88,8 @@ public class OnlinePhaseForCanete {
 
         var nonPartialFM = new FeatureModelRead(_ReadFeatureModel);
 
-        AVA ava = new AVA();
-        Map<String, List<Number>> crossModelConstraints = new HashMap<>();
+        var ava = new AVA();
+        var crossModelConstraints = new HashMap<String, List<Number>>();
         var invalidFeatures = ava.adaptApplication(_edgeNodesArray, nonPartialFM, _MaxRequirements);
 
         for (Feature feature : invalidFeatures) {
@@ -136,9 +98,9 @@ public class OnlinePhaseForCanete {
 
         var calculatedFM = calculator.calculatedConfigurationForNonSlicedFM(nonPartialFM);
 
-        EDAF edaf = new EDAF();
+        var edaf = new EDAF();
 
-        calculatedFM.configurationsPerPartialFeatureModel.get(0).forEach(configuration -> {
+        calculatedFM.configurationsPerPartialFeatureModel.getFirst().forEach(configuration -> {
             blackhole.consume(edaf.calculateTaskDeployment(_edgeNodesArray, configuration, calculatedFM, true, _MaxRequirements));
         });
 

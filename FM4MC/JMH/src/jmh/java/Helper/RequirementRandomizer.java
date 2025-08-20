@@ -1,6 +1,5 @@
 package Helper;
 
-import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
 import FeatureModelReader.Structures.Feature;
 import IO.impl.EdgeHardwareInformation;
 import IO.impl.EdgeNodeHardwareInformation;
@@ -14,9 +13,7 @@ public class RequirementRandomizer {
     private double _Mean = 1000;
     private double _StandardDeviation = 200;
 
-    public RequirementRandomizer() {
-
-    }
+    public RequirementRandomizer() {}
 
     public RequirementRandomizer(double mean, double standardDeviation) {
         _Mean = mean;

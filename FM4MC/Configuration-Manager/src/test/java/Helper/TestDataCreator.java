@@ -10,15 +10,8 @@ import Structures.IGraph;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
-
-import static io.github.atomfinger.touuid.UUIDs.toUUID;
 
 public class TestDataCreator {
-    public TestDataCreator() {
-
-    }
-
     /**
      * Building a tree like:
      *                          A(Start)

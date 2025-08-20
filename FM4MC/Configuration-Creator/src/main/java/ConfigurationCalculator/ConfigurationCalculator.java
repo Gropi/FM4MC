@@ -45,7 +45,6 @@ public class ConfigurationCalculator {
                 parents.add(f);
             }
         });
-        //TODO pass only parents or all abstract features?
         calculateAbstractLayer(fm, parents);
         passCrossTreeConstraintsToChildren(fm);
         calculateConcreteConfigurations(fm, parents);
@@ -151,7 +150,6 @@ public class ConfigurationCalculator {
      * @param fm      the feature model
      * @param parents list of abstract parent features present in the model
      */
-    //TODO check if all features are needed or only parents!!! (require CTC when merging graph?!?)
     private void calculateAbstractLayer(FeatureModelPartiallyCalculated fm, List<Feature> parents) {
         var abstractLayerCNF = cnfClauseGenerator.createAbstractLayerClauses(fm);
         initSolver(abstractLayerCNF);
@@ -175,7 +173,7 @@ public class ConfigurationCalculator {
      */
     private void initSolver(List<int[]> cnfClauses) {
         solver.reset();
-        var headerCnfDIMACS = cnfClauses.get(0);
+        var headerCnfDIMACS = cnfClauses.getFirst();
 
         solver.newVar(headerCnfDIMACS[0]);
         solver.setExpectedNumberOfClauses(headerCnfDIMACS[1]);
@@ -219,10 +217,8 @@ public class ConfigurationCalculator {
      *                             features
      */
     private void sortConfiguration(PartialConfiguration partialConfiguration, Map<String, List<Feature>> connectivityMap) {
-        //TODO DOUBLE CHECK LOGIC
         if (partialConfiguration.getFeatures().size() > 1) {
             var configurationFeatures = partialConfiguration.getFeatures();
-            //var uniqueParentFeatures = partialConfiguration.getAbstractParent();
             var uniqueParentFeatures = configurationFeatures.stream().map(Feature::getParentFeatureName).distinct().toList();
             var sortedParentFeatures = sortParentFeatures(uniqueParentFeatures, connectivityMap);
             var sortedConfigurationFeatures = new ArrayList<Feature>();
@@ -230,9 +226,6 @@ public class ConfigurationCalculator {
 
             for (var parentFeatureName : sortedParentFeatures) {
                 var childFeatures = configurationFeatures.stream().filter(x -> x.getParentFeatureName().equals(parentFeatureName)).toList();
-
-            //for (var parentFeature : sortedParentFeatures) {
-            //    var childFeatures = configurationFeatures.stream().filter(x -> x.getParentFeature().equals(parentFeature)).toList();
                 sortedConfigurationFeatures.addAll(childFeatures);
             }
             partialConfiguration.setFeatures(sortedConfigurationFeatures);
@@ -249,14 +242,13 @@ public class ConfigurationCalculator {
      * @return parent feature names ordered by reachability
      */
     private List<String> sortParentFeatures(List<String> uniqueParentFeatures, Map<String, List<Feature>> connectivityMap) {
-        //TODO DOUBLE CHECK LOGIC
         var parentFeaturesInOrder = new ArrayList<String>();
         var toInvestigate = new ArrayList<String>();
         var startFeature = findFirst(uniqueParentFeatures, connectivityMap);
         toInvestigate.add(startFeature);
 
         while (!toInvestigate.isEmpty()) {
-            var currentFeature = toInvestigate.remove(0);
+            var currentFeature = toInvestigate.removeFirst();
             if (!parentFeaturesInOrder.contains(currentFeature)) {
                 parentFeaturesInOrder.add(currentFeature);
                 toInvestigate.addAll(connectivityMap.get(currentFeature).stream().map(Feature::getName).toList());

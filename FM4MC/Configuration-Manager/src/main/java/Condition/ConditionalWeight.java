@@ -7,8 +7,8 @@ import Structures.Graph.interfaces.IVertex;
  */
 public class ConditionalWeight {
 
-    private IVertex vertex;
-    private int costs;
+    private final IVertex vertex;
+    private final int costs;
 
     /**
      * Creates a conditional weight for the given vertex.

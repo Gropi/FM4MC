@@ -19,8 +19,8 @@ public class Vertex implements IVertex {
     private String _ServiceName;
     private Microservice _Microservice;
     private int _QoR;
-    private List<Edge> _OutgoingEdges;
-    private List<ConditionalWeight> _ConditionalWeights;
+    private final List<Edge> _OutgoingEdges;
+    private final List<ConditionalWeight> _ConditionalWeights;
 
     public Vertex(String label, int vertexId, String serviceName) {
         _Weights = new ArrayList<>();
@@ -78,8 +78,8 @@ public class Vertex implements IVertex {
     @Override
     public ParameterCost getWeight(String nameOfWeight) {
         var costsWithName = _Weights.stream().filter(x -> x.getParameterName().equals(nameOfWeight)).toList();
-        if (costsWithName.size() != 0)
-            return costsWithName.get(0);
+        if (!costsWithName.isEmpty())
+            return costsWithName.getFirst();
         return null;
     }
 

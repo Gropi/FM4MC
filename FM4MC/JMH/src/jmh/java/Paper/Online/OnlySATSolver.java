@@ -1,8 +1,6 @@
 package Paper.Online;
 
-import CNFClauseGenerator.CNFClauseGenerator;
 import FeatureModelReader.FeatureModelReader;
-import FeatureModelSlicer.Structures.FeatureModelSliced;
 import FeatureModelReader.InvalidFeatureModelRelationException;
 import SlicingBenchmark.NoSlicingJobSAT;
 import org.apache.logging.log4j.LogManager;

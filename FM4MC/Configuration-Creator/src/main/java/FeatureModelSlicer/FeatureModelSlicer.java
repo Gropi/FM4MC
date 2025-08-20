@@ -1,6 +1,5 @@
 package FeatureModelSlicer;
 
-import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureModelRead;
 import FeatureModelReader.Structures.FeatureModelRelation;
@@ -104,7 +103,7 @@ public class FeatureModelSlicer {
             return;
         }
         // Only one successor.
-        var next = successors.get(0);
+        var next = successors.getFirst();
         // Check rule 2: if next has more than one predecessor.
         if (moreThanOnePredecessorForSuccessor(next)) {
             result.add(new ArrayList<>(currentSlice));
@@ -126,10 +125,6 @@ public class FeatureModelSlicer {
      * Estimate the number of valid configurations when adding the current abstract feature.
      * This is based on the relation of the child features.
      */
-    /**
-     * Estimate the number of valid configurations when adding the current abstract feature.
-     * This is based on the relation of the child features.
-     */
     private int estimateConfigs(int currentEstimatedConfigs, Feature abstractFeature) {
         var childFeatures = abstractFeature.getChildren();
         // If there are no direct child features, return current estimate.
@@ -137,7 +132,7 @@ public class FeatureModelSlicer {
             return currentEstimatedConfigs;
         }
         // We assume all child features of the abstract feature share the same relation.
-        var relation = childFeatures.get(0).getRelation();
+        var relation = childFeatures.getFirst().getRelation();
         if (relation.equals(FeatureModelRelation.ALTERNATIVE)) {
             return currentEstimatedConfigs * childFeatures.size();
         } else {
@@ -145,9 +140,6 @@ public class FeatureModelSlicer {
         }
     }
 
-    /**
-     * Check if the successor feature has more than one predecessor.
-     */
     /**
      * Checks whether a successor has more than one predecessor in the connectivity map.
      */

@@ -1,6 +1,5 @@
 package SlicingBenchmark;
 
-import CNFClauseGenerator.CNFClauseGenerator;
 import ConfigurationCalculator.ConfigurationCalculator;
 import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
 import ConfigurationSerializer.ConfigurationSerializer;
@@ -8,7 +7,6 @@ import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.InvalidFeatureModelRelationException;
 import FeatureModelReader.Structures.FeatureModelRead;
 import FeatureModelSlicer.FeatureModelSlicer;
-import FeatureModelSlicer.Structures.FeatureModelSliced;
 import Helper.LinearFMBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,7 +51,7 @@ public class NoJmhSlicingBenchmark {
         for (var fileEntry : Objects.requireNonNull(fileFolder.listFiles())) {
             if (!fileEntry.isDirectory()) {
                 var reader = new FeatureModelReader(_Logger);
-                FeatureModelRead fmRead = null;
+                FeatureModelRead fmRead;
 
                 var startTimeReading = System.nanoTime();
                 try {
@@ -216,10 +214,10 @@ public class NoJmhSlicingBenchmark {
                                 .append(0).append(";")
                                 .append(threshold).append(";")
                                 .append(fileSizeInByte).append(";")
-                                .append(totalTimeReading / 1000).append(";")
-                                .append(totalTimeSlicing / 1000).append(";")
+                                .append(totalTimeReading / 1_000).append(";")
+                                .append(totalTimeSlicing / 1_000).append(";")
                                 .append(totalTimeConfigurationCalculation / 1000).append(";")
-                                .append(totalTimeSerializer / 1000).append("\n");
+                                .append(totalTimeSerializer / 1_000).append("\n");
                     }
                 } else {
                     var threshold = Integer.MAX_VALUE;
@@ -270,8 +268,8 @@ public class NoJmhSlicingBenchmark {
                             .append(0).append(";")
                             .append(threshold).append(";")
                             .append(fileSizeInByte).append(";")
-                            .append(totalTimeReading / 1000).append(";")
-                            .append(totalTimeSlicing / 1000).append(";")
+                            .append(totalTimeReading / 1_000).append(";")
+                            .append(totalTimeSlicing / 1_000).append(";")
                             .append(totalTimeConfigurationCalculation < 0 ? totalTimeConfigurationCalculation : (totalTimeConfigurationCalculation / 1000)).append(";")
                             .append(totalTimeSerializer < 0 ? totalTimeSerializer : (totalTimeSerializer / 1000)).append("\n");
                 }

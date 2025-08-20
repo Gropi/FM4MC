@@ -3,15 +3,14 @@ package SlicingBenchmark;
 import ConfigurationCalculator.ConfigurationCalculator;
 import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
 import FeatureModelReader.Structures.FeatureModelRead;
-import FeatureModelSlicer.Structures.FeatureModelSliced;
 import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.Callable;
 
 public class NoSlicingJobSAT implements Callable<FeatureModelPartiallyCalculated> {
 
-    private ConfigurationCalculator calculator;
-    private FeatureModelRead fmRead;
+    private final ConfigurationCalculator calculator;
+    private final FeatureModelRead fmRead;
 
     public NoSlicingJobSAT(Logger logger, FeatureModelRead fmRead) {
         this.calculator = new ConfigurationCalculator(logger);

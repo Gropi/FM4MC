@@ -30,7 +30,7 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
     private final IConnectionFacade _ConnectionFacade;
     private ICommunication _Communication;
     private Thread _ServerThread;
-    private IConnectionInformation test = new ConnectionInformation("130.83.163.46", 2000);
+    private final IConnectionInformation test = new ConnectionInformation("130.83.163.46", 2000);
 
     /**
      * Starts the manager and initiates a hardware information request.
@@ -47,7 +47,6 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
         requestEdgeInformation(test);
     }
 
-    @Override
     /**
      * Handles incoming hardware information messages from edge devices.
      *
@@ -55,6 +54,7 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
      * @param from connection information of the sender
      * @throws IOException if response transmission fails
      */
+    @Override
     public void messageReceived(byte[] message, IConnectionInformation from) throws IOException {
         _Logger.debug("New connection from server");
         if (message != null) {
@@ -74,10 +74,6 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
         }
     }
 
-
-
-
-
     private void start() {
         _Logger.debug("Start server with parameter: Port: " + _Port);
         _Communication = _ConnectionFacade.startServer(_Port);
@@ -86,12 +82,12 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
         _ServerThread.start();
     }
 
-    @Override
     /**
      * Processes console commands for shutting down or reconnecting.
      *
      * @param message console command entered by the user
      */
+    @Override
     public void HandleConsoleInput(String message) {
         message = message.toLowerCase(Locale.ROOT).trim();
 

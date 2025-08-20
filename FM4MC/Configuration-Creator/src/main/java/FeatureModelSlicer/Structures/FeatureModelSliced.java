@@ -1,6 +1,5 @@
 package FeatureModelSlicer.Structures;
 
-import FeatureModelReader.Structures.CrossTreeConstraint;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureModelRead;
 

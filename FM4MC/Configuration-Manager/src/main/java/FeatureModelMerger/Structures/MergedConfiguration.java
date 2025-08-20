@@ -1,6 +1,5 @@
 package FeatureModelMerger.Structures;
 
-
 import ConfigurationCalculator.Structures.PartialConfiguration;
 import FeatureModelReader.Structures.Feature;
 

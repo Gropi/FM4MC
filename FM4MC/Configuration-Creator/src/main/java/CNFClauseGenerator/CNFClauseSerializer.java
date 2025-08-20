@@ -23,7 +23,7 @@ public class CNFClauseSerializer {
      */
     public void saveClausesAsDIMACS(FeatureModelSliced featureModelConfigurations, String filePath) {
         var stringBuilder = new StringBuilder();
-        addHeader(stringBuilder, featureModelConfigurations.partialFeatureModelClauses.get(0).get(0), featureModelConfigurations.crossTreeConstraints.size());
+        addHeader(stringBuilder, featureModelConfigurations.partialFeatureModelClauses.getFirst().getFirst(), featureModelConfigurations.crossTreeConstraints.size());
 
         for (var Clauses : featureModelConfigurations.partialFeatureModelClauses) {
             var clauseIterator = Clauses.iterator();

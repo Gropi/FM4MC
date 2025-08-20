@@ -1,10 +1,8 @@
-import CNFClauseGenerator.CNFClauseGenerator;
 import ConfigurationCalculator.ConfigurationCalculator;
 import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.InvalidFeatureModelRelationException;
 import FeatureModelReader.Structures.FeatureModelRead;
-import FeatureModelSlicer.Structures.FeatureModelSliced;
 import edgeNodeReader.EdgeNodeReader;
 import edgeNodeReader.structures.EdgeNode;
 import modules.AVA;
@@ -14,21 +12,17 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Startup {
 
     private static final Logger _Logger = LogManager.getLogger("executionLog");
 
-
     public static void main(String[] args) {
         var arguments = getParameters(args);
-        EdgeNodeReader edgeNodeReader = new EdgeNodeReader(_Logger);
-        FeatureModelReader featureModelReader = new FeatureModelReader(_Logger);
-        CNFClauseGenerator clauseGenerator = new CNFClauseGenerator(_Logger);
-        ConfigurationCalculator calculator = new ConfigurationCalculator(_Logger);
-        int maxRequirements = 14;
+        var edgeNodeReader = new EdgeNodeReader(_Logger);
+        var featureModelReader = new FeatureModelReader(_Logger);
+        var calculator = new ConfigurationCalculator(_Logger);
+        var maxRequirements = 14;
 
         if (!arguments.containsKey("edge")) {
             System.out.println("No Edge Config");
@@ -38,7 +32,7 @@ public class Startup {
             System.out.println("No FM file");
             return;
         }
-        List<EdgeNode> edgeNodes = edgeNodeReader.readEdgeNodeJson(new File(arguments.get("edge")));
+        var edgeNodes = edgeNodeReader.readEdgeNodeJson(new File(arguments.get("edge")));
         FeatureModelRead fm;
         try {
             fm = featureModelReader.readFeatureModelJson(new File(arguments.get("fm")));
@@ -47,7 +41,7 @@ public class Startup {
             return;
         }
 
-        AVA ava = new AVA();
+        var ava = new AVA();
         EdgeNode[] edgeNodesArray = new EdgeNode[edgeNodes.size()];
         edgeNodes.toArray(edgeNodesArray);
         var invalidFeatures = ava.adaptApplication(edgeNodesArray, fm, maxRequirements);
@@ -57,9 +51,9 @@ public class Startup {
         }
         var calculatedFM = calculator.calculatedConfigurationForNonSlicedFM(fm);
 
-        EDAF edaf = new EDAF();
+        var edaf = new EDAF();
 
-        calculatedFM.configurationsPerPartialFeatureModel.get(0).forEach(configuration -> {
+        calculatedFM.configurationsPerPartialFeatureModel.getFirst().forEach(configuration -> {
             edaf.calculateTaskDeployment(edgeNodesArray, configuration, calculatedFM, true, maxRequirements).forEach(map -> {
                         map.keySet().forEach(key -> {
                             System.out.println(key.getName() + " -> " + map.get(key).id);
@@ -68,12 +62,10 @@ public class Startup {
                     }
             );
         });
-
-
     }
 
     private static HashMap<String, String> getParameters(String[] args) {
-        HashMap<String, String> parameters = new HashMap<>();
+        var parameters = new HashMap<String, String>();
 
         for (int i = 0; i < args.length; i += 2) {
             if (args[i].equalsIgnoreCase("-edge")) {

@@ -20,8 +20,8 @@ public class StorageDifferenceCalculator {
 
         var outputFile = "fileSizeComparison.csv";
 
-        var noSlicingFolderPath = "D:\\02_Ergebnisse\\Edge-Flex\\Benchmarks\\2024_05_19_Measurement_Linear_FM_No_Slicing\\ConfigurationFiles\\";
-        var slicingFolderPath = "D:\\02_Ergebnisse\\Edge-Flex\\Benchmarks\\2024_05_16_Measurement_Linear_FM_Slicing\\Configuration Files\\";
+        var noSlicingFolderPath = "C:\\FM4MC\\02_Results\\Benchmarks\\2024_05_19_Measurement_Linear_FM_No_Slicing\\ConfigurationFiles\\";
+        var slicingFolderPath = "C:\\\\FM4MC\\02_Results\\Benchmarks\\2024_05_16_Measurement_Linear_FM_Slicing\\Configuration Files\\";
 
         var configurationFileNameBase = "temporaryConfigurationFile";
 

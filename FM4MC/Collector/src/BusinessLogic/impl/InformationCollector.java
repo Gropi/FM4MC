@@ -32,9 +32,8 @@ public class InformationCollector implements IConsoleInputListener, IMessageRece
      *
      * @param connectionFacade facade used to create network connections
      * @param portToListenOn port on which to listen for incoming requests
-     * @throws IOException if the server cannot be started
      */
-    public InformationCollector(IConnectionFacade connectionFacade, int portToListenOn) throws IOException {
+    public InformationCollector(IConnectionFacade connectionFacade, int portToListenOn) {
         _ConnectionFacade = connectionFacade;
         _Port = portToListenOn;
         start();

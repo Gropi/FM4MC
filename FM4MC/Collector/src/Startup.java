@@ -4,8 +4,6 @@ import Console.ThreadSafeConsoleHandler;
 import logging.MyLogManager;
 import Monitoring.Event.Logging.impl.LogInformation;
 import Network.Facade.impl.ConnectionFacade;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -16,8 +14,6 @@ import java.io.IOException;
  * launches the {@link InformationCollector}.</p>
  */
 public class Startup {
-    private static final Logger _Logger = LogManager.getLogger("executionLog");
-
     /**
      * Application entry point.
      *

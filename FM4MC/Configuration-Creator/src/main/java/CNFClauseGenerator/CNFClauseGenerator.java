@@ -14,9 +14,7 @@ import java.util.List;
  * deselected features.
  */
 public class CNFClauseGenerator {
-
     private final Logger _Logger;
-    //private FeatureModelSliced _FMSliced;
 
     /**
      * Creates a new generator.

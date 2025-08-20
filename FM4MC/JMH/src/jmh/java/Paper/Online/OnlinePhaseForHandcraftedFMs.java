@@ -2,7 +2,6 @@ package Paper.Online;
 
 import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
 import ConfigurationSerializer.ConfigurationSerializer;
-import Filter.FeatureFilter;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelReader.FeatureModelReader;
@@ -117,7 +116,6 @@ public class OnlinePhaseForHandcraftedFMs {
                 .append(merger.validConfigurations).append(_Delimiter).append("\r\n");
 
         //Save additional information
-
         try {
             var basePath = "../TestData/JMH_Online_Phase_Benchmark_Additional_Information";
             Files.createDirectories(Paths.get(basePath));
@@ -131,7 +129,7 @@ public class OnlinePhaseForHandcraftedFMs {
     }
 
     @Benchmark
-    @BenchmarkMode({Mode.SingleShotTime}) //Mode.All
+    @BenchmarkMode({Mode.SingleShotTime})
     @Warmup(iterations = 3)
     @Measurement(iterations = 20)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
@@ -139,13 +137,12 @@ public class OnlinePhaseForHandcraftedFMs {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var graph = merger.startForTesting(_FeatureModelWithConfigurations, _EdgeInformation, _MaxRequirements);
 
-        //saveBaseInformation(_currentFile, merger);
         blackhole.consume(graph);
         blackhole.consume(merger);
     }
 
     @Benchmark
-    @BenchmarkMode({Mode.SingleShotTime}) //Mode.All
+    @BenchmarkMode({Mode.SingleShotTime})
     @Warmup(iterations = 3)
     @Measurement(iterations = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
@@ -153,33 +150,7 @@ public class OnlinePhaseForHandcraftedFMs {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var graph = merger.startForTesting(_FeatureModelWithConfigurations, _EdgeInformation, _MaxRequirements);
 
-        //saveBaseInformation(_currentFile, merger);
         blackhole.consume(graph);
         blackhole.consume(merger);
     }
-
-    /*@Benchmark
-    @BenchmarkMode({Mode.SingleShotTime}) //Mode.All
-    @Warmup(iterations = 3)
-    @Measurement(iterations = 30)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void onlinePhaseBenchmarkMobiDic(Blackhole blackhole) {
-        var hardwareSensitiveMerger = new HardwareSensitiveFeatureModelMerger(_Logger);
-        var featureFilter = new FeatureFilter();
-        var nonValidFeatures = featureFilter.filterFeaturesAgainstEdge(_ReadFeatureModel.features, _EdgeInformation, _MaxRequirements);
-        var graph = hardwareSensitiveMerger.startForTesting(_FeatureModelWithConfigurations, nonValidFeatures);
-
-        var testGraphCreator = new TestGraphCreator(_Logger);
-        var randomizedGraph = testGraphCreator.randomizeGraphCostWithAdvancedParameters(graph);
-
-        var decisionMaker = new MobiDiCManager(randomizedGraph);
-        blackhole.consume(decisionMaker.getInitialSelection(Integer.MAX_VALUE, null));
-
-        blackhole.consume(graph);
-        blackhole.consume(hardwareSensitiveMerger);
-        blackhole.consume(featureFilter);
-        blackhole.consume(testGraphCreator);
-        blackhole.consume(randomizedGraph);
-        blackhole.consume(decisionMaker);
-    }*/
 }
