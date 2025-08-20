@@ -437,3 +437,5 @@ FodyWeavers.xsd
 # Configuration files
 *.properties
 QoRManager/.run/StartupVerdammterMist.run.xml
+
+Eval/Scripts/venv/
