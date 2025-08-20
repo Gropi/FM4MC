@@ -33,19 +33,6 @@ public class FeatureModelPreProcessor {
         _ApplicationLogger = applicationLogger;
     }
 
-    /**
-     * Processes all feature model files within the provided folder.
-     *
-     * @param folderName folder containing feature model files
-     * @param threshold  slicing threshold for estimated configurations
-     * @param withSlicing whether the model should be sliced before configuration
-     * @param outputPath destination directory for serialized configurations
-     */
-    public void startTestForFolder(String folderName, int threshold, boolean withSlicing, String outputPath) {
-        setupMeasurementLogger();
-        _StartTime = System.currentTimeMillis();
-        preprocessApplicationFeatureModel(folderName, threshold, withSlicing, outputPath);
-    }
 
     /**
      * Processes a single feature model file.
@@ -68,19 +55,6 @@ public class FeatureModelPreProcessor {
     private void setupMeasurementLogger() {
         _MeasurementLogger = new ManagingMeasurement();
         _MeasurementLogger.writeLine("file;reading;slicing;cnfClauseGeneration;confCreation;confSaving");
-    }
-
-    /**
-     * Iterates over all files in the given folder and processes each as a
-     * feature model file.
-     */
-    private void preprocessApplicationFeatureModel(String folder, int threshold, boolean withSlicing, String outputPath) {
-        var fileFolder = new File(folder);
-        for (var fileEntry : Objects.requireNonNull(fileFolder.listFiles())) {
-            if (!fileEntry.isDirectory()) {
-                preprocessApplicationFeatureModel(fileEntry, threshold, withSlicing, outputPath);
-            }
-        }
     }
 
     /**

@@ -28,13 +28,11 @@ public class Startup {
         var slicing = arguments.containsKey("slicing");
         if (!slicing)
             threshold = Integer.MAX_VALUE;
-        var output = arguments.get("destinationConfigurations");
+        var output = arguments.get("configurations");
 
         var processLogic = new FeatureModelPreProcessor(_Logger);
-        if (arguments.containsKey("path")) {
-            processLogic.startTestForFolder(arguments.get("path"), threshold, slicing, output);
-        } else if (arguments.containsKey("file")) {
-            processLogic.startTestForFile(arguments.get("file"), threshold, slicing, output);
+        if (arguments.containsKey("fmFile")) {
+            processLogic.startTestForFile(arguments.get("fmFile"), threshold, slicing, output);
         }
     }
 
@@ -45,11 +43,8 @@ public class Startup {
         var parameters = new HashMap<String, String>();
 
         for(int i = 0; i < args.length; i += 2) {
-            if(args[i].equalsIgnoreCase("-path")){
-                parameters.put("path", args[i + 1]);
-            }
-            else if(args[i].equalsIgnoreCase("-file")){
-                parameters.put("file", args[i + 1]);
+            if(args[i].equalsIgnoreCase("-fmFile")){
+                parameters.put("fmFile", args[i + 1]);
             }
             else if(args[i].equalsIgnoreCase("-threshold")){
                 parameters.put("threshold", args[i + 1]);
@@ -58,8 +53,8 @@ public class Startup {
                 parameters.put("slicing", "true");
                 i--;
             }
-            else if(args[i].equalsIgnoreCase("-destConfigurations")){
-                parameters.put("destinationConfigurations", args[i + 1]);
+            else if(args[i].equalsIgnoreCase("-configurations")){
+                parameters.put("configurations", args[i + 1]);
             }
         }
 
