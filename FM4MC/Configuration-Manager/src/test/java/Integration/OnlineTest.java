@@ -3,7 +3,6 @@ package Integration;
 import ConfigurationCalculator.ConfigurationCalculator;
 import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
 import ConfigurationSerializer.ConfigurationSerializer;
-import CreatorTestData.TestGraphCreator;
 import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelReader.FeatureModelReader;
@@ -13,13 +12,15 @@ import IO.impl.LshwClass;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled("Requires large datasets and external dependencies")
 public class OnlineTest {
     private final Logger _Logger = LogManager.getLogger("executionLog");
     private AvailableEdgeHardware _EdgeInformation = null;
@@ -48,15 +49,6 @@ public class OnlineTest {
 
         _SmallFeatureModelWithConfigurations = _ConfigurationSerializer.loadConfigurations(_FMReader.readFeatureModelJson(smallCurrentFile), smallFilePathConfiguration);
         _HugeFeatureModelWithConfigurations = _ConfigurationSerializer.loadConfigurations(_FMReader.readFeatureModelJson(hugeCurrentFile), hugeFilePathConfiguration);
-    }
-
-    @Test
-    public void onlinePhaseBenchmarkMobiDic() {
-        var hardwareSensitiveMerger = new HardwareSensitiveFeatureModelMerger(_Logger);
-        var graph = hardwareSensitiveMerger.startForTesting(_SmallFeatureModelWithConfigurations, _EdgeInformation, 2);
-
-        var testGraphCreator = new TestGraphCreator(_Logger);
-        var randomizedGraph = testGraphCreator.randomizeGraphCostWithAdvancedParameters(graph);
     }
 
     @Test
@@ -102,12 +94,16 @@ public class OnlineTest {
     public void testSmallFM() {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var graph = merger.startForTesting(_SmallFeatureModelWithConfigurations, _EdgeInformation, 12);
+        assertNotNull(graph, "Graph should not be null for small feature model");
+        assertTrue(merger.validConfigurations > 0, "Should merge at least one valid configuration");
     }
 
     @Test
     public void testHugeFMSmallEdge() {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var graph = merger.startForTesting(_HugeFeatureModelWithConfigurations, _EdgeInformation, 2);
+        assertNotNull(graph, "Graph should not be null for huge feature model with limited edge");
+        assertTrue(merger.validConfigurations > 0, "Should merge at least one valid configuration");
     }
 
     @Test
@@ -115,5 +111,7 @@ public class OnlineTest {
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
         var fullEdge = new AvailableEdgeHardware(10);
         var graph = merger.startForTesting(_HugeFeatureModelWithConfigurations, fullEdge, 12);
+        assertNotNull(graph, "Graph should not be null for huge feature model with full edge");
+        assertTrue(merger.validConfigurations > 0, "Should merge at least one valid configuration");
     }
 }
