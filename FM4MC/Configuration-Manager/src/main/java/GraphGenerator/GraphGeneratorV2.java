@@ -111,8 +111,6 @@ public class GraphGeneratorV2 {
     }
 
     private void generateEdges(IGraph graph, FeatureConnectivityInformation featureConnectivityInformation) {
-        Set<List<IVertex>> processedConfigurations = new HashSet<>();
-
         vertexConfigurationMap.values().forEach(config -> {
             for (int i = 1; i < config.size(); i++) {
                 var sourceVertex = config.get(i - 1);
@@ -126,7 +124,7 @@ public class GraphGeneratorV2 {
             if (connectedFeatures != null) {
                 connectedFeatures.forEach(feature -> {
                     var followingConfig = vertexConfigurationMap.get(feature.getName());
-                    if (followingConfig != null && processedConfigurations.add(followingConfig)) {
+                    if (followingConfig != null) {
                         var startVertex = followingConfig.get(0);
                         graph.addEdge(new Edge(endVertex, startVertex, nextEdgeId.getAndIncrement()));
                     }
