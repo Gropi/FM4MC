@@ -28,10 +28,15 @@ public class Startup {
         var slicing = arguments.containsKey("slicing");
         if (!slicing)
             threshold = Integer.MAX_VALUE;
-        var output = arguments.get("configurations");
+
 
         var processLogic = new FeatureModelPreProcessor(_Logger);
-        if (arguments.containsKey("fmFile")) {
+        if (!arguments.containsKey("configurations")) {
+            _Logger.error("Missing argument for configuration output path");
+        } else if (!arguments.containsKey("fmFile")){
+            _Logger.error("Missing argument for Feature Model input path");
+        } else {
+            var output = arguments.get("configurations");
             processLogic.startTestForFile(arguments.get("fmFile"), threshold, slicing, output);
         }
     }
@@ -42,18 +47,15 @@ public class Startup {
     private static HashMap<String, String> getTestbedParameters(String[] args) {
         var parameters = new HashMap<String, String>();
 
-        for(int i = 0; i < args.length; i += 2) {
-            if(args[i].equalsIgnoreCase("-fmFile")){
+        for (int i = 0; i < args.length; i += 2) {
+            if (args[i].equalsIgnoreCase("-fmFile")) {
                 parameters.put("fmFile", args[i + 1]);
-            }
-            else if(args[i].equalsIgnoreCase("-threshold")){
+            } else if (args[i].equalsIgnoreCase("-threshold")) {
                 parameters.put("threshold", args[i + 1]);
-            }
-            else if(args[i].equalsIgnoreCase("-slicing")){
+            } else if (args[i].equalsIgnoreCase("-slicing")) {
                 parameters.put("slicing", "true");
                 i--;
-            }
-            else if(args[i].equalsIgnoreCase("-configurations")){
+            } else if (args[i].equalsIgnoreCase("-configurations")) {
                 parameters.put("configurations", args[i + 1]);
             }
         }
