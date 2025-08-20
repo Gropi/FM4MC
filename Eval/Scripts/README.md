@@ -8,12 +8,12 @@ This folder contains Python scripts for generating figures and tables used in th
 - Output directories expected by the scripts (e.g., `Results/RQ1a/Figure5`) must exist prior to execution
 
 ## Setup
-Create a local virtual environment and install dependencies:
+Create a local Python installation (if needed), virtual environment, and install dependencies:
 
 ```bash
-bash setup_env.sh      # Linux/macOS
+bash setup_env.sh                      # Linux/macOS
 # or
-setup_env.bat          # Windows
+setup_env.bat          # Windows (downloads Python if missing)
 ```
 
 ## Running all scripts

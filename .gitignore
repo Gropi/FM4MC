@@ -439,3 +439,5 @@ FodyWeavers.xsd
 QoRManager/.run/StartupVerdammterMist.run.xml
 
 Eval/Scripts/venv/
+Eval/Scripts/python/
+Eval/Scripts/python-*.exe
