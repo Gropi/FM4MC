@@ -66,7 +66,7 @@ public class CentralManager implements IMessageReceivedListener, IConsoleInputLi
                     var hardwareInformationRequester = anyMessage.unpack(HardwareInformationMessages.HardwareInformation.class);
                     var description = hardwareInformationRequester.getHardwareDescription();
                     var edgeNodeInformation = EdgeHardwareInformationParser.parseHardwareFromXML(description);
-                    //TODO weiterverarbeiten etc.
+                    // TODO: process hardware information
                 }
             } catch (InvalidProtocolBufferException | ParserConfigurationException | SAXException e) {
                 _Logger.error(e.getMessage());

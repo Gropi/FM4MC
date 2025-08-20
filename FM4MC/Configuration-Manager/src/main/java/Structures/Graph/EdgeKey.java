@@ -3,12 +3,12 @@ package Structures.Graph;
 public final class EdgeKey {
     private final int sourceId;
     private final int destinationId;
-    private final int hash;  // Vorberechneter Hash-Wert
+    private final int hash;  // precomputed hash value
 
     public EdgeKey(int sourceId, int destinationId) {
         this.sourceId = sourceId;
         this.destinationId = destinationId;
-        // Berechne einen Hash, der auf den HashCodes der Strings basiert
+        // Compute a hash based on the hash codes of the integers
         this.hash = 31 * sourceId + destinationId;
     }
 
