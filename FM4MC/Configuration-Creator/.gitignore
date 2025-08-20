@@ -1,2 +1,3 @@
-#not comit generated folders
-*/out/**
+# Do not commit generated folders
+out/
+**/out/
