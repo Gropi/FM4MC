@@ -3,8 +3,6 @@ package integration;
 import ConfigurationCalculator.ConfigurationCalculator;
 import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
 import ConfigurationSerializer.ConfigurationSerializer;
-import CreatorTestData.TestGraphCreator;
-import DecisionMaking.MobiDic.MobiDiCManager;
 import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelReader.FeatureModelReader;
@@ -14,6 +12,7 @@ import IO.impl.LshwClass;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -21,6 +20,7 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Disabled("Requires large datasets and external dependencies")
 public class OnlineTest {
     private final Logger _Logger = LogManager.getLogger("executionLog");
     private AvailableEdgeHardware _EdgeInformation = null;
@@ -49,17 +49,6 @@ public class OnlineTest {
 
         _SmallFeatureModelWithConfigurations = _ConfigurationSerializer.loadConfigurations(_FMReader.readFeatureModelJson(smallCurrentFile), smallFilePathConfiguration);
         _HugeFeatureModelWithConfigurations = _ConfigurationSerializer.loadConfigurations(_FMReader.readFeatureModelJson(hugeCurrentFile), hugeFilePathConfiguration);
-    }
-
-    @Test
-    public void onlinePhaseBenchmarkMobiDic() {
-        var hardwareSensitiveMerger = new HardwareSensitiveFeatureModelMerger(_Logger);
-        var graph = hardwareSensitiveMerger.startForTesting(_SmallFeatureModelWithConfigurations, _EdgeInformation, 2);
-
-        var testGraphCreator = new TestGraphCreator(_Logger);
-        var randomizedGraph = testGraphCreator.randomizeGraphCostWithAdvancedParameters(graph);
-
-        var decisionMaker = new MobiDiCManager(randomizedGraph);
     }
 
     @Test
