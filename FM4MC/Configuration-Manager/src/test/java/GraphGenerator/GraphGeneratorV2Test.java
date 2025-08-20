@@ -1,4 +1,4 @@
-package test.GraphGenerator;
+package GraphGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,12 +6,10 @@ import CNFClauseGenerator.CNFClauseGenerator;
 import ConfigurationCalculator.ConfigurationCalculator;
 import ConfigurationSerializer.ConfigurationSerializer;
 import CreatorTestData.TestGraphCreator;
-import DecisionMaking.MobiDic.MobiDiCManager;
 import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelReader.FeatureModelReader;
 import FeatureModelSlicer.FeatureModelSlicer;
-import GraphGenerator.GraphGeneratorV2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -56,9 +54,6 @@ class GraphGeneratorV2Test {
 
         var testGraphCreator = new TestGraphCreator(_Logger);
         var randomizedGraph = testGraphCreator.randomizeGraphCostWithAdvancedParameters(graph);
-
-        var decisionMaker = new MobiDiCManager(randomizedGraph);
-        decisionMaker.getInitialSelection(Integer.MAX_VALUE, null);
     }
 
     @Test
@@ -75,9 +70,6 @@ class GraphGeneratorV2Test {
 
         var testGraphCreator = new TestGraphCreator(_Logger);
         var randomizedGraph = testGraphCreator.randomizeGraphCostWithAdvancedParameters(graph);
-
-        var decisionMaker = new MobiDiCManager(randomizedGraph);
-        decisionMaker.getInitialSelection(Integer.MAX_VALUE, null);
     }
 
     @Test
