@@ -5,7 +5,6 @@ This folder contains Python scripts for generating figures and tables used in th
 ## Prerequisites
 - Python 3
 - Required Python packages listed in [`requirements.txt`](requirements.txt)
-- Output directories expected by the scripts (e.g., `Results/RQ1a/Figure5`) must exist prior to execution
 
 ## Setup
 Create a local Python installation (if needed), virtual environment, and install dependencies:
@@ -17,7 +16,8 @@ setup_env.bat          # Windows (downloads Python if missing)
 ```
 
 ## Running all scripts
-Execute every evaluation script sequentially:
+Execute every evaluation script sequentially. The helper script creates any necessary
+`Results` subdirectories before running the Python scripts:
 
 ```bash
 bash run_all.sh        # Linux/macOS
@@ -35,4 +35,6 @@ venv\Scripts\activate.bat     # Windows
 python <script_name>.py
 ```
 
-Each script writes output files to the `Results` directory tree, so ensure the necessary folders exist before execution.
+Scripts write output files to the `Results` directory tree. The `run_all` helpers
+prepare these folders automatically. If you run a script individually, create the
+desired output directories beforehand.
