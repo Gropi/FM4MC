@@ -19,7 +19,7 @@ public class CentralManagerSimulation {
     }
 
 
-    public void startOnlinePhase(String configurationsPath, String fmFilePath, String edgeIndex) {
+    public void startOnlinePhase(String configurationsPath, String fmFilePath, int edgeIndex) {
         var edgeInformation = getEdgeInformation(edgeIndex);
         if (edgeInformation == null) {
             _Logger.error(edgeIndex + " is not a valid Edge Index");
@@ -38,34 +38,34 @@ public class CentralManagerSimulation {
         }
     }
 
-    private AvailableEdgeHardware getEdgeInformation(String edgeIndex) {
+    private AvailableEdgeHardware getEdgeInformation(int edgeIndex) {
         AvailableEdgeHardware edgeInformation = null;
         switch (edgeIndex) {
-            case "1" -> {
+            case 1 -> {
                 edgeInformation = new AvailableEdgeHardware(2);
                 edgeInformation.edgeHardware.put(LshwClass.DISPLAY, 1);
                 edgeInformation.edgeHardware.put(LshwClass.PROCESSOR, 3);
                 edgeInformation.edgeHardware.put(LshwClass.MEMORY, 2);
             }
-            case "2" -> {
+            case 2 -> {
                 edgeInformation = new AvailableEdgeHardware(4);
                 edgeInformation.edgeHardware.put(LshwClass.DISPLAY, 10);
                 edgeInformation.edgeHardware.put(LshwClass.PROCESSOR, 6);
                 edgeInformation.edgeHardware.put(LshwClass.MEMORY, 5);
             }
-            case "3" -> {
+            case 3 -> {
                 edgeInformation = new AvailableEdgeHardware(6);
                 edgeInformation.edgeHardware.put(LshwClass.DISPLAY, 10);
                 edgeInformation.edgeHardware.put(LshwClass.PROCESSOR, 6);
                 edgeInformation.edgeHardware.put(LshwClass.MEMORY, 5);
             }
-            case "4" -> {
+            case 4 -> {
                 edgeInformation = new AvailableEdgeHardware(8);
                 edgeInformation.edgeHardware.put(LshwClass.DISPLAY, 10);
                 edgeInformation.edgeHardware.put(LshwClass.PROCESSOR, 9);
                 edgeInformation.edgeHardware.put(LshwClass.MEMORY, 8);
             }
-            case "5" -> {
+            case 5 -> {
                 edgeInformation = new AvailableEdgeHardware(10);
             }
         }

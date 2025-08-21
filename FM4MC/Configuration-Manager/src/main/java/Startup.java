@@ -1,9 +1,6 @@
-import BusinessLogic.FeatureModelPreProcessor;
 import Businesslogic.CentralManager;
 import Businesslogic.CentralManagerSimulation;
 import Console.ThreadSafeConsoleHandler;
-import FeatureModelMerger.Structures.AvailableEdgeHardware;
-import IO.impl.LshwClass;
 import Monitoring.Event.Logging.impl.LogInformation;
 import Network.Connection.impl.ConnectionInformation;
 import Network.Facade.impl.ConnectionFacade;
@@ -42,7 +39,7 @@ public class Startup {
         } else if (!arguments.containsKey("edgeIndex")) {
             _Logger.error("Missing Edge Index: 1 for tiny, 2 for small, 3 for medium, 4 for big, 5 for huge");
         } else {
-            processLogic.startOnlinePhase(arguments.get("configurations"), arguments.get("fmFile"), arguments.get("edgeIndex"));
+            processLogic.startOnlinePhase(arguments.get("configurations"), arguments.get("fmFile"), Integer.parseInt(arguments.get("edgeIndex")));
         }
     }
 
