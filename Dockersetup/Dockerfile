@@ -13,9 +13,7 @@ RUN cd FM4MC \
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 # Copy runtime artifacts
-COPY --from=build /workspace/FM4MC/Canete/build/libs/Canete.jar /app/
-COPY --from=build /workspace/FM4MC/Collector/build/libs/Collector.jar /app/
-COPY --from=build /workspace/FM4MC/JMH/build/libs/JMH.jar /app/
+COPY --from=build /workspace/FM4MC/*/build/libs/*.jar /app/
 # Include required test data
 COPY FM4MC/TestData /app/TestData
 # Copy run script
