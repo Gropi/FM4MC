@@ -19,8 +19,8 @@ The module is executed via the command line. Arguments are passed in key/value p
 ### Example Command
 
 ```bash
-java -cp <your-jar-or-classes-path> Startup \
+java -jar Configuration-Creator/build/libs/Configuration-Creator-1.0.jar Startup \
 -slicing \
--fmFile "C:\..\TestData\TestGraphs\TestFMJsons\FM_BenchmarkGraph_6_Services_NoExcludes_57.344_configs.json" \
--configurations "C:\..\TestData\TestGraphs\TestConfigurationFiles\57.344_configs.csv"
+-fmFile "TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
+-configurations "TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv"
 
