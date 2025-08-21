@@ -36,8 +36,7 @@ public class Startup {
         } else if (!arguments.containsKey("fmFile")){
             _Logger.error("Missing argument for Feature Model input path");
         } else {
-            var output = arguments.get("configurations");
-            processLogic.startTestForFile(arguments.get("fmFile"), threshold, slicing, output);
+            processLogic.startTestForFile(arguments.get("fmFile"), threshold, slicing, arguments.get("configurations"));
         }
     }
 
