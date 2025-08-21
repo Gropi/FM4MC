@@ -24,5 +24,4 @@ Run the batch script from a Command Prompt or PowerShell window:
 ```bat
 Dockersetup\build_and_run.bat
 ```
-
 The benchmark CSV is written to `Dockersetup/output/benchmark.csv`.
