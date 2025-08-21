@@ -52,7 +52,7 @@ public class OnlineTest {
     }
 
     @Test
-    void testSlicingSimpleChain() throws Exception {
+    void testSlicingBenchmarkGraph() throws Exception {
         var readFile = new File("../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_57.344_configs.json");
         var reader = new FeatureModelReader(_Logger);
         var model = reader.readFeatureModelJson(readFile);
@@ -81,13 +81,15 @@ public class OnlineTest {
         var res = merger.startForTesting(newFM, countrySideEdge, 2);
 
 
-        // Expect one slice containing startTask, task1, task2.
-        assertEquals(1, slicedModels.size(), "There should be one slice for a simple chain");
-        var slice = slicedModels.getFirst();
-        assertEquals(3, slice.size(), "Slice should contain 3 features");
-        assertEquals("startTask", slice.get(0).getName());
-        assertEquals("task1", slice.get(1).getName());
-        assertEquals("task2", slice.get(2).getName());
+        // The benchmark graph is sliced into individual tasks plus a final pair (task7, endTask).
+        assertEquals(12, slicedModels.size(), "Unexpected number of slices for benchmark graph");
+        assertEquals(1, slicedModels.get(0).size(), "First slice should contain only startTask");
+        assertEquals("startTask", slicedModels.get(0).getFirst().getName());
+        assertEquals("task1", slicedModels.get(1).getFirst().getName());
+        var terminalSlice = slicedModels.get(3);
+        assertEquals(2, terminalSlice.size(), "Fourth slice should contain two terminal tasks");
+        assertEquals("task7", terminalSlice.get(0).getName());
+        assertEquals("endTask", terminalSlice.get(1).getName());
     }
 
     @Test
