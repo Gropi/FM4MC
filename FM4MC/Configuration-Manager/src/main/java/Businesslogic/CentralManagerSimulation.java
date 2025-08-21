@@ -30,7 +30,10 @@ public class CentralManagerSimulation {
                 var featureModelWithConfigurations = fmSerializer.loadConfigurations(fmReader.readFeatureModelJson(new File(fmFilePath)), configurationsPath);
 
                 var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
+                _Logger.info("Graph generation started");
                 var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
+                graph.toString();
+                _Logger.info("Graph generation finished");
 
             } catch (InvalidFeatureModelRelationException e) {
                 _Logger.fatal(e);
