@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import ConfigurationCalculator.Structures.PartialConfiguration;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureConnectivityInformation;
-import GraphGenerator.GraphGeneratorV2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
