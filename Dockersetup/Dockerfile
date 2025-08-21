@@ -3,8 +3,11 @@ FROM eclipse-temurin:21-jdk AS build
 WORKDIR /workspace
 # Copy sources
 COPY FM4MC/ /workspace/FM4MC/
-# Build jars
-RUN cd FM4MC && ./gradlew --no-daemon build
+# Build jars, normalizing line endings for the Gradle wrapper
+RUN cd FM4MC \
+    && sed -i 's/\r$//' gradlew \
+    && chmod +x gradlew \
+    && ./gradlew --no-daemon build
 
 # Runtime image containing built jars and test data
 FROM eclipse-temurin:21-jre
@@ -17,6 +20,6 @@ COPY --from=build /workspace/FM4MC/JMH/build/libs/JMH.jar /app/
 COPY FM4MC/TestData /app/TestData
 # Copy run script
 COPY Dockersetup/run_bench.sh /app/run_bench.sh
-RUN chmod +x /app/run_bench.sh
+RUN sed -i 's/\r$//' /app/run_bench.sh && chmod +x /app/run_bench.sh
 # Default entry point runs the benchmark and exports data
 ENTRYPOINT ["/app/run_bench.sh"]

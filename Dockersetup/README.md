@@ -9,7 +9,7 @@ This directory contains files to build and run FM4MC inside a Docker container.
 - `build_and_run.bat` – Windows batch script performing the same build-and-run workflow.
 
 ## Usage
-Ensure Docker is installed and the daemon is running (Docker Desktop on Windows).
+Ensure Docker is installed. The helper scripts attempt to start the daemon if it is not already running (Docker Desktop on Windows).
 ### Linux / macOS
 
 Run the helper script with Bash (on Windows, use Git Bash or WSL):

@@ -6,7 +6,18 @@ IMAGE_NAME=fm4mc
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 if ! docker info >/dev/null 2>&1; then
-  echo "Docker daemon not running. Please start Docker and try again." >&2
+  echo "Docker daemon not running. Attempting to start..." >&2
+  if command -v systemctl >/dev/null 2>&1; then
+    sudo systemctl start docker >/dev/null 2>&1 || true
+  elif command -v service >/dev/null 2>&1; then
+    sudo service docker start >/dev/null 2>&1 || true
+  fi
+  # Give the daemon a moment to initialize
+  sleep 2
+fi
+
+if ! docker info >/dev/null 2>&1; then
+  echo "Docker daemon still not running. Please start Docker and try again." >&2
   exit 1
 fi
 docker build -f "$SCRIPT_DIR/Dockerfile" -t "$IMAGE_NAME" "$ROOT_DIR"
