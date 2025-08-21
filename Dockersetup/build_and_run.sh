@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Build the FM4MC Docker image and run benchmarks, collecting results
 set -e
 IMAGE_NAME=fm4mc

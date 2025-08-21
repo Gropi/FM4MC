@@ -5,17 +5,23 @@ This directory contains files to build and run FM4MC inside a Docker container.
 ## Contents
 - `Dockerfile` – builds FM4MC with Gradle and packages the runtime jars with required test data.
 - `run_bench.sh` – default entry point inside the container; runs JMH benchmarks and stores the results in `/output`.
-- `build_and_run.sh` – Linux helper script for building the image and running the container while collecting benchmark results.
-- `build_and_run.ps1` – Windows PowerShell script performing the same workflow.
+- `build_and_run.sh` – Bash helper script that builds the image and runs the container while collecting benchmark results.
+- `build_and_run.bat` – Windows batch script performing the same build-and-run workflow.
 
 ## Usage
-### Linux/macOS
+### Linux / macOS
+
+Run the helper script with Bash (on Windows, use Git Bash or WSL):
+
 ```bash
-./Dockersetup/build_and_run.sh
+bash ./Dockersetup/build_and_run.sh
 ```
 
 ### Windows
-```powershell
-powershell -ExecutionPolicy Bypass -File .\Dockersetup\build_and_run.ps1
+
+Run the batch script from a Command Prompt or PowerShell window:
+
+```bat
+Dockersetup\build_and_run.bat
 ```
 The benchmark CSV is written to `Dockersetup/output/benchmark.csv`.
