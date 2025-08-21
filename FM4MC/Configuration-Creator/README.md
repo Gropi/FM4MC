@@ -19,7 +19,7 @@ The module is executed via the command line. Arguments are passed in key/value p
 ### Example Command
 
 ```bash
-java -jar Configuration-Creator/build/libs/Configuration-Creator-1.0.jar Startup \
+java -cp Configuration-Creator/build/libs/Configuration-Creator-1.0.jar Startup \
 -slicing \
 -fmFile "TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
 -configurations "TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv"
