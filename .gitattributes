@@ -1,0 +1,8 @@
+* text=auto
+
+# Ensure Unix line endings for shell scripts and Gradle wrapper
+*.sh text eol=lf
+gradlew text eol=lf
+
+# Keep Windows line endings for batch files
+*.bat text eol=crlf
