@@ -92,4 +92,59 @@ class GraphGeneratorV2Test {
         assertEquals(0, graph.getEdgesBetweenVertices(vertexA1, vertexA2).size());
         assertEquals(3, graph.getAllVertices().size());
     }
+
+    @Test
+    void generateGraph_multipleConfigurationsWithSameStart_createsAllSequentialEdges() {
+        var serviceA = new Feature("A_service", 10, null);
+        var featureA = new Feature("A", 1, serviceA);
+        var serviceB1 = new Feature("B1_service", 20, null);
+        var featureB1 = new Feature("B1", 2, serviceB1);
+        var serviceB2 = new Feature("B2_service", 30, null);
+        var featureB2 = new Feature("B2", 3, serviceB2);
+
+        var config1 = new PartialConfiguration(List.of(featureA, featureB1));
+        var config2 = new PartialConfiguration(List.of(featureA, featureB2));
+
+        featureConnectivityInformation.startFeature = featureA;
+        featureConnectivityInformation.featureConnectivityMap = new HashMap<>();
+
+        var graph = graphGenerator.generateGraph(List.of(config1, config2), featureConnectivityInformation);
+
+        var vertexA = graph.getVertexByIdentifier("A");
+        var vertexB1 = graph.getVertexByIdentifier("B1");
+        var vertexB2 = graph.getVertexByIdentifier("B2");
+
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB1).size());
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB2).size());
+        assertEquals(3, graph.getAllVertices().size());
+    }
+
+    @Test
+    void generateGraph_connectivityChain_linksAllConfigurations() {
+        var serviceA = new Feature("A_service", 10, null);
+        var featureA = new Feature("A", 1, serviceA);
+        var serviceB = new Feature("B_service", 20, null);
+        var featureB = new Feature("B", 2, serviceB);
+        var serviceC = new Feature("C_service", 30, null);
+        var featureC = new Feature("C", 3, serviceC);
+
+        var configA = new PartialConfiguration(List.of(featureA));
+        var configB = new PartialConfiguration(List.of(featureB));
+        var configC = new PartialConfiguration(List.of(featureC));
+
+        featureConnectivityInformation.startFeature = featureA;
+        featureConnectivityInformation.featureConnectivityMap = new HashMap<>();
+        featureConnectivityInformation.featureConnectivityMap.put("A_service", List.of(featureB));
+        featureConnectivityInformation.featureConnectivityMap.put("B_service", List.of(featureC));
+
+        var graph = graphGenerator.generateGraph(List.of(configA, configB, configC), featureConnectivityInformation);
+
+        var vertexA = graph.getVertexByIdentifier("A");
+        var vertexB = graph.getVertexByIdentifier("B");
+        var vertexC = graph.getVertexByIdentifier("C");
+
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB).size());
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexB, vertexC).size());
+        assertTrue(graph.getEdgesBetweenVertices(vertexA, vertexC).isEmpty());
+    }
 }
