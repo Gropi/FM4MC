@@ -92,4 +92,30 @@ class GraphGeneratorV2Test {
         assertEquals(0, graph.getEdgesBetweenVertices(vertexA1, vertexA2).size());
         assertEquals(3, graph.getAllVertices().size());
     }
+
+    @Test
+    void generateGraph_multipleConfigurationsWithSameStart_createsAllSequentialEdges() {
+        var serviceA = new Feature("A_service", 10, null);
+        var featureA = new Feature("A", 1, serviceA);
+        var serviceB1 = new Feature("B1_service", 20, null);
+        var featureB1 = new Feature("B1", 2, serviceB1);
+        var serviceB2 = new Feature("B2_service", 30, null);
+        var featureB2 = new Feature("B2", 3, serviceB2);
+
+        var config1 = new PartialConfiguration(List.of(featureA, featureB1));
+        var config2 = new PartialConfiguration(List.of(featureA, featureB2));
+
+        featureConnectivityInformation.startFeature = featureA;
+        featureConnectivityInformation.featureConnectivityMap = new HashMap<>();
+
+        var graph = graphGenerator.generateGraph(List.of(config1, config2), featureConnectivityInformation);
+
+        var vertexA = graph.getVertexByIdentifier("A");
+        var vertexB1 = graph.getVertexByIdentifier("B1");
+        var vertexB2 = graph.getVertexByIdentifier("B2");
+
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB1).size());
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB2).size());
+        assertEquals(3, graph.getAllVertices().size());
+    }
 }
