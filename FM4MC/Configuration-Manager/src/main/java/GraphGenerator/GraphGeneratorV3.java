@@ -3,7 +3,6 @@ package GraphGenerator;
 import ConfigurationCalculator.Structures.PartialConfiguration;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureConnectivityInformation;
-import FeatureModelReader.Structures.FeatureModelRead;
 import Structures.Graph.Edge;
 import Structures.Graph.Graph;
 import Structures.Graph.Vertex;
@@ -17,6 +16,7 @@ import static io.github.atomfinger.touuid.UUIDs.toUUID;
 public class GraphGeneratorV3 {
 
     private int nextEdgeId = 1;
+    private int nextGraphId = 1;
     List<List<IVertex>> vertexConfiguration;
 
     public Graph generateGraph(List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation)
@@ -25,7 +25,8 @@ public class GraphGeneratorV3 {
         var vertices = createVertices(configuration);
         var startVertex = getStartVertex(vertices, featureConnectivityInformation.startFeature);
 
-        var graph = new Graph(UUID.randomUUID(), startVertex, "");
+        var graph = new Graph(nextGraphId, startVertex, "");
+        nextGraphId++;
 
         for (var vertex : vertices) {
             graph.addVertex(vertex);
@@ -36,35 +37,12 @@ public class GraphGeneratorV3 {
         return graph;
     }
 
-    public Graph generateGraphFromSingleConfiguration(PartialConfiguration configuration, FeatureConnectivityInformation featureConnectivityInformation, FeatureModelRead fm) {
-        vertexConfiguration = new ArrayList<>();
-        var vertices = createVertices(Collections.singletonList(configuration));
-        var startVertex = getStartVertex(vertices, featureConnectivityInformation.startFeature);
-
-        var graph = new Graph(UUID.randomUUID(), startVertex, "");
-
-        for (var vertex : vertices) {
-            graph.addVertex(vertex);
-        }
-
-        for (var vertex : graph.getAllVertices()) {
-            var abstractFeaturesConnectedToParent = featureConnectivityInformation.featureConnectivityMap.get(vertex.getServiceName());
-            var childrenOfConnectedAbstractFeatures = fm.features.stream().filter(x -> abstractFeaturesConnectedToParent.contains(x.getParentFeature())).map(Feature::getName).toList();
-            var verticesInGraphOfChildren = graph.getAllVertices().stream().filter(x -> childrenOfConnectedAbstractFeatures.contains(x.getLabel())).toList();
-            for (var connectedVertex : verticesInGraphOfChildren) {
-                graph.addEdge(new Edge(vertex, connectedVertex, createUUIDFromIndex(nextEdgeId)));
-                nextEdgeId++;
-            }
-        }
-        return graph;
-    }
-
     private List<IVertex> createVertices(List<PartialConfiguration> configuration) {
         var vertices = new ArrayList<IVertex>();
         for (var partialConfiguration : configuration) {
             var partialConfigurationVertices = new ArrayList<IVertex>();
             for (var feature: partialConfiguration.getFeatures()) {
-                var vertex = new Vertex(feature.getName(), createUUIDFromIndex(feature.getIndex()), feature.getParentFeature().getName());
+                var vertex = new Vertex(feature.getName(), feature.getIndex(), feature.getParentFeature().getName());
                 partialConfigurationVertices.add(vertex);
                 vertices.add(vertex);
             }
@@ -76,7 +54,7 @@ public class GraphGeneratorV3 {
     private IVertex getStartVertex(List<IVertex> vertices, Feature startFeature) {
         var startVertex = vertices.stream().filter(x -> x.getLabel().equals(startFeature.getName())).findFirst().orElse(null);
         if (startVertex == null) {
-            return new Vertex(startFeature.getName(), createUUIDFromIndex(startFeature.getIndex()), "startFeature.parentFeature.name");
+            return new Vertex(startFeature.getName(), startFeature.getIndex(), "startFeature.parentFeature.name");
         }
         return startVertex;
     }
@@ -98,7 +76,7 @@ public class GraphGeneratorV3 {
             for (int i = 1; i < partialConfigurationBeingChecked.size(); i++) {
                 var sourceVertex = partialConfigurationBeingChecked.get(i-1);
                 var targetVertex = partialConfigurationBeingChecked.get(i);
-                graph.addEdge(new Edge(sourceVertex, targetVertex, createUUIDFromIndex(nextEdgeId)));
+                graph.addEdge(new Edge(sourceVertex, targetVertex, nextEdgeId));
                 nextEdgeId++;
             }
 
@@ -113,7 +91,7 @@ public class GraphGeneratorV3 {
                     partialConfigurationsUnchecked.add(partialConfiguration);
                 }
                 var startVertexOfPartialConfiguration = partialConfiguration.get(0);
-                graph.addEdge(new Edge(endVertexOfPartialConfiguration, startVertexOfPartialConfiguration, createUUIDFromIndex(nextEdgeId)));
+                graph.addEdge(new Edge(endVertexOfPartialConfiguration, startVertexOfPartialConfiguration, nextEdgeId));
                 nextEdgeId++;
             }
         }

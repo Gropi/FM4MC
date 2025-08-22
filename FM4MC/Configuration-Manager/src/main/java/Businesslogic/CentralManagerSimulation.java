@@ -19,7 +19,6 @@ public class CentralManagerSimulation {
         _Logger = logger;
     }
 
-
     public void startOnlinePhase(String configurationsPath, String fmFilePath, int edgeIndex) {
         var edgeInformation = getEdgeInformation(edgeIndex);
         if (edgeInformation == null) {
@@ -33,6 +32,7 @@ public class CentralManagerSimulation {
                 var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
                 _Logger.info("Graph generation started");
                 var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
+                graph.recalculateGraphStages();
                 _Logger.info("Graph generation finished");
                 new GraphOnlineParser(_Logger).saveGraphToXML(graph, "D:\\temp.graphml");
 

@@ -9,6 +9,7 @@ import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureConnectivityInformation;
 import Filter.FeatureFilter;
 import GraphGenerator.GraphGeneratorV2;
+import GraphGenerator.GraphGeneratorV3;
 import IO.impl.LshwClass;
 import Structures.Graph.Graph;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +21,7 @@ public class HardwareSensitiveFeatureModelMerger {
 
     private final Logger _Logger;
     private FeatureModelPartiallyCalculated partiallyCalculatedFeatureModel;
-    private GraphGeneratorV2 graphGenerator = new GraphGeneratorV2();
+    private GraphGeneratorV3 graphGenerator;
     private Graph combinedGraph;
     public int validConfigurations = 0;
 
@@ -39,7 +40,7 @@ public class HardwareSensitiveFeatureModelMerger {
 
     public Graph start(FeatureModelPartiallyCalculated fm, AvailableEdgeHardware edgeHardwareInformation, int maxRequirements) {
         partiallyCalculatedFeatureModel = fm;
-        graphGenerator = new GraphGeneratorV2();
+        graphGenerator = new GraphGeneratorV3();
         validConfigurations = 0;
 
         var featureFilter = new FeatureFilter(_Logger);

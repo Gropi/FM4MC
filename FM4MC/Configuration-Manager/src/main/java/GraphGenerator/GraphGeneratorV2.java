@@ -3,20 +3,14 @@ package GraphGenerator;
 import ConfigurationCalculator.Structures.PartialConfiguration;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureConnectivityInformation;
-import FeatureModelReader.Structures.FeatureModelRead;
 import Structures.Graph.Edge;
 import Structures.Graph.Graph;
 import Structures.Graph.Vertex;
 import Structures.Graph.interfaces.IVertex;
 import Structures.IGraph;
-import com.github.f4b6a3.uuid.UuidCreator;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-
-import static io.github.atomfinger.touuid.UUIDs.toUUID;
-
 
 /**
  * Alternative graph generator implementation supporting single and multiple
@@ -25,7 +19,8 @@ import static io.github.atomfinger.touuid.UUIDs.toUUID;
  */
 public class GraphGeneratorV2 {
 
-    private AtomicInteger nextEdgeId = new AtomicInteger(1); // Thread-safe counter for edge IDs
+    private final AtomicInteger nextEdgeId = new AtomicInteger(1); // Thread-safe counter for edge IDs
+    private final AtomicInteger nextGraphId = new AtomicInteger(1);
     private Map<String, List<IVertex>> vertexConfigurationMap; // Map for vertex configurations
 
     /**
@@ -40,51 +35,13 @@ public class GraphGeneratorV2 {
         var vertices = createVertices(configuration);
         var startVertex = getStartVertex(vertices, featureConnectivityInformation.startFeature);
 
-        var graph = new Graph(new Random().nextInt(10000), startVertex, "");
+        var graph = new Graph(nextGraphId.getAndIncrement(), startVertex, "");
 
         // Add vertices to the graph
         vertices.forEach(graph::addVertex);
 
         // Generate edges
-        generateEdges(graph, featureConnectivityInformation);
-
-        return graph;
-    }
-
-    /**
-     * Builds a graph from a single partial configuration.
-     *
-     * @param configuration the configuration to convert
-     * @param featureConnectivityInformation connectivity details of the model
-     * @param fm complete feature model used for indexing
-     * @return constructed graph
-     */
-    public Graph generateGraphFromSingleConfiguration(PartialConfiguration configuration, FeatureConnectivityInformation featureConnectivityInformation, FeatureModelRead fm) {
-        vertexConfigurationMap = new HashMap<>();
-        var vertices = createVertices(Collections.singletonList(configuration));
-        var startVertex = getStartVertex(vertices, featureConnectivityInformation.startFeature);
-
-        var graph = new Graph(new Random().nextInt(10000), startVertex, "");
-
-        // Add vertices to the graph
-        vertices.forEach(graph::addVertex);
-
-        // Create a map for quick vertex lookup
-        Map<String, IVertex> vertexMap = vertices.stream()
-                .collect(Collectors.toMap(IVertex::getServiceName, v -> v));
-
-        // Add edges based on feature connectivity
-        vertices.forEach(vertex -> {
-            var connectedFeatures = featureConnectivityInformation.featureConnectivityMap.get(vertex.getServiceName());
-            if (connectedFeatures != null) {
-                connectedFeatures.forEach(feature -> {
-                    var connectedVertex = vertexMap.get(feature.getName());
-                    if (connectedVertex != null) {
-                        graph.addEdge(new Edge(vertex, connectedVertex, nextEdgeId.getAndIncrement()));
-                    }
-                });
-            }
-        });
+        generateEdges(graph, configuration, featureConnectivityInformation);
 
         return graph;
     }
@@ -110,7 +67,7 @@ public class GraphGeneratorV2 {
                 .orElseGet(() -> new Vertex(startFeature.getName(), startFeature.getIndex(), "startFeature.parentFeature.name"));
     }
 
-    private void generateEdges(IGraph graph, FeatureConnectivityInformation featureConnectivityInformation) {
+    private void generateEdges(IGraph graph, List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
         vertexConfigurationMap.values().forEach(config -> {
             for (int i = 1; i < config.size(); i++) {
                 var sourceVertex = config.get(i - 1);
