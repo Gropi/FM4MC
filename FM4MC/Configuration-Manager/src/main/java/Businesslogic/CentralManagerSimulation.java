@@ -5,6 +5,7 @@ import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.InvalidFeatureModelRelationException;
+import Graph.GraphOnlineParser;
 import IO.impl.LshwClass;
 import org.apache.logging.log4j.Logger;
 
@@ -32,8 +33,8 @@ public class CentralManagerSimulation {
                 var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
                 _Logger.info("Graph generation started");
                 var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
-                graph.toString();
                 _Logger.info("Graph generation finished");
+                new GraphOnlineParser(_Logger).saveGraphToXML(graph, "D:\\temp.graphml");
 
             } catch (InvalidFeatureModelRelationException e) {
                 _Logger.fatal(e);

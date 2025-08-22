@@ -133,20 +133,33 @@ public class GraphOnlineParser {
             vertexElement.setAttribute("application", vertex.getApplicationIndex()+"");
             vertexElement.setAttribute("approximation", vertex.getApproximationIndex()+"");
             vertexElement.setAttribute("stage", vertex.getStage()+"");
-            vertexElement.setAttribute("executionTime", vertex.getWeight(MeasurableValues.TIME.name()).getValue().toString());
-            vertexElement.setAttribute("QoR", vertex.getWeight(MeasurableValues.QoR.name()).getValue().toString());
-            vertexElement.setAttribute("CPU", vertex.getWeight(MeasurableValues.CPU.name()).getValue().toString());
-            vertexElement.setAttribute("RAM", vertex.getWeight(MeasurableValues.RAM.name()).getValue().toString());
-            vertexElement.setAttribute("energy", vertex.getWeight(MeasurableValues.ENERGY.name()).getValue().toString());
-            //Dummy Parameters - might not be needed anymore
-            vertexElement.setAttribute("parameter1", vertex.getWeight(MeasurableValues.PARAMETER_1.name()).getValue().toString());
-            vertexElement.setAttribute("parameter2", vertex.getWeight(MeasurableValues.PARAMETER_2.name()).getValue().toString());
-            vertexElement.setAttribute("parameter3", vertex.getWeight(MeasurableValues.PARAMETER_3.name()).getValue().toString());
-            vertexElement.setAttribute("parameter4", vertex.getWeight(MeasurableValues.PARAMETER_4.name()).getValue().toString());
-            vertexElement.setAttribute("parameter5", vertex.getWeight(MeasurableValues.PARAMETER_5.name()).getValue().toString());
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.TIME, "executionTime");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.QoR, "QoR");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.CPU, "CPU");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.RAM, "RAM");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.ENERGY, "energy");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.PARAMETER_1, "parameter1");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.PARAMETER_2, "parameter2");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.PARAMETER_3, "parameter3");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.PARAMETER_4, "parameter4");
+            setAttributeIfPresent(vertexElement, vertex, MeasurableValues.PARAMETER_5, "parameter5");
 
             //Add element to graph
             graph.appendChild(vertexElement);
+        }
+    }
+
+    private void setAttributeIfPresent(Element vertexElement, IVertex vertex, MeasurableValues key, String attributeName) {
+        var weight = vertex.getWeight(key.name());
+        if (weight != null && weight.getValue() != null) {
+            vertexElement.setAttribute(attributeName, weight.getValue().toString());
+        }
+    }
+
+    private void setAttributeIfPresent(Element edgeElement, Edge edge, MeasurableValues key, String attributeName) {
+        var weight = edge.getWeight(key.name());
+        if (weight != null && weight.getValue() != null) {
+            edgeElement.setAttribute(attributeName, weight.getValue().toString());
         }
     }
 
@@ -169,9 +182,7 @@ public class GraphOnlineParser {
             edgeElement.setAttribute("model_curveValue", "0.1");
 
             //Own attributes
-            edgeElement.setAttribute("transmissionTime", edge.getWeight(MeasurableValues.LATENCY.name()).getValue().toString());
-            //INFO: Possible additions that have been used in the past but are not really stored in the edge
-            //edgeElement.setAttribute("transmissionTimeBound", ??);
+            setAttributeIfPresent(edgeElement, edge, MeasurableValues.LATENCY, "transmissionTime");
 
             //Add element to graph
             graph.appendChild(edgeElement);
