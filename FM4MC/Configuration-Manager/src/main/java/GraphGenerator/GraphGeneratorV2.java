@@ -76,30 +76,61 @@ public class GraphGeneratorV2 {
     }
 
     private void generateEdges(IGraph graph, List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
-        vertexConfigurationMap.values().forEach(configList -> {
-            for (var config : configList) {
-                for (int i = 1; i < config.size(); i++) {
-                    var sourceVertex = config.get(i - 1);
-                    var targetVertex = config.get(i);
-                    graph.addEdge(new Edge(sourceVertex, targetVertex, nextEdgeId.getAndIncrement()));
-                }
+        // Flatten all partial configurations stored in the map
+        var allPartialConfigurations = vertexConfigurationMap.values().stream()
+                .flatMap(List::stream)
+                .toList();
 
-                var endVertex = config.get(config.size() - 1);
-                var connectedFeatures = featureConnectivityInformation.featureConnectivityMap.get(endVertex.getServiceName());
+        // Determine which start features have incoming connections
+        var featuresConnected = allPartialConfigurations.stream()
+                .map(config -> featureConnectivityInformation.featureConnectivityMap.get(config.get(config.size() - 1).getServiceName()))
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .map(Feature::getName)
+                .distinct()
+                .toList();
 
-                if (connectedFeatures != null) {
-                    connectedFeatures.forEach(feature -> {
-                        var followingConfigs = vertexConfigurationMap.get(feature.getName());
-                        if (followingConfigs != null) {
-                            for (var followingConfig : followingConfigs) {
-                                var startVertex = followingConfig.get(0);
-                                graph.addEdge(new Edge(endVertex, startVertex, nextEdgeId.getAndIncrement()));
-                            }
-                        }
-                    });
-                }
+        // Starting configurations are those without incoming connections
+        var partialConfigurationsThatStart = allPartialConfigurations.stream()
+                .filter(config -> !featuresConnected.contains(config.get(0).getServiceName()))
+                .toList();
+
+        var partialConfigurationsChecked = new ArrayList<List<IVertex>>();
+        var partialConfigurationsUnchecked = new ArrayList<>(partialConfigurationsThatStart);
+
+        while (!partialConfigurationsUnchecked.isEmpty()) {
+            var partialConfigurationBeingChecked = partialConfigurationsUnchecked.remove(0);
+
+            // Create sequential edges inside the partial configuration
+            for (int i = 1; i < partialConfigurationBeingChecked.size(); i++) {
+                var sourceVertex = partialConfigurationBeingChecked.get(i - 1);
+                var targetVertex = partialConfigurationBeingChecked.get(i);
+                graph.addEdge(new Edge(sourceVertex, targetVertex, nextEdgeId.getAndIncrement()));
             }
-        });
+
+            var endVertexOfPartialConfiguration = partialConfigurationBeingChecked.get(partialConfigurationBeingChecked.size() - 1);
+            var followingAbstractFeatures = featureConnectivityInformation.featureConnectivityMap
+                    .getOrDefault(endVertexOfPartialConfiguration.getServiceName(), List.of())
+                    .stream()
+                    .map(Feature::getName)
+                    .toList();
+
+            var followingPartialConfigurations = followingAbstractFeatures.stream()
+                    .map(vertexConfigurationMap::get)
+                    .filter(Objects::nonNull)
+                    .flatMap(List::stream)
+                    .toList();
+
+            partialConfigurationsChecked.add(partialConfigurationBeingChecked);
+
+            for (var partialConfiguration : followingPartialConfigurations) {
+                if (!partialConfigurationsUnchecked.contains(partialConfiguration) && !partialConfigurationsChecked.contains(partialConfiguration)) {
+                    partialConfigurationsUnchecked.add(partialConfiguration);
+                }
+                var startVertexOfPartialConfiguration = partialConfiguration.get(0);
+                graph.addEdge(new Edge(endVertexOfPartialConfiguration, startVertexOfPartialConfiguration, nextEdgeId.getAndIncrement()));
+            }
+        }
     }
 
     /**

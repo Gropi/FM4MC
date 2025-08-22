@@ -136,6 +136,35 @@ class GraphGeneratorV2Test {
         assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB1).size());
         assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB2).size());
         assertEquals(3, graph.getAllVertices().size());
+    }
+
+    @Test
+    void generateGraph_connectivityChain_linksAllConfigurations() {
+        var serviceA = new Feature("A_service", 10, null);
+        var featureA = new Feature("A", 1, serviceA);
+        var serviceB = new Feature("B_service", 20, null);
+        var featureB = new Feature("B", 2, serviceB);
+        var serviceC = new Feature("C_service", 30, null);
+        var featureC = new Feature("C", 3, serviceC);
+
+        var configA = new PartialConfiguration(List.of(featureA));
+        var configB = new PartialConfiguration(List.of(featureB));
+        var configC = new PartialConfiguration(List.of(featureC));
+
+        featureConnectivityInformation.startFeature = featureA;
+        featureConnectivityInformation.featureConnectivityMap = new HashMap<>();
+        featureConnectivityInformation.featureConnectivityMap.put("A_service", List.of(featureB));
+        featureConnectivityInformation.featureConnectivityMap.put("B_service", List.of(featureC));
+
+        var graph = graphGenerator.generateGraph(List.of(configA, configB, configC), featureConnectivityInformation);
+
+        var vertexA = graph.getVertexByIdentifier("A");
+        var vertexB = graph.getVertexByIdentifier("B");
+        var vertexC = graph.getVertexByIdentifier("C");
+
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB).size());
+        assertEquals(1, graph.getEdgesBetweenVertices(vertexB, vertexC).size());
+        assertTrue(graph.getEdgesBetweenVertices(vertexA, vertexC).isEmpty());
 
      @Test
      void testGenerateGraph_large() throws InvalidFeatureModelRelationException {
