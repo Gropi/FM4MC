@@ -21,7 +21,9 @@ public class GraphGeneratorV2 {
 
     private final AtomicInteger nextEdgeId = new AtomicInteger(1); // Thread-safe counter for edge IDs
     private final AtomicInteger nextGraphId = new AtomicInteger(1);
-    private Map<String, List<IVertex>> vertexConfigurationMap; // Map for vertex configurations
+    // Multiple partial configurations can start with the same feature. Store all
+    // configurations for a feature to avoid losing edges when duplicates occur.
+    private Map<String, List<List<IVertex>>> vertexConfigurationMap; // Map for vertex configurations
 
     /**
      * Generates a graph for the given set of partial configurations.
@@ -55,7 +57,13 @@ public class GraphGeneratorV2 {
                 configVertices.add(vertex);
                 vertices.add(vertex);
             }
-            vertexConfigurationMap.put(config.getFeatures().get(0).getName(), configVertices);
+            // Add the list of vertices for this partial configuration under its
+            // starting feature. Multiple configurations may share the same start
+            // feature, therefore we keep a list for each key.
+            var startFeatureName = config.getFeatures().get(0).getName();
+            vertexConfigurationMap
+                    .computeIfAbsent(startFeatureName, k -> new ArrayList<>())
+                    .add(configVertices);
         }
         return vertices;
     }
@@ -68,26 +76,61 @@ public class GraphGeneratorV2 {
     }
 
     private void generateEdges(IGraph graph, List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
-        vertexConfigurationMap.values().forEach(config -> {
-            for (int i = 1; i < config.size(); i++) {
-                var sourceVertex = config.get(i - 1);
-                var targetVertex = config.get(i);
+        // Flatten all partial configurations stored in the map
+        var allPartialConfigurations = vertexConfigurationMap.values().stream()
+                .flatMap(List::stream)
+                .toList();
+
+        // Determine which start features have incoming connections
+        var featuresConnected = allPartialConfigurations.stream()
+                .map(config -> featureConnectivityInformation.featureConnectivityMap.get(config.get(config.size() - 1).getServiceName()))
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .map(Feature::getName)
+                .distinct()
+                .toList();
+
+        // Starting configurations are those without incoming connections
+        var partialConfigurationsThatStart = allPartialConfigurations.stream()
+                .filter(config -> !featuresConnected.contains(config.get(0).getServiceName()))
+                .toList();
+
+        var partialConfigurationsChecked = new ArrayList<List<IVertex>>();
+        var partialConfigurationsUnchecked = new ArrayList<>(partialConfigurationsThatStart);
+
+        while (!partialConfigurationsUnchecked.isEmpty()) {
+            var partialConfigurationBeingChecked = partialConfigurationsUnchecked.remove(0);
+
+            // Create sequential edges inside the partial configuration
+            for (int i = 1; i < partialConfigurationBeingChecked.size(); i++) {
+                var sourceVertex = partialConfigurationBeingChecked.get(i - 1);
+                var targetVertex = partialConfigurationBeingChecked.get(i);
                 graph.addEdge(new Edge(sourceVertex, targetVertex, nextEdgeId.getAndIncrement()));
             }
 
-            var endVertex = config.get(config.size() - 1);
-            var connectedFeatures = featureConnectivityInformation.featureConnectivityMap.get(endVertex.getServiceName());
+            var endVertexOfPartialConfiguration = partialConfigurationBeingChecked.get(partialConfigurationBeingChecked.size() - 1);
+            var followingAbstractFeatures = featureConnectivityInformation.featureConnectivityMap
+                    .getOrDefault(endVertexOfPartialConfiguration.getServiceName(), List.of())
+                    .stream()
+                    .map(Feature::getName)
+                    .toList();
 
-            if (connectedFeatures != null) {
-                connectedFeatures.forEach(feature -> {
-                    var followingConfig = vertexConfigurationMap.get(feature.getName());
-                    if (followingConfig != null) {
-                        var startVertex = followingConfig.get(0);
-                        graph.addEdge(new Edge(endVertex, startVertex, nextEdgeId.getAndIncrement()));
-                    }
-                });
+            var followingPartialConfigurations = followingAbstractFeatures.stream()
+                    .map(vertexConfigurationMap::get)
+                    .filter(Objects::nonNull)
+                    .flatMap(List::stream)
+                    .toList();
+
+            partialConfigurationsChecked.add(partialConfigurationBeingChecked);
+
+            for (var partialConfiguration : followingPartialConfigurations) {
+                if (!partialConfigurationsUnchecked.contains(partialConfiguration) && !partialConfigurationsChecked.contains(partialConfiguration)) {
+                    partialConfigurationsUnchecked.add(partialConfiguration);
+                }
+                var startVertexOfPartialConfiguration = partialConfiguration.get(0);
+                graph.addEdge(new Edge(endVertexOfPartialConfiguration, startVertexOfPartialConfiguration, nextEdgeId.getAndIncrement()));
             }
-        });
+        }
     }
 
     /**
