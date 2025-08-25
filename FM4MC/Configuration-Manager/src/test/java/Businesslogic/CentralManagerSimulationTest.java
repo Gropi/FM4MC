@@ -18,7 +18,7 @@ public class CentralManagerSimulationTest {
         instanceUnderTest.startOnlinePhase(
                 "../TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv",
                 "../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json",
-                5);
+                5, "temp.graphml");
 
         var graph = new GraphOnlineParser(_Logger).loadBaseGraph("temp.graphml", 1);
 

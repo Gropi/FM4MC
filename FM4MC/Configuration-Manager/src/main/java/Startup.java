@@ -38,8 +38,10 @@ public class Startup {
             _Logger.error("Missing argument for Feature Model input path");
         } else if (!arguments.containsKey("edgeIndex")) {
             _Logger.error("Missing Edge Index: 1 for tiny, 2 for small, 3 for medium, 4 for big, 5 for huge");
+        } else if (!arguments.containsKey("graph")) {
+            _Logger.error("Missing argument for graph output path");
         } else {
-            processLogic.startOnlinePhase(arguments.get("configurations"), arguments.get("fmFile"), Integer.parseInt(arguments.get("edgeIndex")));
+            processLogic.startOnlinePhase(arguments.get("configurations"), arguments.get("fmFile"), Integer.parseInt(arguments.get("edgeIndex")), arguments.get("graph"));
         }
     }
 
@@ -58,6 +60,8 @@ public class Startup {
                 parameters.put("configurations", args[i + 1]);
             } else if (args[i].equalsIgnoreCase("-edgeIndex")) {
                 parameters.put("edgeIndex", args[i + 1]);
+            } else if (args[i].equalsIgnoreCase("-graph")) {
+                parameters.put("graph", args[i + 1]);
             }
         }
 

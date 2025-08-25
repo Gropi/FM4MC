@@ -19,7 +19,7 @@ public class CentralManagerSimulation {
         _Logger = logger;
     }
 
-    public void startOnlinePhase(String configurationsPath, String fmFilePath, int edgeIndex) {
+    public void startOnlinePhase(String configurationsPath, String fmFilePath, int edgeIndex, String graphPath) {
         var edgeInformation = getEdgeInformation(edgeIndex);
         if (edgeInformation == null) {
             _Logger.error(edgeIndex + " is not a valid Edge Index");
@@ -34,8 +34,7 @@ public class CentralManagerSimulation {
                 var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
                 graph.recalculateGraphStages();
                 _Logger.info("Graph generation finished");
-                new GraphOnlineParser(_Logger).saveGraphToXML(graph, "temp.graphml");
-
+                new GraphOnlineParser(_Logger).saveGraphToXML(graph, graphPath);
             } catch (InvalidFeatureModelRelationException e) {
                 _Logger.fatal(e);
             }
