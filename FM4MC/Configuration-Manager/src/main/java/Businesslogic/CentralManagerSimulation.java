@@ -34,7 +34,7 @@ public class CentralManagerSimulation {
                 var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
                 graph.recalculateGraphStages();
                 _Logger.info("Graph generation finished");
-                new GraphOnlineParser(_Logger).saveGraphToXML(graph, "D:\\temp.graphml");
+                new GraphOnlineParser(_Logger).saveGraphToXML(graph, "temp.graphml");
 
             } catch (InvalidFeatureModelRelationException e) {
                 _Logger.fatal(e);

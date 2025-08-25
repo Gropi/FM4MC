@@ -165,6 +165,7 @@ class GraphGeneratorV2Test {
         assertEquals(1, graph.getEdgesBetweenVertices(vertexA, vertexB).size());
         assertEquals(1, graph.getEdgesBetweenVertices(vertexB, vertexC).size());
         assertTrue(graph.getEdgesBetweenVertices(vertexA, vertexC).isEmpty());
+    }
 
      @Test
      void testGenerateGraph_large() throws InvalidFeatureModelRelationException {
