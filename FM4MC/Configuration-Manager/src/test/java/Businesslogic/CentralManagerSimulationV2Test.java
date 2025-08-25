@@ -31,6 +31,7 @@ public class CentralManagerSimulationV2Test {
 
         var merger = new HardwareSensitiveFeatureModelMerger(_Logger, new GraphGeneratorV2());
         var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
+        graph.recalculateGraphStages();
 
         assertNotNull(graph);
         assertEquals(27, graph.getAllVertices().size());
