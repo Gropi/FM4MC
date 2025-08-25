@@ -1,6 +1,7 @@
 package Businesslogic;
 
 import ConfigurationSerializer.ConfigurationSerializer;
+import CreatorTestData.TestGraphCreator;
 import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelReader.FeatureModelReader;
@@ -32,7 +33,7 @@ public class CentralManagerSimulation {
                 var merger = new HardwareSensitiveFeatureModelMerger(_Logger);
                 _Logger.info("Graph generation started");
                 var graph = merger.startForTesting(featureModelWithConfigurations, edgeInformation, 14);
-                graph.recalculateGraphStages();
+                new TestGraphCreator(_Logger).randomizeGraphCostWithAdvancedParameters(graph);
                 _Logger.info("Graph generation finished");
                 new GraphOnlineParser(_Logger).saveGraphToXML(graph, graphPath);
             } catch (InvalidFeatureModelRelationException e) {
