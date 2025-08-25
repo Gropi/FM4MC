@@ -13,12 +13,13 @@ import java.util.*;
 
 import static io.github.atomfinger.touuid.UUIDs.toUUID;
 
-public class GraphGeneratorV3 {
+public class GraphGeneratorV3 implements IGraphGenerator {
 
     private int nextEdgeId = 1;
     private int nextGraphId = 1;
     List<List<IVertex>> vertexConfiguration;
 
+    @Override
     public Graph generateGraph(List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation)
     {
         vertexConfiguration = new ArrayList<>();
@@ -97,6 +98,7 @@ public class GraphGeneratorV3 {
         }
     }
 
+    @Override
     public void recalculateIndices(IGraph graph) {
         var vertices = graph.getAllVertices();
         var stage = 0;
