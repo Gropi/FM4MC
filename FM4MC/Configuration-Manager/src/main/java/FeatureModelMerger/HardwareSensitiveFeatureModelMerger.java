@@ -8,8 +8,8 @@ import FeatureModelReader.Structures.CrossTreeConstraintRelation;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureConnectivityInformation;
 import Filter.FeatureFilter;
-import GraphGenerator.GraphGeneratorV2;
 import GraphGenerator.GraphGeneratorV3;
+import GraphGenerator.IGraphGenerator;
 import IO.impl.LshwClass;
 import Structures.Graph.Graph;
 import org.apache.logging.log4j.Logger;
@@ -21,12 +21,17 @@ public class HardwareSensitiveFeatureModelMerger {
 
     private final Logger _Logger;
     private FeatureModelPartiallyCalculated partiallyCalculatedFeatureModel;
-    private GraphGeneratorV3 graphGenerator;
+    private IGraphGenerator graphGenerator;
     private Graph combinedGraph;
     public int validConfigurations = 0;
 
     public HardwareSensitiveFeatureModelMerger(Logger logger) {
+        this(logger, new GraphGeneratorV3());
+    }
+
+    public HardwareSensitiveFeatureModelMerger(Logger logger, IGraphGenerator graphGenerator) {
         _Logger = logger;
+        this.graphGenerator = graphGenerator;
     }
 
     public Graph startForTesting(FeatureModelPartiallyCalculated fm, AvailableEdgeHardware edgeHardwareInformation, int maxRequirements) {
@@ -40,7 +45,9 @@ public class HardwareSensitiveFeatureModelMerger {
 
     public Graph start(FeatureModelPartiallyCalculated fm, AvailableEdgeHardware edgeHardwareInformation, int maxRequirements) {
         partiallyCalculatedFeatureModel = fm;
-        graphGenerator = new GraphGeneratorV3();
+        if (graphGenerator == null) {
+            graphGenerator = new GraphGeneratorV3();
+        }
         validConfigurations = 0;
 
         var featureFilter = new FeatureFilter(_Logger);

@@ -11,13 +11,14 @@ import Structures.IGraph;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 /**
  * Alternative graph generator implementation supporting single and multiple
  * configurations. Vertices correspond to features while edges capture their
  * execution order and connectivity.
  */
-public class GraphGeneratorV2 {
+public class GraphGeneratorV2 implements IGraphGenerator {
 
     private final AtomicInteger nextEdgeId = new AtomicInteger(1); // Thread-safe counter for edge IDs
     private final AtomicInteger nextGraphId = new AtomicInteger(1);
@@ -32,6 +33,7 @@ public class GraphGeneratorV2 {
      * @param featureConnectivityInformation connectivity information of features
      * @return constructed graph
      */
+    @Override
     public Graph generateGraph(List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
         vertexConfigurationMap = new HashMap<>();
         var vertices = createVertices(configuration);
@@ -57,9 +59,9 @@ public class GraphGeneratorV2 {
                 configVertices.add(vertex);
                 vertices.add(vertex);
             }
-            // Add the list of vertices for this partial configuration under its
-            // starting feature. Multiple configurations may share the same start
-            // feature, therefore we keep a list for each key.
+            // Use the start feature name as key so that partial configurations can
+            // later be retrieved based on the feature referenced in the connectivity
+            // information.
             var startFeatureName = config.getFeatures().get(0).getName();
             vertexConfigurationMap
                     .computeIfAbsent(startFeatureName, k -> new ArrayList<>())
@@ -81,16 +83,18 @@ public class GraphGeneratorV2 {
                 .flatMap(List::stream)
                 .toList();
 
-        // Determine which start features have incoming connections
+        // Determine which start features have incoming connections by checking the
+        // connectivity information for each partial configuration's end.
         var featuresConnected = allPartialConfigurations.stream()
                 .map(config -> featureConnectivityInformation.featureConnectivityMap.get(config.get(config.size() - 1).getServiceName()))
                 .filter(Objects::nonNull)
                 .flatMap(Collection::stream)
-                .map(Feature::getName)
+                .flatMap(feature -> Stream.of(feature.getName(), feature.getParentFeature().getName()))
                 .distinct()
                 .toList();
 
-        // Starting configurations are those without incoming connections
+        // Starting configurations are those whose start feature name does not
+        // appear as a target of another configuration.
         var partialConfigurationsThatStart = allPartialConfigurations.stream()
                 .filter(config -> !featuresConnected.contains(config.get(0).getServiceName()))
                 .toList();
@@ -109,16 +113,14 @@ public class GraphGeneratorV2 {
             }
 
             var endVertexOfPartialConfiguration = partialConfigurationBeingChecked.get(partialConfigurationBeingChecked.size() - 1);
-            var followingAbstractFeatures = featureConnectivityInformation.featureConnectivityMap
+            var followingAbstractServices = featureConnectivityInformation.featureConnectivityMap
                     .getOrDefault(endVertexOfPartialConfiguration.getServiceName(), List.of())
                     .stream()
-                    .map(Feature::getName)
+                    .flatMap(feature -> Stream.of(feature.getName(), feature.getParentFeature().getName()))
                     .toList();
 
-            var followingPartialConfigurations = followingAbstractFeatures.stream()
-                    .map(vertexConfigurationMap::get)
-                    .filter(Objects::nonNull)
-                    .flatMap(List::stream)
+            var followingPartialConfigurations = allPartialConfigurations.stream()
+                    .filter(pc -> followingAbstractServices.contains(pc.get(0).getServiceName()))
                     .toList();
 
             partialConfigurationsChecked.add(partialConfigurationBeingChecked);
@@ -139,6 +141,7 @@ public class GraphGeneratorV2 {
      *
      * @param graph graph whose vertex indices should be recalculated
      */
+    @Override
     public void recalculateIndices(IGraph graph) {
         var vertices = graph.getAllVertices();
         int stage = 0;
