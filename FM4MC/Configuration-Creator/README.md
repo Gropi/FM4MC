@@ -3,7 +3,7 @@ Wozu ist das Tool?
 Wie ist der Aufbau der FeatureModel.json (Schema)?
 Was sind die Limitationen der aktuellen Parser Funktionalität?
 
-
+This module slices large feature models into smaller partial models based on execution order, then calculates valid configurations for each partial model and saves them for efficient analysis and reuse.
 
 ## How to Run the Module
 ___
