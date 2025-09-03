@@ -24,10 +24,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-class GraphGeneratorV2Test {
+class GraphGeneratorTest {
     private final Logger _Logger = LogManager.getLogger("executionLog");
 
-    private GraphGeneratorV2 graphGenerator;
+    private GraphGenerator graphGenerator;
     private FeatureConnectivityInformation featureConnectivityInformation;
     private final FeatureModelReader fmReader = new FeatureModelReader(_Logger);
     private final FeatureModelSlicer fmSlicer = new FeatureModelSlicer(_Logger);
@@ -38,7 +38,7 @@ class GraphGeneratorV2Test {
 
     @BeforeEach
     void setUp() {
-        graphGenerator = new GraphGeneratorV2();
+        graphGenerator = new GraphGenerator();
         featureConnectivityInformation = new FeatureConnectivityInformation();
     }
 
@@ -204,5 +204,62 @@ class GraphGeneratorV2Test {
 
         //var onlineParser = new GraphOnlineParser(_Logger);
         //onlineParser.saveGraphToXML(graph,"D:\\temp.graphml");
+    }
+
+    @Test
+    void testGenerateGraph_withValidConfiguration_shouldCreateGraphWithVerticesAndEdges() throws InvalidFeatureModelRelationException {
+        // Arrange
+        var fullEdge = new AvailableEdgeHardware(10);
+
+        var readFile = fmReader.readFeatureModelJson(new File("../TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json"));
+        var slicedFeature = fmSlicer.sliceFeatureModel(readFile, 250);
+        var calculatedConfigurations = configurationCalculator.calculatePartialConfigurations(slicedFeature);
+
+        // Act
+        var graph = hardwareSensitiveFeatureModelMerger.startForTesting(calculatedConfigurations, fullEdge, 1);
+
+        var testGraphCreator = new TestGraphCreator(_Logger);
+        var randomizedGraph = testGraphCreator.randomizeGraphCostWithAdvancedParameters(graph);
+
+    }
+
+    @Test
+    void testUnreachableEnd()  throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void  testNoMatchingAbstractConfiguration()  throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void testStageCalculation() throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void testFMNotMatchingConfigurations()  throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void testWeights()  throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void testConditionalWeightsFromExclude()  throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void testConditionalWeightsFromAbstract()  throws InvalidFeatureModelRelationException {
+
+    }
+
+    @Test
+    void testRequires()  throws InvalidFeatureModelRelationException {
+
     }
 }

@@ -8,7 +8,7 @@ import FeatureModelReader.Structures.CrossTreeConstraintRelation;
 import FeatureModelReader.Structures.Feature;
 import FeatureModelReader.Structures.FeatureConnectivityInformation;
 import Filter.FeatureFilter;
-import GraphGenerator.GraphGeneratorV3;
+import GraphGenerator.GraphGenerator;
 import GraphGenerator.IGraphGenerator;
 import IO.impl.LshwClass;
 import Structures.Graph.Graph;
@@ -26,7 +26,7 @@ public class HardwareSensitiveFeatureModelMerger {
     public int validConfigurations = 0;
 
     public HardwareSensitiveFeatureModelMerger(Logger logger) {
-        this(logger, new GraphGeneratorV3());
+        this(logger, new GraphGenerator());
     }
 
     public HardwareSensitiveFeatureModelMerger(Logger logger, IGraphGenerator graphGenerator) {
@@ -46,7 +46,7 @@ public class HardwareSensitiveFeatureModelMerger {
     public Graph start(FeatureModelPartiallyCalculated fm, AvailableEdgeHardware edgeHardwareInformation, int maxRequirements) {
         partiallyCalculatedFeatureModel = fm;
         if (graphGenerator == null) {
-            graphGenerator = new GraphGeneratorV3();
+            graphGenerator = new GraphGenerator();
         }
         validConfigurations = 0;
 

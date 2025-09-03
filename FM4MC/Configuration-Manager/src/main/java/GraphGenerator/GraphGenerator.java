@@ -1,7 +1,8 @@
 package GraphGenerator;
 
-import ConfigurationCalculator.Structures.FeatureModelPartiallyCalculated;
+import ConfigurationCalculator.Structures.PartialConfiguration;
 import FeatureModelReader.Structures.Feature;
+import FeatureModelReader.Structures.FeatureConnectivityInformation;
 import Structures.Graph.Edge;
 import Structures.Graph.Graph;
 import Structures.Graph.Vertex;
@@ -9,141 +10,164 @@ import Structures.Graph.interfaces.IVertex;
 import Structures.IGraph;
 
 import java.util.*;
-
-import static io.github.atomfinger.touuid.UUIDs.toUUID;
-import static java.util.stream.Collectors.groupingBy;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 /**
- * Generates a graph representation of a partially calculated feature model.
- * Vertices represent features and edges encode feasible transitions.
+ * Alternative graph generator implementation supporting single and multiple
+ * configurations. Vertices correspond to features while edges capture their
+ * execution order and connectivity.
  */
+public class GraphGenerator implements IGraphGenerator {
 
-public class GraphGenerator {
-
-    private FeatureModelPartiallyCalculated _FeatureModel;
-    private int _NextEdgeID = 1;
+    private final AtomicInteger nextEdgeId = new AtomicInteger(1); // Thread-safe counter for edge IDs
+    private final AtomicInteger nextGraphId = new AtomicInteger(1);
+    // Multiple partial configurations can start with the same feature. Store all
+    // configurations for a feature to avoid losing edges when duplicates occur.
+    private Map<String, List<List<IVertex>>> vertexConfigurationMap; // Map for vertex configurations
 
     /**
-     * Builds a graph from the provided partially calculated feature model.
+     * Generates a graph for the given set of partial configurations.
      *
-     * @param featureModel source data containing features and connectivity
-     * @return generated graph representing possible feature selections
+     * @param configuration list of partial configurations to transform
+     * @param featureConnectivityInformation connectivity information of features
+     * @return constructed graph
      */
-    public IGraph generateGraph(FeatureModelPartiallyCalculated featureModel) {
-        var partialConfigurations = featureModel.configurationsPerPartialFeatureModel.stream().flatMap(List::stream).toList();
+    @Override
+    public Graph generateGraph(List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
+        vertexConfigurationMap = new HashMap<>();
+        var vertices = createVertices(configuration);
+        var startVertex = getStartVertex(vertices, featureConnectivityInformation.startFeature);
 
-        _FeatureModel = featureModel;
-        var vertices = new ArrayList<IVertex>();
-        var nextVertexId = 1;
+        var graph = new Graph(nextGraphId.getAndIncrement(), startVertex, "");
 
-        for (var configuration : partialConfigurations) {
-            var newFeatures = configuration.getFeatures().stream().filter(x -> !vertices.stream().map(IVertex::getLabel).toList().contains(x.getName())).toList();
+        // Add vertices to the graph
+        vertices.forEach(graph::addVertex);
 
-            for (var feature : newFeatures) {
-                var vertex = new Vertex(feature.getName(), nextVertexId, "mockService");
-                var parentFeature = featureModel.features.stream().filter(x -> x.getName().equals(feature.getParentFeatureName())).findFirst().orElseThrow();
-                vertex.setApplicationIndex(parentFeature.getIndex());
-                nextVertexId++;
-
-                vertices.add(vertex);
-            }
-        }
-
-        var startFeature = findStartFeature(featureModel.featureConnectivityInformation.featureConnectivityMap, featureModel.features);
-        var childOfStartFeature = getChildFeatures(startFeature).get(0);
-        var startVertex = vertices.stream().filter(x -> x.getLabel().equals(childOfStartFeature.getName())).findFirst().orElseThrow();
-        vertices.remove(startVertex);
-
-        var resultGraph = addVerticesToGraph(new Graph(new Random().nextInt(10000), startVertex, ""), vertices);
-
-        recursiveAddEdges(resultGraph, startFeature, new ArrayList<>());
-        resultGraph.recalculateGraphStages();
-        Map<Integer, List<IVertex>> verticesByStage = resultGraph.getAllVertices().stream().collect(groupingBy(IVertex::getStage));
-        List<Map<Integer, List<IVertex>>> verticesByStageByApplicationIndex = verticesByStage.values().stream().map(x -> x.stream().collect(groupingBy(IVertex::getApplicationIndex))).toList();
-        for (var stageVertices: verticesByStageByApplicationIndex) {
-            var verticesByApplication = stageVertices.values();
-            int index = 0;
-            for (var vertexList: verticesByApplication) {
-                for (var vertex: vertexList) {
-                    vertex.setApplicationIndex(index);
-                }
-                index++;
-            }
-        }
-
-        //printGraph(resultGraph);
-        return resultGraph;
-    }
-
-    private IGraph addVerticesToGraph(IGraph graph, List<IVertex> vertices) {
-        for (var vertex : vertices) {
-            graph.addVertex(vertex);
-        }
+        // Generate edges
+        generateEdges(graph, configuration, featureConnectivityInformation);
         return graph;
     }
 
-    private void recursiveAddEdges(IGraph graph, Feature currentParentFeature, List<IVertex> previousChildVertices) {
-        var connectedFeatures = this._FeatureModel.featureConnectivityInformation.featureConnectivityMap.get(currentParentFeature.getName());
-        var currentChildVertices = graph.getAllVertices().stream()
-                        .filter(x -> getChildFeatures(currentParentFeature)
-                        .stream().map(Feature::getName).toList().contains(x.getLabel())).toList();
+    private List<IVertex> createVertices(List<PartialConfiguration> configurations) {
+        var vertices = new ArrayList<IVertex>();
+        for (var config : configurations) {
+            var configVertices = new ArrayList<IVertex>();
+            for (var feature : config.getFeatures()) {
+                var vertex = new Vertex(feature.getName(), feature.getIndex(), feature.getParentFeature().getName());
+                configVertices.add(vertex);
+                vertices.add(vertex);
+            }
+            // Use the start feature name as key so that partial configurations can
+            // later be retrieved based on the feature referenced in the connectivity
+            // information.
+            var startFeatureName = config.getFeatures().get(0).getName();
+            vertexConfigurationMap
+                    .computeIfAbsent(startFeatureName, k -> new ArrayList<>())
+                    .add(configVertices);
+        }
+        return vertices;
+    }
 
-        for (var previousChildVertex : previousChildVertices) {
-            for (var currentChildVertex : currentChildVertices) {
-                if (!foundExcludes(previousChildVertex, currentChildVertex)) {
-                    var previousChildEdges = graph.getOutgoingEdges(previousChildVertex);
-                    if (!previousChildEdges.stream().map(Edge::getDestination).toList().contains(currentChildVertex)) {
-                        var edge = new Edge(previousChildVertex, currentChildVertex, _NextEdgeID);
-                        _NextEdgeID++;
+    private IVertex getStartVertex(List<IVertex> vertices, Feature startFeature) {
+        return vertices.stream()
+                .filter(x -> x.getLabel().equals(startFeature.getName()))
+                .findFirst()
+                .orElseGet(() -> new Vertex(startFeature.getName(), startFeature.getIndex(), "startFeature.parentFeature.name"));
+    }
 
-                        graph.addEdge(edge);
+    private void generateEdges(IGraph graph, List<PartialConfiguration> configuration, FeatureConnectivityInformation featureConnectivityInformation) {
+        // Flatten all partial configurations stored in the map
+        var allPartialConfigurations = vertexConfigurationMap.values().stream()
+                .flatMap(List::stream)
+                .toList();
+
+        // Determine which start features have incoming connections by checking the
+        // connectivity information for each partial configuration's end.
+        var featuresConnected = allPartialConfigurations.stream()
+                .map(config -> featureConnectivityInformation.featureConnectivityMap.get(config.get(config.size() - 1).getServiceName()))
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .flatMap(feature -> Stream.of(feature.getName(), feature.getParentFeature().getName()))
+                .distinct()
+                .toList();
+
+        // Starting configurations are those whose start feature name does not
+        // appear as a target of another configuration.
+        var partialConfigurationsThatStart = allPartialConfigurations.stream()
+                .filter(config -> !featuresConnected.contains(config.get(0).getServiceName()))
+                .toList();
+
+        var partialConfigurationsChecked = new ArrayList<List<IVertex>>();
+        var partialConfigurationsUnchecked = new ArrayList<>(partialConfigurationsThatStart);
+
+        while (!partialConfigurationsUnchecked.isEmpty()) {
+            var partialConfigurationBeingChecked = partialConfigurationsUnchecked.remove(0);
+
+            // Create sequential edges inside the partial configuration
+            for (int i = 1; i < partialConfigurationBeingChecked.size(); i++) {
+                var sourceVertex = partialConfigurationBeingChecked.get(i - 1);
+                var targetVertex = partialConfigurationBeingChecked.get(i);
+                graph.addEdge(new Edge(sourceVertex, targetVertex, nextEdgeId.getAndIncrement()));
+            }
+
+            var endVertexOfPartialConfiguration = partialConfigurationBeingChecked.get(partialConfigurationBeingChecked.size() - 1);
+            var followingAbstractServices = featureConnectivityInformation.featureConnectivityMap
+                    .getOrDefault(endVertexOfPartialConfiguration.getServiceName(), List.of())
+                    .stream()
+                    .flatMap(feature -> Stream.of(feature.getName(), feature.getParentFeature().getName()))
+                    .toList();
+
+            var followingPartialConfigurations = allPartialConfigurations.stream()
+                    .filter(pc -> followingAbstractServices.contains(pc.get(0).getServiceName()))
+                    .toList();
+
+            partialConfigurationsChecked.add(partialConfigurationBeingChecked);
+
+            for (var partialConfiguration : followingPartialConfigurations) {
+                if (!partialConfigurationsUnchecked.contains(partialConfiguration) && !partialConfigurationsChecked.contains(partialConfiguration)) {
+                    partialConfigurationsUnchecked.add(partialConfiguration);
+                }
+                var startVertexOfPartialConfiguration = partialConfiguration.get(0);
+                graph.addEdge(new Edge(endVertexOfPartialConfiguration, startVertexOfPartialConfiguration, nextEdgeId.getAndIncrement()));
+            }
+        }
+    }
+
+    /**
+     * Recomputes stage, application, and approximation indices for all vertices
+     * in the given graph.
+     *
+     * @param graph graph whose vertex indices should be recalculated
+     */
+    @Override
+    public void recalculateIndices(IGraph graph) {
+        var vertices = graph.getAllVertices();
+        int stage = 0;
+        var verticesPerStage = vertices.stream()
+                .filter(v -> v.getStage() == 0)
+                .toList();
+
+        while (!verticesPerStage.isEmpty()) {
+            var distinctApplications = verticesPerStage.stream()
+                    .map(IVertex::getServiceName)
+                    .distinct()
+                    .toList();
+
+            int applicationIndex = 0;
+            for (var application : distinctApplications) {
+                int approximationIndex = 0;
+                for (var vertex : verticesPerStage) {
+                    if (vertex.getServiceName().equals(application)) {
+                        vertex.setApplicationIndex(applicationIndex);
+                        vertex.setApproximationIndex(approximationIndex++);
                     }
                 }
+                applicationIndex++;
             }
-        }
-
-        if (!connectedFeatures.isEmpty()) {
-            for (var connectedFeature : connectedFeatures) {
-                recursiveAddEdges(graph, connectedFeature, currentChildVertices);
-            }
-        }
-    }
-
-    private boolean foundExcludes(IVertex firstVertex, IVertex secondVertex) {
-        var foundExcludes = _FeatureModel.crossTreeConstraints.stream().filter(constraint -> constraint.getSource().getName().equals(firstVertex.getLabel()) && constraint.getTarget().getName().equals(secondVertex.getLabel()) && constraint.getRelation().equals("excludes")).toList();
-        return foundExcludes.size() > 0;
-    }
-
-    private Feature findStartFeature(Map<String, List<Feature>> featureConnectivityMap, List<Feature> features) {
-        var connectedFeatures = featureConnectivityMap.values();
-        var uniqueConnectedFeatureNames = connectedFeatures.stream().flatMap(List::stream).distinct().map(Feature::getName).toList();
-
-        var startFeature = features.stream().filter(x -> !uniqueConnectedFeatureNames.contains(x.getName()) && featureConnectivityMap.containsKey(x.getName())).toList();
-
-        if (startFeature.size() == 1)
-            return startFeature.get(0);
-
-        return null;
-    }
-
-    private List<Feature> getChildFeatures(Feature feature) {
-        return _FeatureModel.features.stream()
-                .filter(x -> x.getParentFeatureName() != null && x.getParentFeatureName().equals(feature.getName()))
-                .toList();
-    }
-
-    //For debugging purposes
-    private void printGraph(IGraph graph) {
-        System.out.println(" ");
-        System.out.println("GRAPH: ");
-        for (var vertex: graph.getAllVertices()) {
-            System.out.println(" ");
-            System.out.println(" ");
-            System.out.println(vertex.getLabel());
-            System.out.println("successors: ");
-            for (var edge : graph.getAllEdges()) {
-                if (edge.getDestination() != vertex)System.out.print(edge.getDestination().getLabel() + " ");
-            }
+            stage++;
+            int finalStage = stage;
+            verticesPerStage = vertices.stream().filter(x -> x.getStage() == finalStage).toList();
         }
     }
 }
