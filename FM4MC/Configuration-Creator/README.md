@@ -1,9 +1,14 @@
-# ToDo: 
-Wozu ist das Tool? 
-Wie ist der Aufbau der FeatureModel.json (Schema)?
-Was sind die Limitationen der aktuellen Parser Funktionalität?
+# Configuration Creator
 
-This module slices large feature models into smaller partial models based on execution order, then calculates valid configurations for each partial model and saves them for efficient analysis and reuse.
+Slices large feature models into smaller partial models and computes valid configurations for each part. The resulting CSV files can be reused by other modules such as the Configuration Manager.
+
+## Feature Model Format
+Feature models are described in JSON with three top-level sections:
+- `features` – list of features with hardware annotations and child relations
+- `featureConnectivityInformation` – describes execution order including the `startFeature`
+- `crossTreeConstraints` – global `requires` and `excludes` relations between features
+
+The current parser supports mandatory, optional and alternative relationships as well as requires/excludes cross-tree constraints.
 
 ## How to Run the Module
 ___
@@ -25,16 +30,16 @@ Execute this command from the root folder of this project.
 
 ```bash
 java -cp Configuration-Creator/build/libs/Configuration-Creator-1.0.jar Startup \
--slicing \
--fmFile "./TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
--configurations "./TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv"
+ -slicing \
+ -fmFile "./TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
+ -configurations "./TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv"
 ```
 
 ## Description of Key Components
 ___
 
 ### Business Logic
-- High-level entry point for reading and slicing Feature Models, as well as calculating, and serializing Feature Model configurations.
+- High-level entry point for reading and slicing feature models, as well as calculating and serializing configurations.
 
 ### CNF Clause Generator
 - Generates CNF (Conjunctive Normal Form) clauses from feature models (partial or full), encoding feature relations and constraints for SAT-solver processing.
