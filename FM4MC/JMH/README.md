@@ -3,7 +3,7 @@
 This module contains microbenchmarks for FM4MC using the Java Microbenchmark Harness (JMH).
 
 ## Prerequisites
-- Java 18 or later
+- Java 21 or later
 - Gradle (wrapper included in the project)
 
 ## Required Test Data
