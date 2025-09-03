@@ -19,12 +19,12 @@ ___
 ### Example Command
 
 ```bash
-java -cp build/libs/Configuration-Manager-1.0.jar Startup \
+java -jar build/libs/Configuration-Manager-1.0.jar \
   -fmFile "TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
   -configurations "TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv" \
   -edgeIndex 1 \
   -graph "TestData/TestGraphs/graph_4.096_EI1.graphml"
-  ```
+```
 
 ## Description of Key Components
 ___
