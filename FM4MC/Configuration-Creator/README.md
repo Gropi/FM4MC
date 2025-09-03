@@ -21,11 +21,13 @@ The module is executed via the command line. Arguments are passed in key/value p
 
 ### Example Command
 
+Execute this command from the root folder of this project.
+
 ```bash
 java -cp Configuration-Creator/build/libs/Configuration-Creator-1.0.jar Startup \
 -slicing \
--fmFile "TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
--configurations "TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv"
+-fmFile "./TestData/TestGraphs/TestFMJsons/FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json" \
+-configurations "./TestData/TestGraphs/TestConfigurationFiles/temporaryConfigurationFile_FM_BenchmarkGraph_6_Services_NoExcludes_4.096_configs.json_10.csv"
 ```
 
 ## Description of Key Components
