@@ -30,11 +30,11 @@ This project is released under the terms of the [LICENSE](LICENSE) file.
 ### How to cite
 @inproceedings{FM4MC-ICSE2026,
 author    = {Uwe Gropengie{\ss}er and Paul Wolfart and Julian Liphardt and Max M{\"u}hlh{\"a}user},
-title     = {FM4MC: Improving Feature Models for Microservice Chains\u2014Towards More Efficient Configuration and Validation},
+title     = {FM4MC: Improving Feature Models for Microservice Chains-Towards More Efficient Configuration and Validation},
 booktitle = {Proceedings of the 48th IEEE/ACM International Conference on Software Engineering (ICSE)},
 year      = {2026}
 }
 
 ### Acknowledgments
-Special thanks to Prof. Dr. Max M\u00fchlh\u00e4user for invaluable support in idea generation and discussions.
+Special thanks to Prof. Dr. Max Mühlhäuser for invaluable support in idea generation and discussions.
 Julian Liphardt and Paul Wolfart for development contributions and conceptual discussions that shaped FM4MC.
