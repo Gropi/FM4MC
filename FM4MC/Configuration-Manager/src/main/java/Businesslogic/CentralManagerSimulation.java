@@ -6,7 +6,7 @@ import FeatureModelMerger.HardwareSensitiveFeatureModelMerger;
 import FeatureModelMerger.Structures.AvailableEdgeHardware;
 import FeatureModelReader.FeatureModelReader;
 import FeatureModelReader.InvalidFeatureModelRelationException;
-import Graph.GraphOnlineParser;
+import GraphSerializer.GraphOnlineParser;
 import IO.impl.LshwClass;
 import org.apache.logging.log4j.Logger;
 

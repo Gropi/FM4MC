@@ -1,4 +1,4 @@
-package Graph;
+package GraphSerializer;
 
 import Monitoring.Enums.MeasurableValues;
 import Network.DataModel.CommunicationMessages;
