@@ -45,5 +45,13 @@ Example CSV files containing valid configurations derived from the feature model
 ## JMH_Online_Phase_Benchmark_Additional_Information
 Additional data for the online-phase JMH benchmark:
 
-- **JMH_Online_Phase_Benchmark_Information.csv** – benchmark input details.
+- **JMH_Online_Phase_Benchmark_Information.csv** – logs the context of each online
+  benchmark run. The columns are:
+  - `timestamp` – time when the run was executed
+  - `File` – feature-model JSON used for the run
+  - `edgeIndex` – identifier of the edge-node scenario (see `EdgeNodeJsons`)
+  - `maxRequirements` – maximum number of requirements for the run
+  - `validConfigurations` – number of valid configurations in the feature model
+
+These entries let you relate JMH measurements to their input models and parameters.
 

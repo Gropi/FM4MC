@@ -1,6 +1,6 @@
 # Evaluation Data
 
-The `Eval` directory contains datasets and experiment results used for evaluating Edge-Flex.
+The `Eval` directory contains datasets and experiment results used for evaluating FM4MC.
 
 ## Structure
 - **Handcrafted_Microservice_Chains/** – manually designed microservice chains for testing.
