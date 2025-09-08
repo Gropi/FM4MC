@@ -20,6 +20,27 @@ From the `FM4MC/` directory (the Gradle project root) JMH can be launched direct
 The results are written as CSV files (`onlineBenchmark.csv`, `onlineBenchmarkHuge.csv`, `onlySATSolver.csv`, etc.) in the `JMH/` module directory.
 The CSV files use semicolon (`;`) as delimiter and for each measurement include columns such as benchmark name, mode, number of samples, score, error, and units.
 
+## Interpreting Results
+The CSV output contains one row per benchmark execution. A typical line looks like:
+
+```
+Benchmark;Mode;Cnt;Score;Error;Units
+Paper.Online.OnlineBenchmarkRunner;avgt;5;123.456;7.890;ms/op
+```
+
+| Column      | Meaning                                                          |
+|-------------|------------------------------------------------------------------|
+| `Benchmark` | Fully qualified benchmark class name                             |
+| `Mode`      | Measurement type (`avgt` = average time)                         |
+| `Cnt`       | Number of measurement iterations                                 |
+| `Score`     | Mean execution time per operation in milliseconds                |
+| `Error`     | 99.9% confidence interval around the score                       |
+| `Units`     | Time unit of `Score` and `Error` (usually `ms/op`)               |
+
+Some benchmarks emit additional parameter columns (prefixed with `Param:`). Metadata for online-phase runs, such as the tested feature model, edge index, and requirement counts, is logged in `TestData/JMH_Online_Phase_Benchmark_Additional_Information/JMH_Online_Phase_Benchmark_Information.csv`. See the [TestData README](../TestData/README.md#jmh_online_phase_benchmark_additional_information) for column details.
+
+For further background on these metrics, consult the [official JMH documentation](https://openjdk.org/projects/code-tools/jmh/).
+
 ## Create and Run a Standalone JMH JAR
 Alternatively, an executable JAR can be built:
 
