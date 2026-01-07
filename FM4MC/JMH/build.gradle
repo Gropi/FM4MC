@@ -1,12 +1,47 @@
 plugins {
     id 'java-library'
     id "me.champeau.jmh" version "0.7.0"
+    id 'com.github.johnrengelman.shadow'  version '8.1.1'
     id "idea"
 }
 
 repositories {
     mavenCentral()
 }
+
+tasks.register('copyTestData', Copy) {
+    description = "Copies TestData into the JMH build directory for benchmark execution"
+    group = "benchmarking"
+
+    from project.rootProject.file("TestData")
+    into layout.buildDirectory.dir("TestData")
+}
+
+tasks.named("assemble") {
+    dependsOn(tasks.named("copyTestData"))
+    dependsOn shadowJar
+}
+
+sourceSets {
+    jmh {
+        resources {
+            srcDir "$buildDir/jmh-generated-resources"
+        }
+    }
+}
+
+shadowJar {
+    archiveBaseName.set("JMH")
+    archiveClassifier.set("all")
+    archiveVersion.set("")
+
+    configurations = [
+            project.configurations.jmhRuntimeClasspath
+    ]
+
+    from(sourceSets.jmh.output)
+}
+
 
 dependencies {
     testImplementation project(path: ':Configuration-Creator')
