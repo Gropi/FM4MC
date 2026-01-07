@@ -61,8 +61,6 @@ public class OnlinePhaseForCanete {
 
     private final EdgeNodeReader edgeNodeReader = new EdgeNodeReader(_Logger);
     private final FeatureModelReader fmReader = new FeatureModelReader(_Logger);
-    private final CNFClauseGenerator clauseGenerator = new CNFClauseGenerator(_Logger);
-    private final ConfigurationCalculator calculator = new ConfigurationCalculator(_Logger);
     private FeatureModelRead _ReadFeatureModel = null;
     private File _currentFmFile;
     private File _currentEdgeFile;
@@ -79,12 +77,23 @@ public class OnlinePhaseForCanete {
         _edgeNodes.toArray(_edgeNodesArray);
     }
 
+    @State(Scope.Thread)
+    public static class MyBenchmarkState {
+
+        ConfigurationCalculator calculator;
+
+        @Setup(Level.Trial)
+        public void setup() {
+            calculator = new ConfigurationCalculator(LogManager.getRootLogger());
+        }
+    }
+
     @Benchmark
     @BenchmarkMode({Mode.SingleShotTime}) //Mode.All
     @Warmup(iterations = 3)
     @Measurement(iterations = 30)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    public void caneteBenchmarkSingleDeployments(Blackhole blackhole) {
+    public void caneteBenchmarkSingleDeployments(MyBenchmarkState state, Blackhole blackhole) {
 
         var nonPartialFM = new FeatureModelRead(_ReadFeatureModel);
 
@@ -96,7 +105,7 @@ public class OnlinePhaseForCanete {
             nonPartialFM.features.remove(feature);
         }
 
-        var calculatedFM = calculator.calculatedConfigurationForNonSlicedFM(nonPartialFM);
+        var calculatedFM = state.calculator.calculatedConfigurationForNonSlicedFM(nonPartialFM);
 
         var edaf = new EDAF();
 
