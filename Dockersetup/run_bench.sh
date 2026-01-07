@@ -38,14 +38,6 @@ echo "[run_bench] Using JMH jar: ${JMH_JAR}"
 
 # Run JMH
 cd "${ROOT_DIR}/FM4MC/JMH"
-
-for RUNNER in \
-  Paper.Online.CaneteBenchmarkRunner \
-  Paper.Online.OnlineBenchmarkRunner \
-  Paper.Offline.OfflineBenchmarkRunner \
-  SlicingBenchmark.SlicingBenchmarkRunner
-do
-  java -cp "${JMH_JAR}" "${RUNNER}"
-done
+java -cp "${JMH_JAR}" Artifacts.SmokeTestRunner
 
 echo "[run_bench] Done. Results at: ${OUT_CSV}"
