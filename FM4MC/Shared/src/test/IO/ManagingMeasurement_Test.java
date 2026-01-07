@@ -4,7 +4,9 @@ import IO.impl.ManagingMeasurement;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
+import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.junit.jupiter.api.Test;
@@ -29,16 +31,33 @@ public class ManagingMeasurement_Test {
 
     @Test
     public void writeLine_JoinsWithSeparator() {
-        Logger logger = (Logger) LogManager.getLogger("measurementTest");
-        logger.setLevel(Level.INFO);
-        RecordingAppender appender = new RecordingAppender();
+        var appender = new RecordingAppender();
         appender.start();
-        logger.addAppender(appender);
 
-        var mm = new ManagingMeasurement("measurementTest", ",");
+        var context = (LoggerContext) LogManager.getContext(false);
+
+        var config = context.getConfiguration();
+
+        var loggerName = "measurementTest";
+
+        var loggerConfig = config.getLoggerConfig(loggerName);
+
+        if (!loggerConfig.getName().equals(loggerName)) {
+            loggerConfig =
+                    new LoggerConfig(loggerName, Level.INFO, false);
+            config.addLogger(loggerName, loggerConfig);
+        }
+
+        loggerConfig.addAppender(appender, Level.INFO, null);
+        context.updateLoggers();
+
+        var mm = new ManagingMeasurement(loggerName, ",");
+
         mm.writeLine("a", "b");
 
+        assertEquals(1, appender.messages.size());
         assertEquals("a,b,", appender.messages.get(0));
-        logger.removeAppender(appender);
+
+        loggerConfig.removeAppender("record");
     }
 }

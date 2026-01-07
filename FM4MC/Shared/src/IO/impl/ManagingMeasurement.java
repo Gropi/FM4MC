@@ -5,8 +5,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ManagingMeasurement implements IManagingMeasurement {
-    private Logger m_Logger;
-    private String m_Separator;
+    private final Logger m_Logger;
+    private final String m_Separator;
 
     public ManagingMeasurement() {
         this("measurementLog");
