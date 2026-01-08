@@ -22,5 +22,20 @@ if errorlevel 1 (
 )
 docker build -f "%SCRIPT_DIR%Dockerfile" -t %IMAGE_NAME% "%ROOT_DIR%"
 if not exist "%SCRIPT_DIR%output" mkdir "%SCRIPT_DIR%output"
-docker run --rm -v "%SCRIPT_DIR%output:/output" %IMAGE_NAME%
+REM Determine run mode (default: smoke)
+set MODE=smoke
+if not "%~1"=="" set MODE=%~1
+
+if /I "%MODE%"=="smoke" (
+  echo Running SMOKE benchmarks...
+  docker run --rm -v "%SCRIPT_DIR%output:/output" %IMAGE_NAME% 
+) else if /I "%MODE%"=="full" (
+  echo Running FULL benchmarks...
+  docker run --rm -v "%SCRIPT_DIR%output:/output" %IMAGE_NAME% bash Dockersetup/run_bench.sh
+) else (
+  echo Unknown mode: %MODE%
+  echo Usage: build.bat [smoke|full]
+  exit /b 1
+)
+
 echo Results stored in Dockersetup\output

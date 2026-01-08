@@ -1,27 +1,67 @@
 #!/usr/bin/env bash
-# Build the FM4MC Docker image and run a component or benchmarks, collecting results
-set -e
-IMAGE_NAME=fm4mc
-MODE=${1:-jmh}
-# Build image using repository root as context
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-ROOT_DIR="$(dirname "$SCRIPT_DIR")"
-if ! docker info >/dev/null 2>&1; then
-  echo "Docker daemon not running. Attempting to start..." >&2
-  if command -v systemctl >/dev/null 2>&1; then
-    sudo systemctl start docker >/dev/null 2>&1 || true
-  elif command -v service >/dev/null 2>&1; then
-    sudo service docker start >/dev/null 2>&1 || true
-  fi
-  # Give the daemon a moment to initialize
-  sleep 2
-fi
+set -euo pipefail
 
+# ------------------------------------------------------------
+# Build the FM4MC Docker image and run smoke or full benchmarks
+# ------------------------------------------------------------
+
+IMAGE_NAME="fm4mc"
+
+# Determine script directory and repo root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+echo "[build_and_run] SCRIPT_DIR=${SCRIPT_DIR}"
+echo "[build_and_run] ROOT_DIR=${ROOT_DIR}"
+
+# ------------------------------------------------------------
+# Ensure Docker daemon is reachable
+# ------------------------------------------------------------
 if ! docker info >/dev/null 2>&1; then
-  echo "Docker daemon still not running. Please start Docker and try again." >&2
+  echo "[build_and_run] ERROR: Docker daemon not running."
+  echo "[build_and_run] Please start Docker and retry."
   exit 1
 fi
-docker build -f "$SCRIPT_DIR/Dockerfile" -t "$IMAGE_NAME" "$ROOT_DIR"
-mkdir -p "$SCRIPT_DIR/output"
-docker run --rm -v "$SCRIPT_DIR/output":/output "$IMAGE_NAME" "$MODE"
-echo "Results stored in Dockersetup/output"
+
+# ------------------------------------------------------------
+# Build Docker image
+# ------------------------------------------------------------
+echo "[build_and_run] Building Docker image: ${IMAGE_NAME}"
+docker build -f "${SCRIPT_DIR}/Dockerfile" -t "${IMAGE_NAME}" "${ROOT_DIR}"
+
+# ------------------------------------------------------------
+# Prepare output directory
+# ------------------------------------------------------------
+OUTPUT_DIR="${SCRIPT_DIR}/output"
+mkdir -p "${OUTPUT_DIR}"
+
+# ------------------------------------------------------------
+# Determine run mode (default: smoke)
+# ------------------------------------------------------------
+MODE="${1:-smoke}"
+
+echo "[build_and_run] Run mode: ${MODE}"
+
+case "${MODE}" in
+  smoke)
+    echo "[build_and_run] Running SMOKE benchmarks..."
+    docker run --rm \
+      -v "${OUTPUT_DIR}:/output" \
+      "${IMAGE_NAME}"
+    ;;
+  full)
+    echo "[build_and_run] Running FULL benchmarks..."
+    docker run --rm \
+      -v "${OUTPUT_DIR}:/output" \
+      "${IMAGE_NAME}" \
+      bash Dockersetup/run_bench.sh
+    ;;
+  *)
+    echo "[build_and_run] ERROR: Unknown mode '${MODE}'"
+    echo "Usage: ./build_and_run.sh [smoke|full]"
+    exit 1
+    ;;
+esac
+
+echo
+echo "[build_and_run] Results stored in Dockersetup/output"

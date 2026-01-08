@@ -18,7 +18,7 @@ RUN sed -i 's/\r$//' FM4MC/gradlew \
 # Ensure scripts are executable
 RUN chmod +x FM4MC/gradlew
 RUN chmod +x Dockersetup/run_bench.sh || true
-RUN chmod +x scripts/*.sh || true
+RUN chmod +x Dockersetup/*.sh || true
 RUN chmod +x Eval/Scripts/*.sh || true
 
 # Build once
@@ -27,4 +27,4 @@ RUN ./gradlew --no-daemon clean assemble
 
 # Default command: run smoke benchmarks (can be overridden)
 WORKDIR /artifact
-CMD ["bash", "scripts/smoke_test.sh"]
+CMD ["bash", "Dockersetup/smoke_test.sh"]
