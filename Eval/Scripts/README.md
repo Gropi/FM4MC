@@ -14,23 +14,10 @@ Two supported use cases:
 
 ---
 
-## Setup
-
-### Linux/macOS (or Windows via Git Bash/WSL)
-```bash
-bash setup_env.sh
-```
-
-### Windows (CMD/PowerShell)
-```bat
-setup_env.bat
-```
-
-The setup scripts create a local virtual environment and install required dependencies.
-
 ---
 
 ## Regenerate all figures
+The scripts create a local virtual environment and install required dependencies. However, you have to provide an accessible python instalation.
 
 ### Linux/macOS (or Windows via Git Bash/WSL)
 ```bash
