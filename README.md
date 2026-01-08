@@ -22,7 +22,7 @@ FM4MC is a research prototype that validates large feature models for microservi
 
 - **Artifacts Available**: the artifact will be released via an archival repository providing a persistent identifier (DOI). GitHub alone is not considered archival.
   - **Archival link/DOI**: https://doi.org/10.5281/zenodo.15714242
-  - **Evaluated commit**: cf23bdde3aceeadabc8f1d5b6b704846a9524446
+  - **Evaluated commit**: 152d966f2b45a0c578fab1491184a34425ce1919
 
 - **Artifacts Evaluated – Reusable**: the artifact is documented, consistent, complete, and exercisable, and is structured to support reuse/repurposing (Docker workflow, clear outputs, reusable evaluation pipeline).
 
