@@ -117,21 +117,6 @@ public class SmokeTestRunner {
                 .threads(4)
                 .build();
 
-        var opt7 = new OptionsBuilder()
-                .include(OnlySATSolver.class.getSimpleName())
-                .param("_FilePathFM", fmJson)
-                // Specify the output file for the results
-                .result("smoke_onlySATSolver.csv")
-                .measurementIterations(5)
-                .warmupIterations(3)
-                .timeout(TimeValue.hours(2))
-                // Set the result format to CSV
-                .resultFormat(ResultFormatType.CSV)
-                // Set the number of forks
-                .forks(1)
-                .threads(4)
-                .build();
-
 
         new Runner(opt1).run();
         new Runner(opt2).run();
