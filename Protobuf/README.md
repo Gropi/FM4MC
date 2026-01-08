@@ -1,17 +1,20 @@
-# Protocol Buffers
+# Protobuf (optional)
 
-This directory contains the message definitions used by Edge-Flex for communication between components.
+This directory contains Protocol Buffers (`.proto`) definitions used by the artifact where applicable.
 
-## Structure
-- **File/** – `.proto` files describing communication and hardware information messages.
-- **Protobuf_Compiler/** – helper files for compiling the definitions (includes a Windows `protoc` distribution).
+Most reviewers do not need to regenerate protobuf code; the standard build (Docker or Gradle) uses the code as provided.
+Use this directory only if you modify `.proto` files and need to regenerate bindings.
 
-## System Requirements
-- Protocol Buffers compiler `protoc` (version 3 or newer)
+---
 
-## Generating Java Classes
-From within the `File` directory run:
+## Requirements (only if regenerating)
+- Protocol Buffers compiler `protoc` (version 3+)
+
+---
+
+## Example: generate Java sources
+From `Protobuf/File/`:
+
 ```bash
 protoc --java_out=../.. CommunicationMessages.proto HardwareInformationMessages.proto
 ```
-The generated classes can then be used by the Java modules.

@@ -1,43 +1,66 @@
-# Evaluation Scripts
+# Eval/Scripts — Figure Regeneration
 
-This folder contains Python scripts for generating figures and tables used in the evaluation of FM4MC.
+This folder contains the scripts used to process raw benchmark data and generate publication-ready figures (PDF).
 
-## Prerequisites
-- Python 3
-- Required Python packages listed in [`requirements.txt`](requirements.txt)
+Two supported use cases:
+1) Inspect pre-generated figures shipped with the artifact: `Results/`
+2) Regenerate figures from the raw data under `Eval/`
+
+---
+
+## Requirements
+- Python 3.x
+- Dependencies listed in `requirements.txt`
+
+---
 
 ## Setup
-Create a local Python installation (if needed), virtual environment, and install dependencies:
 
+### Linux/macOS (or Windows via Git Bash/WSL)
 ```bash
-bash setup_env.sh                      # Linux/macOS
-# or
-setup_env.bat          # Windows (downloads Python if missing)
+bash setup_env.sh
 ```
 
-## Running all scripts
-Execute every evaluation script sequentially. The helper script creates any necessary
-`Results` subdirectories before running the Python scripts:
-
-```bash
-bash run_all.sh        # Linux/macOS
-# or
-run_all.bat            # Windows
+### Windows (CMD/PowerShell)
+```bat
+setup_env.bat
 ```
 
-## Running individual scripts
-You can also run a single script after activating the virtual environment:
+The setup scripts create a local virtual environment and install required dependencies.
+
+---
+
+## Regenerate all figures
+
+### Linux/macOS (or Windows via Git Bash/WSL)
+```bash
+bash run_all.sh
+```
+
+### Windows (CMD/PowerShell)
+```bat
+run_all.bat
+```
+
+Outputs:
+- PDFs under `Results/` (grouped by research question / figure group)
+
+---
+
+## Running a single script
+After activating the virtual environment, run:
 
 ```bash
-source venv/bin/activate      # Linux/macOS
-venv\Scripts\activate.bat     # Windows
-
 python <script_name>.py
 ```
 
-Scripts write output files to the `Results` directory tree. The `run_all` helpers
-prepare these folders automatically. If you run a script individually, create the
-desired output directories beforehand.
+If you execute scripts individually, ensure that expected input paths exist and that output directories are created.
+
+---
+
+## Notes
+Figure generation is deterministic. Benchmark measurements are hardware-dependent due to SAT solving; therefore,
+absolute values may differ between machines.
 
 ## Script Overview
 | Script | Output files | Purpose / Interpretation |

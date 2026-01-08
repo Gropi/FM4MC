@@ -1,26 +1,50 @@
-# FM4MC Runtime
+# FM4MC — Implementation (Java/Gradle)
 
-**FM4MC** is a research prototype that validates large feature models for microservice chains efficiently by slicing them into Partial Feature Models (PFMs) and selectively applying SAT solving. This repository contains the **artifact** accompanying our ICSE’26 paper.
+This directory contains the Java implementation of FM4MC as a multi-module Gradle project.
+It includes the JMH benchmark suite and benchmark input data.
 
-## Modules
-- **Configuration-Creator** – computes valid configurations and slices feature models.
-- **Configuration-Manager** – aggregates collector data and builds configuration graphs.
-- **Canete** – orchestrates the configuration process using the above modules.
-- **Shared** – shared utilities and data structures.
-- **JMH** – benchmarks for performance evaluation.
-- **TestData** – sample inputs for testing.
+For ICSE AE, the recommended execution path is Docker via `Dockersetup/`.
+This README documents the native build and the project structure for reuse and extension.
 
-## Building
-Use the Gradle wrapper to compile all modules:
+---
+
+## Modules (overview)
+- `Configuration-Creator/` — slicing and configuration creation
+- `Configuration-Manager/` — configuration graph generation and aggregation
+- `Canete/` — orchestration logic integrating the modules
+- `Shared/` — shared utilities and data structures
+- `JMH/` — benchmark suite used for evaluation
+- `TestData/` — benchmark inputs (feature models and auxiliary files)
+
+---
+
+## Build (native)
+From this directory:
+
 ```bash
 ./gradlew build
 ```
 
-## JMH Benchmarks
-Benchmarks for performance evaluation reside in the `JMH` module. Run them with:
+This builds all modules and produces artifacts under each module’s `build/` folder.
 
-```bash
-./gradlew JMH:jmh
-```
+---
 
-The benchmarks expect their input files in `TestData/` (see [`JMH/README.md`](JMH/README.md) for details) and write semicolon-separated CSV results such as `onlineBenchmark.csv` into the `JMH` directory.
+## Benchmark inputs
+Benchmark input data is stored under:
+- `FM4MC/TestData/`
+
+Benchmarks use these inputs during execution. The Docker workflow ensures that the runtime layout is stable and that
+relative paths resolve correctly.
+
+---
+
+## JMH benchmarks
+See:
+- `FM4MC/JMH/README.md`
+
+---
+
+## Reuse / extension
+- Add or modify feature-model inputs in `TestData/`.
+- Extend or add benchmarks under `JMH/src/jmh/`.
+- Rebuild and rerun using either Docker (`Dockersetup/`) or native execution.

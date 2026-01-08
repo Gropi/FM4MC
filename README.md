@@ -62,6 +62,21 @@ Dockersetup\build_and_run.bat full
 - Benchmark CSV results are written under `Dockersetup/output/` (see `Dockersetup/README.md` for the exact file layout).
 - Figures can be inspected and regenerated under `Eval/` (see `Eval/README.md` and `Eval/Scripts/README.md`).
 
+**JMH Columns in This Project:**
+
+The JMH result files used in this evaluation follow the schema below (column order may vary slightly between runs):
+
+| Column | Meaning                                          |
+|---|--------------------------------------------------|
+| `Benchmark` | Fully qualified benchmark method name            |
+| `Mode` | JMH measurement mode (e.g., single shot [ss])    |
+| `Threads` | Number of benchmark threads used                 |
+| `Samples` | Number of measurement iterations (after warm-up) |
+| `Score` | Aggregated performance metric reported by JMH    |
+| `Score Error (99,9%)` | Half-width of the 99.9% confidence interval      |
+| `Unit` | Unit of the score (e.g., `ms/op`)                |
+| `Param: ...` | Benchmark parameters (vary by benchmark and run) |
+
 ---
 
 ## Setup
